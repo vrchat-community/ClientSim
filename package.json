@@ -1,0 +1,15 @@
+{
+  "name": "com.vrchat.clientsim",
+  "displayName": "VRChat Client Simulator",
+  "version": "1.0.0",
+  "unity": "2019.4",
+  "description": "VRChat Client Simulator for testing SDK3 worlds in Unity.",
+  "dependencies": {
+    "com.unity.xr.oculus.standalone": "2.38.4"
+  },
+  "gitDependencies": {
+    "com.vrchat.base": "https://github.com/vrchat/packages.git?path=/packages/com.vrchat.base",
+    "com.vrchat.worlds": "https://github.com/vrchat/packages.git?path=/packages/com.vrchat.worlds"
+  },
+  "url": "https://github.com/vrchat-community/ClientSim.git"
+}

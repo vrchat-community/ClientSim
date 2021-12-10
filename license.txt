@@ -1,0 +1,150 @@
+﻿VRCHAT INC.
+VRCHAT MATERIALS LICENSE AGREEMENT
+
+Version: November 05, 2021
+
+This VRChat Materials License Agreement (this "Agreement") is a legally binding contract between you ("Licensee") and VRChat Inc. ("VRChat") regarding Licensee’s use of VRChat Materials (defined below). PLEASE READ THIS AGREEMENT CAREFULLY. BY DOWNLOADING, INSTALLING, OR OTHERWISE USING OR ACCESSING ANY PART OF VRCHAT MATERIALS, LICENSEE ACKNOWLEDGES THAT LICENSEE HAS READ, UNDERSTOOD, AND AGREES TO BE BOUND BY THIS AGREEMENT. IF LICENSEE DOES NOT AGREE TO THIS AGREEMENT, THEN LICENSEE DOES NOT HAVE PERMISSION TO USE VRCHAT MATERIALS.
+
+1. DEFINITIONS
+
+"Avatar" means the virtual 3D representation of a User in the VRChat Platform.
+
+"Child Folder" means a digital folder of files within a Folder.
+
+"Content" means any program, World, functionality, feature, object, script, Avatar, virtual item, or other output developed by or on behalf of Licensee that utilizes, is based on, or is otherwise a derivative of any Example Assets.
+
+"Distro Assets" mean Example Assets made available to Licensee in a Folder containing a Distro License File or otherwise expressly identified by VRChat as being "Distro Assets."
+
+"Distro Content" means Content that is based on or otherwise a derivative of any Distro Assets. "Distro Content" does not include unmodified versions of any Distro Assets.
+
+"Distro License File" means a License File marking the files in the Folder containing that License File and the files in all of that Folder’s Child Folders (other than files in a Child Folder that contains a different License 
+File) as subject to the Distro License.
+
+"Distro Materials" means Distro Assets and Distro Content.
+
+"Example Assets" means files such as sample 3D models and artwork (a) provided as part of or in connection with an SDK or (b) separately made available to Licensee via a VRChat-authorized source in a Folder.
+
+"Folder" means a digital folder of files (where both the folder and its files are made available by VRChat (via the VRChat Platform or otherwise) or by a VRChat-authorized source) that includes a License File and one or more other files, subject to Section 2.2. 
+
+"License File" means a file included in a Folder, either (a) provided as part of an SDK or (b) separately made available to Licensee via a VRChat-authorized source, which, in each case (a) and (b), identifies the materials provided in such Folder as subject to the SDK License, Distro License, or Vend License (each as defined herein). 
+
+"Licenses" means the Distro License, Vend License, SDK License, and Personal Use License.
+
+"SDK" means the files constituting a VRChat software development kit that are made available to Licensee in a Folder containing this Agreement. "SDK" includes the following, to the extent included in such Folder: (a) user documentation (e.g., user manuals, on-line help files), (b) files in source code or object code format, (c) Example Assets other than those that are Vend Assets or Distro Assets, and (d) any other files. "Term" means the period that this Agreement is in effect.
+
+"User" means an end user of the VRChat Platform.
+
+"User System" means any hardware, peripheral, software, and systems used by a User in connection with the VRChat Platform.
+
+"Vend Assets" mean Example Assets that are made available to Licensee in a Folder containing a Vend License File or otherwise expressly identified by VRChat as being "Vend Assets." 
+
+"Vend Content" means Content that is based on or otherwise a derivative of any Vend Assets. "Vend Content" does not include unmodified versions of any Vend Assets.
+
+"Vend License File" means a License File marking the files in the Folder containing that License File and the files in all of that Folder’s Child Folders (other than files in a Child Folder that contains a different License File) as subject to the Vend License.
+
+"VR Object" means any virtual depiction of an object developed by VRChat or other third-party developers made available through the VRChat Platform.
+
+"VRChat Account" means the VRChat Platform account maintained by Licensee.
+
+"VRChat Materials" means SDKs and Example Assets.
+
+"VRChat Platform" means VRChat’s online, virtual reality social platform.
+
+"VRChat Systems" means any hardware, peripheral, software, and systems used by or for the benefit of VRChat in connection with the VRChat Platform.
+
+"World" means a virtual environment (including all content, storylines, features, and virtual characters in that environment) made available for occupation by Users of the VRChat Platform.
+
+2. USE OF VRCHAT MATERIALS AND CONTENT
+   
+   2.1 Eligibility. 
+      By agreeing to this Agreement, Licensee represents and warrants to VRChat that: (a) if Licensee is an individual, Licensee is at least 13 years old and (b) Licensee has not previously been suspended or removed from the VRChat Platform or other services made available by VRChat. If Licensee is using VRChat Materials on behalf of an entity, organization, or company (each, an "Entity"), the individual accepting this Agreement on that Entity’s behalf represents and warrants that they have authority to bind that Entity to this Agreement and Licensee agrees to be bound by this Agreement, and references to "Licensee" in this Agreement refer to that Entity.
+   
+   2.2 License Files. 
+      The terms of a given License File govern all materials in the Folder containing such License File (including files within any Child Folders, unless such Child Folder contains a different License File, in which case that Child Folder will itself be considered a distinct "Folder").
+   
+   2.3 Internal Use of the SDK, Content, and Distro Assets. 
+      Subject to the terms and conditions of this Agreement, during the Term, VRChat grants to Licensee a limited, personal, revocable, non-commercial, worldwide, royalty-free, non-exclusive, non-sublicensable, and non-transferable (except as permitted in Section 7.2) right and license, under VRChat’s rights in VRChat Materials to: (a) internally access, reproduce, and use a reasonable number of copies of SDKs solely in connection with Licensee’s internal development of Content as authorized under this Agreement (the "SDK License"); and (b) use Content and Distro Assets solely within the VRChat Platform through its VRChat Account (the license under part (b, the "Personal Use License"). 
+   
+   2.4 Non-Commercial Distribution License for Distro Materials
+      (a)   Subject to the terms and conditions of this Agreement, during the Term, VRChat grants to Licensee a limited, personal, revocable, worldwide, royalty-free, non-exclusive, non-sublicensable, and non-transferable (except as permitted in Section 7.2) right and license, under VRChat’s rights in the Distro Assets, to distribute, without a fee, Distro Materials to third parties (each, a "Distro Materials User") for use solely within the VRChat Platform (the "Distro License"). Except as may otherwise be expressly permitted under any of the Licenses, Licensee may not use Distro Materials for any uses outside the scope of the Distro License without entering into a separate written agreement with VRChat. Licensee’s right to distribute Distro Content pursuant to the Distro License is subject to: (i) Licensee’s compliance with the restrictions in this Agreement and (ii) Licensee’s VRChat Account remaining in good standing. 
+      (b)   Licensee will ensure that each Distro Materials User agrees that: (i) the Distro Materials User’s use of Distro Materials is limited to use solely within the VRChat Platform and is subject to the TOU (defined below), (ii) VRChat has no responsibility for or liability with respect to the Distro Materials or Distro Materials Users’ (or any third party’s) use of or inability to use Distro Materials, (iii) the Distro Content used within the VRChat Platform by the Distro Materials User will be, as between VRChat and the Distro Materials User, considered the applicable Distro Materials User’s "User Content" (as defined in the TOU), (iv) Distro Assets will be considered "Materials" (as defined in the TOU) and remain, as between Licensee, VRChat, and the Distro Materials User, the property of VRChat, (v) the Distro Materials User’s ability to use the Distro Materials may be terminated by VRChat at any time, including if the Distro License is terminated or pursuant to any of VRChat’s termination or other rights in the TOU, and (vi) any distribution of Distro Materials by the Distro Materials User is subject to the terms of this Agreement. 
+
+   2.5 Commercial Distribution License for Vend Content
+      (a)   Subject to the terms and conditions of this Agreement, during the Term, VRChat grants to Licensee a limited, personal, revocable, worldwide, royalty-free, non-exclusive, non-sublicensable, and non-transferable (except as permitted in Section 7.2) right and license, under VRChat’s rights in the Vend Assets, to distribute Vend Content (with or without a fee) to third parties (each, a "Vend Content User") for use solely within the VRChat Platform (the "Vend License"). Except as may otherwise be expressly permitted under any of the Licenses, Licensee may not use Vend Content for any uses outside the scope of the Vend License without entering into a separate written agreement with VRChat. Licensee’s right to distribute Vend Content pursuant to the Vend License is subject to: (a) Licensee’s compliance with the restrictions in this Agreement and (b) Licensee’s VRChat Account remaining in good standing. 
+      (b)   Licensee will ensure that each Vend Content User agrees that: (i) the Vend Content User’s use of the Vend Content is limited to use solely within the VRChat Platform and is subject to the TOU, (ii) VRChat has no responsibility for or liability with respect to the Vend Content or Vend Content Users’ (or any third party’s) use of or inability to use the Vend Content, (iii) the Vend Content used within the VRChat Platform by the Vend Content User will be, as between VRChat and the Vend Materials User,  considered the applicable Vend Content User’s "User Content" (as defined in the TOU), (iv) the Vend Materials User’s ability to use the Vend Content may be terminated by VRChat at any time, including if the Vend License is terminated or pursuant to any of VRChat’s termination or other rights in the TOU, and (v) any distribution of Vend Content by the Vend Content User is subject to the terms of this Agreement. 
+
+   2.6 Usage and License Limitations. 
+      Licensee’s and any Distro Materials User’s or Vend Content User’s right to use VRChat Materials, upload Content, or Distro Assets to the VRChat Platform, or use Content or Distro Assets on the VRChat Platform pursuant to the applicable Licenses is subject to and contingent upon: (a) Licensee’s and the applicable Distro Materials Users’ and Vend Content Users’ compliance with the restrictions in this Agreement and (b) Licensee’s and the applicable Distro Materials Users’ and Vend Content Users’ applicable VRChat Account remaining in good standing. Except to the extent expressly permitted under the applicable Licenses or separate written agreement with VRChat, neither Licensee nor the applicable Distro Materials Users’ and Vend Content Users’ may use any VRChat Materials or Content for any commercial uses, distribute any VRChat Materials, or engage in or enable any uses of VRChat Materials.
+
+   2.7 Availability of VRChat Materials. 
+      VRChat reserves the right to add to, modify, disable, or remove functionality, contents, or availability of or, as applicable, disable, any portion of any VRChat Materials at any time with or without notice to Licensee, any Distro Materials Users, or any Vend Content Users. VRChat’s ability to disable an SDK includes the ability to disable any SDK functionality used in connection with live, published Content or Distro Assets at any time without notice.
+   
+      2.8 Reservation of Rights. VRChat Materials are licensed, not sold, by VRChat to Licensee, and nothing in this Agreement will be interpreted or construed as a sale or purchase of any VRChat Materials. Licensee will not have any rights in or to any VRChat Materials except as expressly granted in the applicable Licenses. VRChat reserves to itself all rights to VRChat Materials not expressly granted to Licensee in accordance with the applicable Licenses. As between the parties, VRChat retains all intellectual property rights in and to VRChat Materials. Licensee acknowledges that certain portions of VRChat Materials may contain trade secrets or other confidential and proprietary materials or know-how that are, as between the parties, the sole and exclusive property of VRChat. 
+
+   3. APPLICABILITY OF TERMS OF USE; DISCLAIMER; LIABILITY
+
+      3.1 Terms of Use. 
+         For purposes of the VRChat terms of use provided at https://vrchat.com/legal (or a successor URL designated by VRChat) (the "TOU"), (a) Content will be considered Licensee’s "User Content" (as defined in the TOU) (but subject to VRChat’s rights in VRChat Materials and other pre-existing materials that are within or part of any Content) and all restrictions, licenses, and other terms in the TOU regarding Licensee’s User Content apply to Content and (b) VRChat Materials are "Materials" for purposes of the TOU and all restrictions and other terms in the TOU applicable to Materials apply to VRChat Materials. This Agreement supplements, and does not replace, the TOU. The TOU is, by this reference, hereby incorporated into and made a part of this Agreement. In the event of any conflict between this Agreement (other than the TOU) and the TOU, this Agreement (other than the TOU) will control.
+
+      3.2. Disclaimer; Limitation of Liability. 
+         THE TERMS IN THE "DISCLAIMERS; NO WARRANTIES" AND "LIMITATION OF LIABILITY" SECTIONS OF THE TOU APPLY TO ACCESS TO AND USE OF VRCHAT MATERIALS AND ARE HEREBY INCORPORATED INTO THIS AGREEMENT. LICENSEE ASSUMES ALL RISK FOR ANY DAMAGE THAT MAY RESULT FROM ITS,  DISTRO MATERIALS USERS’, OR VEND CONTENT USERS’ USE OF OR ACCESS TO VRCHAT MATERIALS OR CONTENT. 
+
+      3.3 Indemnification. 
+         The indemnification obligations in the TOU also include the obligation for Licensee to defend and indemnity the VRChat Entities (as defined in the TOU) from any claim, liability, damage, loss and expense, including reasonable attorneys’ fees and costs, arising in any way out of or in any way connected with the Content or Licensee’s, Distro Materials User’s or Vend Content User’s use of VRChat Materials. 
+
+4. RESTRICTIONS
+
+   4.1 Content Restrictions; Review.
+      Any Content made available through the VRChat Platform is subject to VRChat’s review and approval. VRChat may deny the release of, or revoke approval of, any Content for any reason or no reason at its sole discretion. Licensee will ensure that Content will not harm or destroy any User System or VRChat System. Without limiting the foregoing, Licensee will ensure that any Content will not: (a) read any files on a User System or VRChat System or (b) write, create, and delete files on any User System or VRChat System, unless such functionality is achieved through VRChat-approved methods. Unless otherwise authorized in a separate written agreement with VRChat, Content may not send any data collected from Users, including usage data, to any servers other than the VRChat designated data and web servers. VRChat Materials may not be used to reverse engineer, decompile, or otherwise derive or attempt to derive the source code of any Avatars, Content, VR Objects, Worlds, or the VRChat Platform. VRChat reserves the right to (but is under no obligation to) review and audit any Content, individually or as a whole, before or after public release on the VRChat Platform, and to remove Content in VRChat’s sole discretion. Upon VRChat’s request, Licensee will submit the source code for any Content to VRChat in accordance with the procedures communicated to Licensee by VRChat in such request.
+
+   4.2 Internet Connected Components; Network Connections. 
+      Licensee will ensure that any use of an internet connected component within or in connection with Content will only be used to display remotely downloaded content from a web page. Licensee will not use any internet connected component to send dynamic data from the VRChat Platform to another server, except through VRChat-provided dynamic components. Content may not connect to any network resources (e.g., LAN, VPN) other than fixed World Wide Web URLs.
+
+   4.3 VRChat Materials Restrictions. 
+      Except as otherwise explicitly provided in the applicable Licenses or as may be expressly permitted by applicable law, Licensee will not, and will not permit or authorize third parties to: (a) reproduce, modify, translate, enhance, decompile, disassemble, reverse engineer, derive or attempt to derive the source code of, or create derivative works of VRChat Materials; (b) rent, lease, or sublicense VRChat Materials; (c) use VRChat Materials on a service bureau or application service provider basis; (d) transfer, distribute, provide, divulge, disclose, make available to, or permit the use of VRChat Materials or any portion or access thereof by any third party; (e) circumvent or disable any technological or security features or measures in VRChat Materials, including, without limitation, to attempt to discern the source code for any portion of an SDK; (f) subject any portion of VRChat Materials to the terms of any "open source" or "creative commons" license; (g) modify any part of an SDK provided in object code format; (h) use VRChat Materials to develop code, software, or other materials for anything other than for use within the VRChat Platform; or (i) use, or allow others to use, Content or Distro Assets outside of the VRChat Platform. Licensee will neither alter nor remove any copyright notice or other proprietary rights notices that may appear on VRChat Materials.
+
+   4.4 Compliance with Laws. 
+      Licensee is solely responsible for ensuring that Content does not violate any third party rights and is compliant with applicable laws and regulations. Licensee will use VRChat Materials and Content in compliance with all applicable laws and regulations, and refrain from any unethical conduct or any other conduct that tends to damage the reputation of VRChat.
+
+   4.5 U.S. Export and Economic Sanctions Laws. 
+      Without limiting the above, Licensee will use VRChat Materials in compliance with all applicable export control and economic sanctions laws and regulations. Licensee verifies that it is not listed on or covered by any sanctioned person lists administered by the U.S. government or United Nations, including but not limited to the U.S. Department of Treasury’s List of Specially Designated Nationals and Blocked Persons, the U.S. Department of Commerce’s List of Denied Persons or Entity List, and the United Nations Security Council Sanctions. Licensee further represents that it is not located in a country subject to comprehensive U.S. sanctions, including Iran, Syria, Cuba, North Korea, or the Crimea region of the Ukraine. If Licensee is listed on, covered by, or otherwise becomes subject to any sanctioned persons list or is in a country subject to comprehensive U.S. sanctions, then it agrees to immediately cease use of VRChat Materials.
+
+5. OWNERSHIP
+
+   5.1 VRChat Intellectual Property. 
+      As between the parties, VRChat is and will remain the sole owner of all right, title, and interest, including intellectual property rights, in and to the VRChat Platform, VRChat Materials, and any other software, data, code, or other materials provided by or on behalf of VRChat to Licensee, including any upgrades, updates, enhancements, or derivative works of the foregoing ("VRChat IP"). Other than as expressly granted in the applicable Licenses, Licensee does not receive any right or interest in or to VRChat IP.
+
+   5.2 Licensee Intellectual Property. 
+      Subject to Section 5.1 and the TOU, as between the parties, Licensee is and will remain the sole owner of all right, title, and interest, including intellectual property rights, in and to: (a) any works of authorship, code, graphics, images, technology, or other materials owned by Licensee prior to Effective Date or arising independent of the rights granted under this Agreement and (b) any Content. However, Licensee’s development of Content does not transfer to Licensee any ownership of any part of VRChat Materials, including any Example Assets used as the basis for Content.
+
+6. TERM AND TERMINATION
+
+This Agreement will commence upon Licensee’s first acceptance of this Agreement and will continue until terminated. VRChat may, without limitation to any of its other rights or remedies, terminate this Agreement, or any of the Licenses or other rights granted under this Agreement, at any time for any reason or no reason, with or without notice. If this Agreement is terminated for any reason: (a) any and all liabilities accrued prior to the effective date of the termination will survive and (b) upon VRChat’s written request, Licensee will provide VRChat with a written certification that Licensee has destroyed all copies of VRChat Materials and that all use of VRChat Materials by Licensee has been discontinued.
+
+7. GENERAL
+   7.1 Relationship. 
+      VRChat will be and act as an independent contractor (and not as the agent or representative of Licensee) in the performance of this Agreement.
+
+   7.2. Assignability. 
+      Licensee may not assign its right, duties, and obligations under this Agreement without VRChat’s prior written consent. A merger, acquisition, or change of control of Licensee constitutes an assignment. Any assignment in violation of this section is void. VRChat may freely assign this Agreement.
+
+   7.3 Notices. 
+      Any notice required or permitted to be given in accordance with this Agreement will be effective if it is in writing and (if by Licensee) sent by certified or registered mail, or insured courier, return receipt requested, to the appropriate party. The notice address for Licensee is the email address associated with Licensee’s VRChat Account. The notice address for VRChat is: VRChat Inc., 548 Market St, #93053 San Francisco, CA, 94104-5401 (as may be updated by VRChat from time to time). Notices are deemed given (a) if by Licensee, two business days following the date of mailing or one business day following delivery to a courier and (b) if by VRChat, within one business day following email.
+
+   7.4 Force Majeure. 
+      VRChat will not be liable for, or be considered to be in breach of or default under this Agreement on account of, any delay or failure to perform as required by this Agreement as a result of any cause or condition beyond VRChat’s reasonable control, so long as VRChat uses all commercially reasonable efforts to avoid or remove such causes of non-performance.
+
+   7.5 Governing Law. 
+      This Agreement will be interpreted, construed, and enforced in all respects in accordance with the local laws of the State of California, U.S.A. Each party hereby irrevocably consents to the exclusive jurisdiction and venue of the federal, state, and local courts in San Francisco, California, in connection with any action arising out of or in connection with this Agreement. Any disputes under this Agreement will be handled in accordance with the dispute resolution and arbitration procedures and terms in the TOU.
+
+   7.6 Waiver. 
+      The waiver by either party of any breach of any provision of this Agreement does not waive any other breach. The failure of any party to insist on strict performance of any covenant or obligation in accordance with this Agreement will not be a waiver of such party’s right to demand strict compliance in the future, nor will the same be construed as a novation of this Agreement.
+
+   7.7 Severability. 
+      If any part of this Agreement is found to be illegal, unenforceable, or invalid, the remaining portions of this Agreement will remain in full force and effect. If any material limitation or restriction on the use of VRChat Materials under this Agreement or the TOU is found to be illegal, unenforceable, or invalid, Licensee’s right to use VRChat Materials will immediately terminate.
+
+   7.8 Entire Agreement. 
+      This Agreement, including all exhibits, is the final and complete expression of the Agreement between these parties regarding the use and licensing of VRChat Materials. This Agreement supersedes, and the terms of this Agreement govern, all previous oral and written communications regarding these matters, all of which are merged into this Agreement, except that this Agreement does not (a) supersede any prior nondisclosure or comparable agreement between the parties executed prior to this Agreement being executed, (b) affect the validity of any other agreements between the parties for services relating to VRChat Materials that VRChat may provide, or (c) supersede any agreement between Licensee and VRChat with respect to any software development kits or other materials or content made available by VRChat to Licensee under separate terms (e.g., software development kits made available by VRChat with express rights to distribute content created through use of the software development kit to third parties on a commercial or non-commercial basis). No employee, agent, or other representative of VRChat has any authority to bind VRChat with respect to any statement, representation, warranty, or other expression unless the same is specifically set forth in this Agreement. No usage of trade or other regular practice or method of dealing between the parties will be used to modify, interpret, supplement, or alter the terms of this Agreement. 
+
+   7.9 Modifications. 
+      VRChat reserves the right to amend this Agreement on a going-forward basis at any time. Please check this Agreement periodically for changes. Licensee’s use of VRChat Materials after modifications to this Agreement become effective constitutes binding acceptance of such modifications. If Licensee is dissatisfied with the terms of this Agreement or any modifications to this Agreement, then Licensee agrees that its sole and exclusive remedy is to discontinue any use of VRChat Materials. VRChat will not be bound by, and specifically objects to, any term, condition or other provision that is different from or in addition to this Agreement (whether or not it would materially alter this Agreement) that is proffered by Licensee in any receipt, acceptance, confirmation, correspondence, or otherwise, unless VRChat specifically agrees to such provision in a writing signed by an authorized agent of VRChat.
