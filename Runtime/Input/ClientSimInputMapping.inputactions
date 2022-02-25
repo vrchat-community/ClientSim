@@ -350,6 +350,17 @@
                 },
                 {
                     "name": "",
+                    "id": "7d1e21de-8a59-41db-9f28-c95b92b3da8c",
+                    "path": "<Gamepad>/rightStick/y",
+                    "interactions": "",
+                    "processors": "AxisDeadzone,Scale(factor=2)",
+                    "groups": "",
+                    "action": "LookVertical",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "3481d65f-35c3-48f7-b259-6f8d2cac26c8",
                     "path": "<Mouse>/delta/x",
                     "interactions": "",
@@ -371,37 +382,15 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "RightStickNoLeftShoulder",
-                    "id": "669e2ca8-cfac-4b4a-a1a5-e7fdc9ef83b0",
-                    "path": "ButtonWithOneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LookHorizontal",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "modifier",
-                    "id": "84813c15-708c-4c7f-88fc-e1887e4dcafa",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "Invert",
-                    "groups": "Gamepad",
-                    "action": "LookHorizontal",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "button",
-                    "id": "75254fdb-b5b1-4e24-ad65-01bf6e90c2a3",
+                    "name": "",
+                    "id": "6533983e-06ef-4adc-abd2-6cd33b462ac8",
                     "path": "<Gamepad>/rightStick/x",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "AxisDeadzone,Scale(factor=2)",
                     "groups": "Gamepad",
                     "action": "LookHorizontal",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
@@ -767,39 +756,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "RightStickNoLeftShoulder",
-                    "id": "a4191043-1148-4751-a998-061173eb37d2",
-                    "path": "ButtonWithOneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "LookVertical",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "modifier",
-                    "id": "0a25cfd8-55d1-481e-8c04-1636c5a98fac",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "Invert",
-                    "groups": "Gamepad",
-                    "action": "LookVertical",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "button",
-                    "id": "747d4c42-eb27-4411-9c10-43a4d65f56e4",
-                    "path": "<Gamepad>/rightStick/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "LookVertical",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "RightStickWithLeftShoulder",
                     "id": "b2aff2a5-4826-433b-b14b-4c2c8925e56c",
                     "path": "ButtonWithOneModifier",
@@ -866,7 +822,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "DPadWithLeftShoulder",
+                    "name": "LeftStickWithLeftShoulder",
                     "id": "5466362d-116f-4eb8-9825-010812d07ff7",
                     "path": "ButtonWithOneModifier",
                     "interactions": "",
@@ -890,7 +846,7 @@
                 {
                     "name": "button",
                     "id": "3c906a95-8491-42be-a414-8d69ecdf037b",
-                    "path": "<Gamepad>/dpad/x",
+                    "path": "<Gamepad>/leftStick/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -899,7 +855,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "DPadWithLeftShoulder",
+                    "name": "LeftStickWithLeftShoulder",
                     "id": "9170df3e-d37e-4c49-8bb3-5a944ff141d5",
                     "path": "ButtonWithOneModifier",
                     "interactions": "",
@@ -923,7 +879,7 @@
                 {
                     "name": "button",
                     "id": "0f1b2753-f8d1-4106-b35b-1551d1c825db",
-                    "path": "<Gamepad>/dpad/y",
+                    "path": "<Gamepad>/leftStick/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",

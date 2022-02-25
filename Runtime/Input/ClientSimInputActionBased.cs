@@ -254,6 +254,10 @@ namespace VRC.SDK3.ClientSim
         public override float GetLookHorizontal()
         {
 #if ENABLE_INPUT_SYSTEM
+            if (_pickupRotateLeftRight.ReadValue<float>() != 0)
+            {
+                return 0;
+            }
             return _lookHorizontal.ReadValue<float>();
 #else
             return 0;
@@ -263,6 +267,10 @@ namespace VRC.SDK3.ClientSim
         public override float GetLookVertical()
         {
 #if ENABLE_INPUT_SYSTEM
+            if (_pickupRotateUpDown.ReadValue<float>() != 0)
+            {
+                return 0;
+            }
             return _lookVertical.ReadValue<float>() * (_settings.invertMouseLook ? -1 : 1);
 #else
             return 0;
