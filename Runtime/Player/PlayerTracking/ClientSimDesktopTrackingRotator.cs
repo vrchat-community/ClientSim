@@ -22,8 +22,8 @@ namespace VRC.SDK3.ClientSim.PlayerTracking
             _headXTransform = headXTransform;
             _headYTransform = headYTransform;
 
-            _targetBaseYRot = _headYTransform.rotation;
-            _targetHeadXRot = _headXTransform.rotation;
+            _targetBaseYRot = _headYTransform.localRotation;
+            _targetHeadXRot = _headXTransform.localRotation;
         }
 
         public void SetStation(IClientSimStation station)
