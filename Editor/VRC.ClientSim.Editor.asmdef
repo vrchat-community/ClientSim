@@ -3,7 +3,8 @@
     "references": [
         "VRC.ClientSim",
         "VRC.Udon",
-        "VRC.Udon.Editor"
+        "VRC.Udon.Editor",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [
         "Editor"

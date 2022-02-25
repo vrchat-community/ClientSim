@@ -1,29 +1,18 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using VRC.SDKBase;
 
 namespace VRC.SDK3.ClientSim
 {
     [AddComponentMenu("")]
-    public class ClientSimPickupHelper : ClientSimBehaviour, IClientSimInteractable
+    public class ClientSimPickupHelper : ClientSimBehaviour, IClientSimPickupable
     {
-        // If the user releases the mouse button before this time, it will not fire on use up. 
-        private const float INITIAL_PICKUP_DURATION_ = 0.5f;
-        private const float MAX_PICKUP_DISTANCE_ = 0.25f;
-        private static Quaternion GRIP_OFFSET_ROTATION_ = Quaternion.Euler(0, 35, 0);
-        private static Quaternion GUN_OFFSET_ROTATION_ = Quaternion.Euler(0, 305, 0);
-        
-        private Rigidbody rigidbody_;
-        private VRC_Pickup pickup_;
+        private Rigidbody _rigidbody;
+        private VRC_Pickup _pickup;
 
-        private bool isHeld_;
-        private bool isUseDown_;
-
-        private Vector3 positionOffset_;
-        private Quaternion rotationOffset_ = Quaternion.identity;
-
-        private bool initialGrab_;
-        private float grabActionStartTime_;
-        private float dropActionStartTime_;
+        private VRCPlayerApi _heldPlayer;
+        private VRC_Pickup.PickupHand _heldHand;
+        private Action<IClientSimPickupable> _forceDropHandler;
 
         public static void InitializePickup(VRC_Pickup pickup)
         {
@@ -31,7 +20,7 @@ namespace VRC.SDK3.ClientSim
             if (previousHelper != null)
             {
                 DestroyImmediate(previousHelper);
-                pickup.LogWarning("Destroying old pickup helper on object: " + VRC.Tools.GetGameObjectPath(pickup.gameObject));
+                pickup.LogWarning($"Destroying old pickup helper on object: {Tools.GetGameObjectPath(pickup.gameObject)}");
             }
 
             ClientSimPickupHelper helper = pickup.gameObject.AddComponent<ClientSimPickupHelper>();
@@ -41,9 +30,9 @@ namespace VRC.SDK3.ClientSim
         public static void ForceDrop(VRC_Pickup pickup)
         {
             ClientSimPickupHelper helper = pickup.GetComponent<ClientSimPickupHelper>();
-            if (helper != null)
+            if (helper)
             {
-                helper.Drop();
+                helper._forceDropHandler?.Invoke(helper);
             }
         }
 
@@ -51,243 +40,133 @@ namespace VRC.SDK3.ClientSim
         {
             ClientSimPickupHelper helper = pickup.GetComponent<ClientSimPickupHelper>();
 
-            if (helper == null || !helper.isHeld_)
+            if (!helper)
             {
                 return null;
             }
             
-            // ClientSim only handles the local player holding objects.
-            return Networking.LocalPlayer;
+            return helper.GetHoldingPlayer();
         }
 
         public static VRC_Pickup.PickupHand GetPickupHand(VRC_Pickup pickup)
         {
             ClientSimPickupHelper helper = pickup.GetComponent<ClientSimPickupHelper>();
-            if (helper != null && helper.isHeld_)
+            if (helper)
             {
-                return VRC_Pickup.PickupHand.Right;
+                return helper._heldHand;
             }
             return VRC_Pickup.PickupHand.None;
         }
 
+        public static void PickupDestroy(VRC_Pickup pickup)
+        {
+            ForceDrop(pickup);
+        }
+        
+        public static void PlayHapticForPickup(VRC_Pickup obj, float duration, float amplitude, float frequency)
+        {
+            VRCPlayerApi player = obj.currentPlayer;
+            VRC_Pickup.PickupHand hand = obj.currentHand;
+            if (Utilities.IsValid(player) && hand != VRC_Pickup.PickupHand.None)
+            {
+                player.PlayHapticEventInHand(obj.currentHand, duration, amplitude, frequency);
+            }
+        }
+
         private void SetPickup(VRC_Pickup pickup)
         {
-            pickup_ = pickup;
-            rigidbody_ = GetComponent<Rigidbody>();
+            _pickup = pickup;
+            _rigidbody = GetComponent<Rigidbody>();
         }
+        
 
-        public Rigidbody GetRigidbody()
-        {
-            return rigidbody_;
-        }
-
-        public VRC_Pickup GetPickup()
-        {
-            return pickup_;
-        }
+        #region IClientSimInteractible
 
         public float GetProximity()
         {
-            return pickup_.proximity;
+            return _pickup.proximity;
         }
 
         public bool CanInteract()
         {
-            if (!pickup_.pickupable)
-            {
-                return false;
-            }
-            
-            ClientSimPlayerController player = ClientSimPlayerController.instance;
-            if (player == null)
-            {
-                return false;
-            }
-            
-            return player.GetPickupsEnabled();
+            return _pickup.pickupable;
         }
 
         public string GetInteractText()
         {
-            if (!string.IsNullOrEmpty(pickup_.InteractionText))
+            if (!string.IsNullOrEmpty(_pickup.InteractionText))
             {
-                return pickup_.InteractionText;
+                return _pickup.InteractionText;
             }
 
-            return "Hold to Grab";
+            return AutoHold() ? "Equip" : "Hold to Grab";
+        }
+        
+        public Vector3 GetInteractTextPlacement()
+        {
+            // VRChatBug: Tooltips always ignore the tooltipPlacement transform and instead place the tooltip at the top
+            // of the first collider on the object.
+            return ClientSimTooltip.GetToolTipPosition(gameObject);
         }
 
-        public void Interact()
-        {
-            Pickup();
-        }
+        public void Interact() { }
 
-        public void UpdatePosition(Transform root, bool force = false)
-        {
-            if (rigidbody_.isKinematic || force)
-            {
-                transform.position = root.transform.position + root.TransformDirection(positionOffset_);
-                transform.rotation = root.transform.rotation * rotationOffset_;
-            }
-        }
+        #endregion
 
-        public void UpdateUse()
-        {
-            int dropIndex = 0;
-            if (pickup_.AutoHold == VRC_Pickup.AutoHoldMode.Yes)
-            {
-                dropIndex = 1;
-                if (Input.GetMouseButtonDown(dropIndex))
-                {
-                    dropActionStartTime_ = Time.time;
-                }
+        #region IClientSimPickupable
 
-                float grabDuration = Time.time - grabActionStartTime_;
-                if (grabDuration > INITIAL_PICKUP_DURATION_)
-                {
-                    if (Input.GetMouseButtonDown(0) || (initialGrab_ && Input.GetMouseButton(0)))
-                    {
-                        OnPickupUseDown();
-                    }
-                    if (Input.GetMouseButtonUp(0))
-                    {
-                        OnPickupUseUp();
-                    }
-                }
-            }
-            
-            if (Input.GetMouseButtonUp(dropIndex))
-            {
-                Drop();
-            }
-        }
-
-        private void OnPickupUseDown()
+        public void Pickup(VRCPlayerApi player, VRC_Pickup.PickupHand heldHand, Action<IClientSimPickupable> forceDropHandler)
         {
-            this.Log("Pickup Use Down");
-            initialGrab_ = false;
-            isUseDown_ = true;
-            
-            gameObject.OnPickupUseDown();
-        }
-
-        private void OnPickupUseUp()
-        {
-            if (!isUseDown_)
+            if (IsHeld())
             {
                 return;
             }
-            
-            this.Log("Pickup Use Up");
-            isUseDown_ = false;
-            
-            gameObject.OnPickupUseUp();
+            _heldPlayer = player;
+            _heldHand = heldHand;
+            _forceDropHandler = forceDropHandler;
         }
 
-        public void Pickup()
+        public void Drop(VRCPlayerApi player)
         {
-            if (isHeld_)
+            if (GetHoldingPlayer() != player)
             {
                 return;
             }
-            
-            isHeld_ = true;
-            grabActionStartTime_ = Time.time;
-            initialGrab_ = true;
-
-            ClientSimPlayerController player = ClientSimPlayerController.instance;
-            if (player == null)
-            {
-                this.LogWarning("Unable to pickup object when there is no player!");
-                return;
-            }
-
-            this.Log("Picking up object " + name);
-
-            Networking.SetOwner(Networking.LocalPlayer, gameObject);
-
-
-            // Calculate offest
-            Transform pickupHoldPoint = null;
-
-            Quaternion offsetRotation = Quaternion.identity;
-            if (pickup_.orientation == VRC_Pickup.PickupOrientation.Grip && pickup_.ExactGrip != null)
-            {
-                pickupHoldPoint = pickup_.ExactGrip;
-                offsetRotation = GRIP_OFFSET_ROTATION_;
-            }
-            else if (pickup_.orientation == VRC_Pickup.PickupOrientation.Gun && pickup_.ExactGun != null)
-            {
-                pickupHoldPoint = pickup_.ExactGun;
-                offsetRotation = GUN_OFFSET_ROTATION_;
-            }
-            
-            Transform arm = player.GetArmTransform();
-
-            // Grab as if no pickup point
-            if (pickupHoldPoint == null)
-            {
-                rotationOffset_ = Quaternion.Inverse(arm.rotation) * transform.rotation;
-                positionOffset_ = arm.InverseTransformDirection(transform.position - arm.position);
-
-                float mag = positionOffset_.magnitude;
-                if (mag > MAX_PICKUP_DISTANCE_ && pickup_.orientation == VRC_Pickup.PickupOrientation.Any)
-                {
-                    positionOffset_ = positionOffset_.normalized * MAX_PICKUP_DISTANCE_;
-                }
-            }
-            else
-            {
-                rotationOffset_ = offsetRotation * Quaternion.Inverse(Quaternion.Inverse(transform.rotation) * pickupHoldPoint.rotation);
-                positionOffset_ = rotationOffset_ * transform.InverseTransformDirection(transform.position - pickupHoldPoint.position);
-            }
-            
-            player.PickupObject(this);
-
-            gameObject.OnPickup();
+            _heldPlayer = null;
+            _heldHand = VRC_Pickup.PickupHand.None;
+            _forceDropHandler = null;
         }
+        
+        public bool IsHeld() => Utilities.IsValid(_heldPlayer);
 
-        public void Drop()
-        {
-            if (!isHeld_)
-            {
-                return;
-            }
-            isHeld_ = false;
-            initialGrab_ = false;
-            
-            OnPickupUseUp();
-            
-            this.Log("Dropping object " + name);
+        public VRCPlayerApi GetHoldingPlayer() => IsHeld() ? _heldPlayer : null;
 
-            ClientSimPlayerController player = ClientSimPlayerController.instance;
-            if (player == null)
-            {
-                return;
-            }
+        public bool AutoHold() => _pickup.AutoHold == VRC_Pickup.AutoHoldMode.Yes;
 
-            player.DropObject(this);
-            
-            // Calculate throw velocity
-            if (!rigidbody_.isKinematic && pickup_.AutoHold == VRC_Pickup.AutoHoldMode.Yes)
-            {
-                float holdDuration = Mathf.Clamp(Time.time - dropActionStartTime_, 0, 3);
-                if (holdDuration > 0.2f)
-                {
-                    Transform rightArm = player.GetArmTransform();
-                    Vector3 throwForce = rightArm.forward * (holdDuration * 500 * pickup_.ThrowVelocityBoostScale);
-                    rigidbody_.AddForce(throwForce);
-                    this.Log("Adding throw force: "+ throwForce);
-                }
-            }
+        public GameObject GetGameObject() => gameObject;
 
-            gameObject.OnDrop();
-        }
+        public Transform GetTransform() => transform;
 
+        public Rigidbody GetRigidbody() => _rigidbody;
+
+        public VRC_Pickup GetPickup() => _pickup;
+
+        public VRC_Pickup.PickupOrientation GetOrientation() => _pickup.orientation;
+
+        public Transform GetGunLocation() => _pickup.ExactGun;
+
+        public Transform GetGripLocation() => _pickup.ExactGrip;
+
+        public float GetThrowVelocityBoostScale() => _pickup.ThrowVelocityBoostScale;
+
+        public bool AllowManipulation() => _pickup.allowManipulationWhenEquipped;
+
+        #endregion
+
+        // TODO display use text after picking up a pickup.
         public string PickupText()
         {
-            // TODO
-            return "";
+            return _pickup.UseText;
         }
     }
 }

@@ -28,7 +28,7 @@ This tool enables you to test your VRChat SDK3 Worlds directly in Unity! You can
 ## Copyright
 
 Copyright (c) 2021 VRChat
-See license.txt for full usage information
+See License.md for full usage information
 
 ## Credits
 

@@ -10,14 +10,14 @@ namespace VRC.SDK3.ClientSim.Editor
     [CustomEditor(typeof(ClientSimUdonHelper))]
     public class ClientSimUdonHelperEditor : UnityEditor.Editor
     {
-        private static readonly MethodInfo DrawPropertyMethod;
+        private static readonly MethodInfo _drawPropertyMethod;
         
-        private bool expandVariableEditor_ = false;
-        private bool expandEventSelector_ = false;
+        private bool _expandVariableEditor = false;
+        private bool _expandEventSelector = false;
 
         static ClientSimUdonHelperEditor()
         {
-            DrawPropertyMethod = typeof(UdonProgramAsset).GetMethod("DrawPublicVariableField", BindingFlags.NonPublic | BindingFlags.Instance);
+            _drawPropertyMethod = typeof(UdonProgramAsset).GetMethod("DrawPublicVariableField", BindingFlags.NonPublic | BindingFlags.Instance);
         }
         
         public override void OnInspectorGUI()
@@ -37,9 +37,9 @@ namespace VRC.SDK3.ClientSim.Editor
 
         private void ShowVariableEditor(UdonBehaviour udonBehaviour)
         {
-            expandVariableEditor_ = EditorGUILayout.Foldout(expandVariableEditor_, "Edit Public Variables", true);
+            _expandVariableEditor = EditorGUILayout.Foldout(_expandVariableEditor, "Edit Public Variables", true);
 
-            if (!expandVariableEditor_)
+            if (!_expandVariableEditor)
             {
                 return;
             }
@@ -58,7 +58,7 @@ namespace VRC.SDK3.ClientSim.Editor
                 publicVariables.TryGetVariableType(varName, out Type varType);
                 object value = udonBehaviour.GetProgramVariable(varName);
                 object[] parameters = {varName, value, varType, false, true};
-                var res = DrawPropertyMethod.Invoke(programAsset, parameters);
+                var res = _drawPropertyMethod.Invoke(programAsset, parameters);
                 
                 if ((bool)parameters[3])
                 {
@@ -69,9 +69,9 @@ namespace VRC.SDK3.ClientSim.Editor
         
         private void ShowExportedEvents(UdonBehaviour udonBehaviour)
         {
-            expandEventSelector_ = EditorGUILayout.Foldout(expandEventSelector_, "Run Custom Event", true);
+            _expandEventSelector = EditorGUILayout.Foldout(_expandEventSelector, "Run Custom Event", true);
 
-            if (!expandEventSelector_)
+            if (!_expandEventSelector)
             {
                 return;
             }

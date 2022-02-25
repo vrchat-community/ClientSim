@@ -1,4 +1,5 @@
 ﻿
+using System.IO;
 using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
@@ -7,52 +8,96 @@ using VRC.Udon.Common;
 namespace VRC.SDK3.ClientSim
 {
     [AddComponentMenu("")]
-    public class ClientSimStationHelper : ClientSimBehaviour
+    public class ClientSimStationHelper : ClientSimBehaviour, IClientSimStation
     {
-        private VRCStation station_;
-        private VRCPlayerApi usingPlayer_;
+        private VRCStation _station;
+        private VRCPlayerApi _usingPlayer;
 
-        public Transform EnterLocation => station_.stationEnterPlayerLocation;
+        public Transform EnterLocation() => _station.stationEnterPlayerLocation;
 
-        public Transform ExitLocation => station_.stationExitPlayerLocation;
+        public Transform ExitLocation() => _station.stationExitPlayerLocation;
 
-        public bool IsMobile =>
-            station_.PlayerMobility == VRCStation.Mobility.Mobile &&
-            !station_.seated;
+        public bool IsMobile() =>
+            _station.PlayerMobility == VRCStation.Mobility.Mobile &&
+            !_station.seated;
 
-        public bool IsSeated => station_.seated;
+        public bool IsSeated() => _station.seated;
 
+        public bool DisableStationExit() => _station.disableStationExit;
+        
+        public bool CanUseStationFromStation() => _station.canUseStationFromStation;
+        
+        public bool IsLockedInStation() => !IsMobile();
+        
+        public VRCStation GetStation() => _station;
+        
+        public GameObject GetStationGameObject() => gameObject;
+        
+        public Transform GetStationTransform() => transform;
+
+        public bool IsOccupied() => _usingPlayer != null;
+
+        public VRCPlayerApi GetCurrentSittingPlayer() => _usingPlayer;
+        
         public static void InitializeStations(VRCStation station)
         {
             ClientSimStationHelper prevHelper = station.gameObject.GetComponent<ClientSimStationHelper>();
             if (prevHelper != null)
             {
                 DestroyImmediate(prevHelper);
-                station.LogWarning("Destroying old station helper on object: " + VRC.Tools.GetGameObjectPath(station.gameObject));
+                station.LogWarning($"Destroying old station helper on object: {Tools.GetGameObjectPath(station.gameObject)}");
             }
 
-            ClientSimStationHelper helper = station.gameObject.AddComponent<ClientSimStationHelper>();
-            if (!station.seated && station.PlayerMobility != VRCStation.Mobility.Mobile)
-            {
-                helper.LogWarning("Station has seated unchecked but is not mobile! This will immobilize the player, causing them to not be able to move on exit. Use VRCPlayerApi.Immobilize(false) to allow them to move again. " + VRC.Tools.GetGameObjectPath(station.gameObject));
-            }
+            station.gameObject.AddComponent<ClientSimStationHelper>();
         }
-
+        
+        public static void UseAttachedStation(VRCPlayerApi player)
+        {
+            // UseAttachedStation is a method in the VRCPlayerApi class. This method will take the given player and try to put them in the station component on the GameObject running this Udon program. Since the GameObject is not provided in the parameters, it must be retrieved from the UdonManager by checking the current executing UdonBehaviour.
+            UdonBehaviour currentUdon = UdonManager.Instance.currentlyExecuting;
+            if (currentUdon == null)
+            {
+                return;
+            }
+            
+            VRCStation station = currentUdon.GetComponent<VRCStation>();
+            if (station == null)
+            {
+                return;
+            }
+            
+            UseStation(station, player);
+        }
+        
         public static void UseStation(VRCStation station, VRCPlayerApi player)
         {
-            ClientSimStationHelper helper = station.GetComponent<ClientSimStationHelper>();
-            if (helper != null)
+            if (!player.isLocal)
             {
-                helper.UseStation(player);
+                station.LogWarning($"Trying to force a remote player to enter a station. Force enter a station can only be done for the local player. PlayerId: {player.playerId}, Station: {Tools.GetGameObjectPath(station.gameObject)}");
+                return;
+            }
+            
+            ClientSimStationHelper helper = station.GetComponent<ClientSimStationHelper>();
+            ClientSimPlayer clientPlayer = player.GetClientSimPlayer();
+            if (helper != null && clientPlayer != null)
+            {
+                clientPlayer.GetStationHandler().EnterStation(helper);
             }
         }
 
         public static void ExitStation(VRCStation station, VRCPlayerApi player)
         {
-            ClientSimStationHelper helper = station.GetComponent<ClientSimStationHelper>();
-            if (helper != null)
+            if (!player.isLocal)
             {
-                helper.ExitStation(player);
+                station.LogWarning($"Trying to force a remote player to exit a station. Force exit a station can only be done for the local player. PlayerId: {player.playerId}, Station: {Tools.GetGameObjectPath(station.gameObject)}");
+                return;
+            }
+
+            ClientSimStationHelper helper = station.GetComponent<ClientSimStationHelper>();
+            ClientSimPlayer clientPlayer = player.GetClientSimPlayer();
+            if (helper != null && clientPlayer != null)
+            {
+                clientPlayer.GetStationHandler().ExitStation(helper);
             }
         }
 
@@ -60,17 +105,31 @@ namespace VRC.SDK3.ClientSim
         {
             base.Awake();
 
-            station_ = GetComponent<VRCStation>();
+            _station = GetComponent<VRCStation>();
 
             CheckForMissingComponents();
 
-            if (station_.stationEnterPlayerLocation == null)
+            if (_station.stationEnterPlayerLocation == null)
             {
-                station_.stationEnterPlayerLocation = transform;
+                _station.stationEnterPlayerLocation = transform;
             }
-            if (station_.stationExitPlayerLocation == null)
+            if (_station.stationExitPlayerLocation == null)
             {
-                station_.stationExitPlayerLocation = transform;
+                _station.stationExitPlayerLocation = transform;
+            }
+            
+            // Warn about unusual setup.
+            if (!_station.seated && _station.PlayerMobility != VRCStation.Mobility.Mobile)
+            {
+                this.LogWarning($"Station has seated unchecked but is not mobile! This will immobilize the player, causing them to not be able to move on exit. Use VRCPlayerApi.Immobilize(false) to allow them to move again. {Tools.GetGameObjectPath(gameObject)}");
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (_usingPlayer != null)
+            {
+                ExitStation(_station, _usingPlayer);
             }
         }
 
@@ -90,7 +149,8 @@ namespace VRC.SDK3.ClientSim
                 udon.interactText = "Sit";
                 
                 // TODO properly load udon chair program asset.
-                AbstractUdonProgramSource program = UnityEditor.AssetDatabase.LoadAssetAtPath<AbstractUdonProgramSource>("Assets/VRChat Examples/Prefabs/VRCChair/StationGraph.asset");
+                string sitProgramPath = Path.Combine("Assets", "VRChat Examples", "Prefabs", "VRCChair", "StationGraph.asset");
+                AbstractUdonProgramSource program = UnityEditor.AssetDatabase.LoadAssetAtPath<AbstractUdonProgramSource>(sitProgramPath);
                 if (program != null)
                 {
                     udon.AssignProgramAndVariables(program.SerializedProgramAsset, new UdonVariableTable());
@@ -99,80 +159,22 @@ namespace VRC.SDK3.ClientSim
 #endif
         }
 
-        public void UseStation(VRCPlayerApi player)
+        public void EnterStation(VRCPlayerApi player)
         {
-            if (usingPlayer_ != null || !player.isLocal)
+            if (_usingPlayer != null || !player.isLocal)
             {
                 return;
             }
-
-            usingPlayer_ = player;
-            
-            this.Log("Entering Station " + name);
-
-            // Immobilize the player while sitting in the station. 
-            // VRChatBug: Note that "mobile" stations require that seated be set to false and have mobility set to mobile.
-            if (!IsMobile)
-            {
-                player.Immobilize(true);
-            }
-            
-            var playerController = player.GetPlayerController();
-            if (playerController != null)
-            {
-                playerController.EnterStation(this);
-            }
-
-            gameObject.OnStationEnter(station_);
-        }
-
-        public void ExitStation()
-        {
-            ExitStation(usingPlayer_);
+            _usingPlayer = player;
         }
         
-        private void ExitStation(VRCPlayerApi player)
+        public void ExitStation(VRCPlayerApi player)
         {
-            if (usingPlayer_ != player)
+            if (_usingPlayer != player)
             {
                 return;
             }
-            usingPlayer_ = null;
-
-            this.Log("Exiting Station " + name);
-            
-            // If the station is set to seated, unset immobilize, allowing the player to move again.
-            // VRChatBug: Note that players are set immobile based on if the station is mobile and seated, but setting
-            // the player mobilized again is only if the station is not seated.
-            if (station_.seated)
-            {
-                player.Immobilize(false);
-            }
-            
-            gameObject.OnStationExit(station_);
-            
-            var playerController = player.GetPlayerController();
-            if (playerController != null)
-            {
-                playerController.ExitStation(this);
-            }
-        }
-
-        // Returns if should move
-        public bool CanPlayerMoveWhileSeated(float speed)
-        {
-            if (Mathf.Abs(speed) >= 0.1f && !station_.disableStationExit)
-            {
-                ExitStation();
-                return true;
-            }
-
-            if (IsMobile)
-            {
-                return true;
-            }
-
-            return false;
+            _usingPlayer = null;
         }
     }
 }
