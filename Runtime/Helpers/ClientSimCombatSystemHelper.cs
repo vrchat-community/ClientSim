@@ -1,58 +1,46 @@
 ﻿using System;
 using System.Collections;
+using System.IO;
 using UnityEngine;
 using VRC.SDKBase;
 
-namespace VRC.SDK3.ClientSim { 
-
+namespace VRC.SDK3.ClientSim 
+{
+    // Sends Events:
+    // - ClientSimPlayerDeathStatusChangedEvent
     [AddComponentMenu("")]
     public class ClientSimCombatSystemHelper : ClientSimBehaviour, IVRC_Destructible
     {
-        private const string VISUAL_DAMAGE_PREFAB_PATH = "Assets/VRChat Examples/Prefabs/VRCPlayerVisualDamage.prefab";
+        private static readonly string _visualDamagePrefabPath = 
+            Path.Combine("Assets", "VRChat Examples", "Prefabs", "VRCPlayerVisualDamage.prefab");
         
-        private VRCPlayerApi player_;
-        private ClientSimPlayerController playerController_;
+        private VRCPlayerApi _player;
+        private IClientSimEventDispatcher _eventDispatcher;
+        private IClientSimProxyObjectProvider _proxyProvider;
+        private ClientSimPlayerController _playerController;
         
-        private bool respawnOnDeath_;
-        private float respawnTime_ = 5f;
-        private Transform respawnPoint_;
-        private float maxPlayerHealth_ = 100;
-        private float currentHealth_ = 100;
-        private bool resetHealthOnRespawn_ = true;
-        private GameObject visualDamagePrefab_;
+        // Make values public so users can see and modify these values at runtime.
+        public bool respawnOnDeath;
+        public bool resetHealthOnRespawn = true;
+        public float respawnTime = 5f;
+        public float maxPlayerHealth = 100;
+        public float currentHealth = 100;
+        public Transform respawnPoint;
+        private GameObject _visualDamagePrefab;
         
-        private GameObject visualDamageObj_;
-        private VRC_VisualDamage visualDamage_;
+        private GameObject _visualDamageObj;
+        private VRC_VisualDamage _visualDamage;
 
-        private bool dead_ = false;
+        private bool _dead = false;
 
         private static ClientSimCombatSystemHelper GetCombatHelper(VRCPlayerApi player)
         {
-            GameObject playerObj = player.gameObject;
-            if (playerObj == null)
-            {
-                return null;
-            }
-
-            return playerObj.GetComponent<ClientSimCombatSystemHelper>();
+            return player.GetClientSimPlayer().GetCombatHelper();
         }
         
         public static void CombatSetup(VRCPlayerApi player)
         {
-            GameObject playerObj = player.gameObject;
-            if (playerObj == null)
-            {
-                return;
-            }
-
-            ClientSimCombatSystemHelper combatHelper = playerObj.GetComponent<ClientSimCombatSystemHelper>();
-            if (combatHelper != null)
-            {
-                return;
-            }
-            
-            combatHelper = player.gameObject.AddComponent<ClientSimCombatSystemHelper>();
-            combatHelper.Initialize(player);
+            player.GetClientSimPlayer().InitializeCombat();
         }
 
         public static void CombatSetMaxHitpoints(VRCPlayerApi player, float maxHealth)
@@ -62,7 +50,7 @@ namespace VRC.SDK3.ClientSim {
             {
                 return;
             }
-            combatHelper.maxPlayerHealth_ = maxHealth;
+            combatHelper.maxPlayerHealth = maxHealth;
         }
 
         public static float CombatGetCurrentHitpoints(VRCPlayerApi player)
@@ -73,7 +61,7 @@ namespace VRC.SDK3.ClientSim {
                 // If a player doesn't have combat setup, their hitpoints are -1.
                 return -1;
             }
-            return combatHelper.currentHealth_;
+            return combatHelper.currentHealth;
         }
 
         public static void CombatSetRespawn(VRCPlayerApi player, bool respawnOnDeath, float respawnTime, Transform spawnPoint)
@@ -84,9 +72,9 @@ namespace VRC.SDK3.ClientSim {
                 return;
             }
             
-            combatHelper.respawnOnDeath_ = respawnOnDeath;
-            combatHelper.respawnTime_ = respawnTime;
-            combatHelper.respawnPoint_ = spawnPoint;
+            combatHelper.respawnOnDeath = respawnOnDeath;
+            combatHelper.respawnTime = respawnTime;
+            combatHelper.respawnPoint = spawnPoint;
         }
 
         public static void CombatSetDamageGraphic(VRCPlayerApi player, GameObject visualDamage)
@@ -97,7 +85,7 @@ namespace VRC.SDK3.ClientSim {
                 return;
             }
 
-            combatHelper.visualDamagePrefab_ = visualDamage;
+            combatHelper._visualDamagePrefab = visualDamage;
         }
 
         public static IVRC_Destructible CombatGetDestructible(VRCPlayerApi player)
@@ -115,7 +103,7 @@ namespace VRC.SDK3.ClientSim {
 
             if (player.isLocal)
             {
-                float delta = health - combatHelper.currentHealth_;
+                float delta = health - combatHelper.currentHealth;
                 if (delta <= 0)
                 {
                     combatHelper.ApplyDamage(-delta);
@@ -126,156 +114,170 @@ namespace VRC.SDK3.ClientSim {
                 }
             }
             
-            combatHelper.currentHealth_ = health;
+            combatHelper.currentHealth = health;
         }
 
-        private void Initialize(VRCPlayerApi player)
+        public void Initialize(
+            VRCPlayerApi player, 
+            IClientSimEventDispatcher eventDispatcher, 
+            IClientSimProxyObjectProvider proxyProvider, 
+            ClientSimPlayerController playerController)
         {
-            player_ = player;
-            playerController_ = player_.GetPlayerController();
+            _player = player;
+            
+            // Values below will be null for remote players.
+            _eventDispatcher = eventDispatcher;
+            _playerController = playerController;
+            _proxyProvider = proxyProvider;
+            
+            // TODO add ragdoll to player avatar
         }
         
         private void Start()
         {
-            currentHealth_ = GetMaxHealth();
+            currentHealth = GetMaxHealth();
             CreateVisualDamage();
         }
 
         private void CreateVisualDamage()
         {
-            if (!player_.isLocal)
+            if (!_player.isLocal)
             {
                 return;
             }
             
-            if (visualDamageObj_ != null)
+            if (_visualDamageObj != null)
             {
-                Destroy(visualDamageObj_);
+                Destroy(_visualDamageObj);
             }
 
-            GameObject damage = visualDamagePrefab_;
+            GameObject damage = _visualDamagePrefab;
 #if UNITY_EDITOR
             // If damage prefab is null, try loading it from the sample prefabs
             if (damage == null)
             {
-                damage = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>(VISUAL_DAMAGE_PREFAB_PATH);
+                damage = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>(_visualDamagePrefabPath);
             }
 #endif
             if (damage != null) 
             {
-                visualDamageObj_ = Instantiate(damage, playerController_.GetCameraProxyTransform());
-                visualDamageObj_.transform.localScale = new Vector3(40, 40, 40);
-                visualDamageObj_.transform.localPosition = new Vector3(0, 0, 0.5f);
+                _visualDamageObj = Instantiate(damage, _proxyProvider.CameraProxy().transform);
+                _visualDamageObj.transform.localScale = new Vector3(40, 40, 40);
+                _visualDamageObj.transform.localPosition = new Vector3(0, 0, 0.5f);
                 
-				visualDamage_ = visualDamageObj_.GetComponent<VRC_VisualDamage>();
-				if (visualDamage_ != null) 
+				_visualDamage = _visualDamageObj.GetComponent<VRC_VisualDamage>();
+				if (_visualDamage != null) 
                 {
                     // VRChatBug: Visual Damage script is blacklisted in SDK3 and will be destroyed after spawning.
-                    DestroyImmediate(visualDamage_);
+                    DestroyImmediate(_visualDamage);
                 }
             }
         }
 
         public float GetMaxHealth()
         {
-            return maxPlayerHealth_;
+            return maxPlayerHealth;
         }
 
         public float GetCurrentHealth()
         {
-            return currentHealth_;
+            return currentHealth;
         }
 
         private void ApplyVisualDamage()
         {
-            if (visualDamage_ != null)
+            if (_visualDamage != null)
             {
                 try
                 {
-                    visualDamage_.SetDamagePercent(1 - (currentHealth_ / maxPlayerHealth_));
+                    _visualDamage.SetDamagePercent(1 - (currentHealth / maxPlayerHealth));
                 }
                 catch (Exception e)
                 {
-                    this.LogWarning("Error applying damage: "+ e);
+                    this.LogWarning($"Error applying damage: {e}");
                 }
             }
         }
 
         public void ApplyDamage(float damage)
         {
-            if (!player_.isLocal)
+            if (!_player.isLocal)
             {
                 return;
             }
             
-            if (currentHealth_ <= 0)
+            if (currentHealth <= 0)
             {
                 return;
             }
-            this.Log("ApplyDamage: " + damage + " currentHealth: " + currentHealth_);
+            this.Log($"ApplyDamage: {damage} currentHealth: {currentHealth}");
 
-            currentHealth_ = Mathf.Clamp(currentHealth_ - damage, 0, maxPlayerHealth_);
+            currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxPlayerHealth);
             ApplyVisualDamage();
 
-            if (currentHealth_ <= 0 && !dead_)
+            if (currentHealth <= 0 && !_dead)
             {
-                dead_ = true;
+                _dead = true;
                 this.Log("Player Died");
                 
-                player_.EnablePickups(false);
-                if (playerController_)
+                _player.EnablePickups(false);
+                _eventDispatcher?.SendEvent(new ClientSimPlayerDeathStatusChangedEvent
                 {
-                    playerController_.PlayerDied();
-                }
-                
+                    player = _player,
+                    isDead = true,
+                });
+
                 StartCoroutine(PlayerDied());
             }
         }
 
         private IEnumerator PlayerDied()
         {
-            yield return new WaitForSeconds(respawnTime_);
+            yield return new WaitForSeconds(respawnTime);
 
             RevivePlayer();
         }
 
         private void RevivePlayer()
         {
-            dead_ = false;
-            this.Log("Player Revived");
-            
-            player_.EnablePickups(true);
-            
-            if (respawnPoint_ != null && respawnOnDeath_)
-            {
-                if (playerController_)
-                {
-                    playerController_.Teleport(respawnPoint_, false);
-                }
-            }
-            
-            if (resetHealthOnRespawn_)
-            {
-                ApplyHealing(maxPlayerHealth_);
-            }
-            
-            if (playerController_)
-            {
-                playerController_.PlayerRevived();
-            }
-        }
-
-        public void ApplyHealing(float healing)
-        {
-            if (!player_.isLocal)
+            if (!_player.isLocal)
             {
                 return;
             }
             
-            currentHealth_ = Mathf.Clamp(currentHealth_ + healing, 0, maxPlayerHealth_);
+            _dead = false;
+            this.Log("Player Revived");
+            
+            _player.EnablePickups(true);
+            
+            if (respawnPoint != null && respawnOnDeath)
+            {
+                _playerController.Teleport(respawnPoint, false);
+            }
+            
+            if (resetHealthOnRespawn)
+            {
+                ApplyHealing(maxPlayerHealth);
+            }
+            
+            _eventDispatcher?.SendEvent(new ClientSimPlayerDeathStatusChangedEvent
+            {
+                player = _player,
+                isDead = false,
+            });
+        }
+
+        public void ApplyHealing(float healing)
+        {
+            if (!_player.isLocal)
+            {
+                return;
+            }
+            
+            currentHealth = Mathf.Clamp(currentHealth + healing, 0, maxPlayerHealth);
             ApplyVisualDamage();
 
-            this.Log("ApplyHealing: " + healing + " currentHealth: "+currentHealth_);
+            this.Log($"ApplyHealing: {healing} currentHealth: {currentHealth}");
         }
 
         public object[] GetState()

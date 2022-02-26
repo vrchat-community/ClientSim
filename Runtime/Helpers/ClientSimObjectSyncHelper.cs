@@ -4,22 +4,9 @@ using VRC.SDK3.Components;
 namespace VRC.SDK3.ClientSim
 {
     [AddComponentMenu("")]
-    public class ClientSimObjectSyncHelper : ClientSimSyncedObjectHelper
+    public class ClientSimObjectSyncHelper : ClientSimPositionSyncedHelperBase
     {
-        private VRCObjectSync sync_;
-
-        private Rigidbody rigidbody_;
-
-        public static void InitializeObjectSync(VRCObjectSync sync)
-        {
-            var helper = sync.GetComponent<ClientSimObjectSyncHelper>();
-            if (helper)
-            {
-                DestroyImmediate(helper);
-            }
-            
-            sync.gameObject.AddComponent<ClientSimObjectSyncHelper>();
-        }
+        private VRCObjectSync _sync;
 
         public static void TeleportTo(VRCObjectSync obj, Vector3 position, Quaternion rotation)
         {
@@ -60,35 +47,22 @@ namespace VRC.SDK3.ClientSim
         {
             base.Awake();
             SyncPosition = true;
-
-            rigidbody_ = GetComponent<Rigidbody>();
-            sync_ = GetComponent<VRCObjectSync>();
         }
 
-        private void SetIsKinematic(bool value)
+        public void Initialize(VRCObjectSync sync, IClientSimSyncedObjectManager syncedObjectManager)
         {
-            if (rigidbody_)
+            base.Initialize(syncedObjectManager);
+            _sync = sync;
+        }
+        
+        private void Start()
+        {
+            // Catch Helper not initialized.
+            if (_sync == null)
             {
-                rigidbody_.isKinematic = value;
+                this.LogWarning($"Destroying uninitialized Helper. Object: {Tools.GetGameObjectPath(gameObject)}");
+                DestroyImmediate(this);
             }
-        }
-        
-        private void SetUseGravity(bool value)
-        {
-            if (rigidbody_)
-            {
-                rigidbody_.useGravity = value;
-            }
-        }
-        
-        private bool GetIsKinematic()
-        {
-            return rigidbody_ && rigidbody_.isKinematic;
-        }
-        
-        private bool GetUseGravity()
-        {
-            return rigidbody_ && rigidbody_.useGravity;
         }
     }
 }

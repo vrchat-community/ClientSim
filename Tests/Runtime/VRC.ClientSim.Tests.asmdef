@@ -1,0 +1,32 @@
+{
+    "name": "VRC.ClientSim.Tests",
+    "references": [
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
+        "Unity.Postprocessing.Runtime",
+        "Unity.InputSystem",
+        "Unity.InputSystem.TestFramework",
+        "VRC.SDKBase",
+        "VRC.SDKBase.Editor",
+        "VRC.SDK3",
+        "VRC.Udon",
+        "VRC.ClientSim"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "VRCSDKBase.dll",
+        "VRCCore-Editor.dll",
+        "VRC.Udon.Common.dll",
+        "VRCSDK3.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

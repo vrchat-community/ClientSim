@@ -8,6 +8,11 @@ namespace VRC.SDK3.ClientSim
     // callback, this prevents errors in Udon when calling Get IsReady and Get IsPlaying.
     public class ClientSimAVProVideoStub : IAVProVideoPlayerInternal
     {
+        public static IAVProVideoPlayerInternal InitializePlayer(VRCAVProVideoPlayer player)
+        {
+            return new ClientSimAVProVideoStub(player);
+        }
+        
         public bool Loop { get; set; }
         public bool IsPlaying { get; }
         public bool IsReady { get; }

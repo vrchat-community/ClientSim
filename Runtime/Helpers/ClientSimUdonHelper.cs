@@ -2,70 +2,81 @@
 using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
-using VRC.Udon.Common.Interfaces;
 
 namespace VRC.SDK3.ClientSim
 {
     [AddComponentMenu("")]
-    public class ClientSimUdonHelper : ClientSimSyncedObjectHelper, IClientSimInteractable, IClientSimPickupable, IClientSimStationHandler, IClientSimSyncableHandler
+    public class ClientSimUdonHelper : 
+        ClientSimPositionSyncedHelperBase, 
+        IClientSimInteractable, 
+        IClientSimPickupHandler, 
+        IClientSimStationHandler, 
+        IClientSimSyncableHandler
     {
-        private static FieldInfo isReady_ = 
+        private IClientSimUdonManager _udonManager;
+        private UdonBehaviour _udonBehaviour;
+        
+        private static readonly FieldInfo _isReady = 
             typeof(UdonBehaviour).GetField("_isReady", (BindingFlags.Instance | BindingFlags.NonPublic));
 
-        private UdonBehaviour udonBehaviour_;
-
-        public static void OnInit(UdonBehaviour behaviour, IUdonProgram program)
+        public void Initialize(
+            UdonBehaviour udonBehaviour, 
+            IClientSimUdonManager udonManager, 
+            IClientSimSyncedObjectManager syncedObjectManager, 
+            bool isReady)
         {
-            ClientSimUdonHelper helper = behaviour.gameObject.AddComponent<ClientSimUdonHelper>();
-            helper.SetUdonBehaviour(behaviour);
-
-            isReady_.SetValue(behaviour, ClientSimMain.IsNetworkReady());
-        }
-
-        public void OnNetworkReady()
-        {
-            isReady_.SetValue(udonBehaviour_, true);
-        }
-
-        private void Start()
-        {
-            if (udonBehaviour_ == null)
-            {
-                DestroyImmediate(this);
-            }
-        }
-
-        private void SetUdonBehaviour(UdonBehaviour udonBehaviour)
-        {
-            if (udonBehaviour == null)
-            {
-                this.LogError("UdonBehaviour is null. Destroying helper.");
-                DestroyImmediate(this);
-                return;
-            }
-            udonBehaviour_ = udonBehaviour;
+            _udonBehaviour = udonBehaviour;
 #pragma warning disable 618
-            SyncPosition = udonBehaviour_.SynchronizePosition;
+            SyncPosition = _udonBehaviour.SynchronizePosition;
 #pragma warning restore 618
 
-            ClientSimUdonManager.AddUdonBehaviour(udonBehaviour_);
+            SetIsReady(isReady);
+
+            _udonManager = udonManager;
+            _udonManager.AddUdonBehaviour(_udonBehaviour);
+
+            // Ensure that SyncPosition is set before calling this.
+            base.Initialize(syncedObjectManager);
+        }
+        
+        private void Start()
+        {
+            // Catch Helper not initialized.
+            if (_udonBehaviour == null)
+            {
+                this.LogWarning($"Destroying uninitialized Helper. Object: {Tools.GetGameObjectPath(gameObject)}");
+                DestroyImmediate(this);
+            }
         }
 
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            
+            // Nullable needed for uninitialized case.
+            _udonManager?.RemoveUdonBehaviour(_udonBehaviour);
+        }
+        
+        private void SetIsReady(bool isReady)
+        {
+            _isReady.SetValue(_udonBehaviour, isReady);
+        }
+
+        public void OnReady()
+        {
+            SetIsReady(true);
+        }
+        
         public UdonBehaviour GetUdonBehaviour()
         {
-            return udonBehaviour_;
-        }
-
-        private void OnDestroy()
-        {
-            ClientSimUdonManager.RemoveUdonBehaviour(udonBehaviour_);
+            return _udonBehaviour;
         }
 
         #region IClientSimSyncableHandler
 
         public void OnOwnershipTransferred(int ownerID)
         {
-            udonBehaviour_.RunEvent("_onOwnershipTransferred", ("Player", VRCPlayerApi.GetPlayerById(ownerID)));
+            _udonBehaviour.RunEvent("_onOwnershipTransferred", ("Player", VRCPlayerApi.GetPlayerById(ownerID)));
         }
 
         #endregion
@@ -74,22 +85,29 @@ namespace VRC.SDK3.ClientSim
 
         public float GetProximity()
         {
-            return udonBehaviour_.proximity;
+            return _udonBehaviour.proximity;
         }
 
         public bool CanInteract()
         {
-            return udonBehaviour_.IsInteractive;
+            return _udonBehaviour.IsInteractive;
         }
 
         public string GetInteractText()
         {
-            return udonBehaviour_.interactText;
+            return _udonBehaviour.interactText;
+        }
+
+        public Vector3 GetInteractTextPlacement()
+        {
+            // VRChatBug: Tooltips always ignore the tooltipPlacement transform and instead place the tooltip at the top
+            // of the first collider on the object.
+            return ClientSimTooltip.GetToolTipPosition(gameObject);
         }
 
         public void Interact()
         {
-            udonBehaviour_.Interact();
+            _udonBehaviour.Interact();
         }
 
         #endregion
@@ -98,22 +116,22 @@ namespace VRC.SDK3.ClientSim
 
         public void OnPickup()
         {
-            udonBehaviour_.OnPickup();
+            _udonBehaviour.OnPickup();
         }
 
         public void OnDrop()
         {
-            udonBehaviour_.OnDrop();
+            _udonBehaviour.OnDrop();
         }
 
         public void OnPickupUseDown()
         {
-            udonBehaviour_.OnPickupUseDown();
+            _udonBehaviour.OnPickupUseDown();
         }
 
         public void OnPickupUseUp()
         {
-            udonBehaviour_.OnPickupUseUp();
+            _udonBehaviour.OnPickupUseUp();
         }
 
         #endregion
@@ -123,13 +141,13 @@ namespace VRC.SDK3.ClientSim
         public void OnStationEnter(VRCStation station)
         {
             VRC.SDK3.Components.VRCStation sdk3Station = station as VRC.SDK3.Components.VRCStation;
-            udonBehaviour_.RunEvent(sdk3Station.OnLocalPlayerEnterStation, ("Player", Networking.LocalPlayer));
+            _udonBehaviour.RunEvent(sdk3Station.OnLocalPlayerEnterStation, ("Player", Networking.LocalPlayer));
         }
 
         public void OnStationExit(VRCStation station)
         {
             VRC.SDK3.Components.VRCStation sdk3Station = station as VRC.SDK3.Components.VRCStation;
-            udonBehaviour_.RunEvent(sdk3Station.OnLocalPlayerExitStation, ("Player", Networking.LocalPlayer));
+            _udonBehaviour.RunEvent(sdk3Station.OnLocalPlayerExitStation, ("Player", Networking.LocalPlayer));
         }
 
         #endregion

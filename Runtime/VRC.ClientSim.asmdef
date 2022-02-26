@@ -2,8 +2,10 @@
     "name": "VRC.ClientSim",
     "references": [
         "Unity.Postprocessing.Runtime",
+        "Unity.InputSystem",
         "VRC.Udon",
-        "VRC.SDKBase"
+        "VRC.SDKBase",
+        "VRC.ClientSim.SelectionHighlight"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
