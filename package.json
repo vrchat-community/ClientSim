@@ -19,5 +19,8 @@
 			"description" : "An example of a world test using the Test Framework included in ClientSim. Automate interactions in your world and verify the results. Currently requires knowledge on C# and Unity Testing.",
 			"path" : "Samples~/ClientSimWorldTestExample"
 		}
-	]
+	],
+  "legacyFolders" : {
+    "Assets\\CyanEmu" : "91b9a83a129504741a363d9a324de958"
+  }
 }
