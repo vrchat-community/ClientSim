@@ -415,6 +415,7 @@ namespace VRC.SDK3.ClientSim
             VRCPlayerApi._SetGravityStrength += ClientSimPlayerManager.SetGravityStrength;
             VRCPlayerApi.IsGrounded += ClientSimPlayerManager.IsGrounded;
             VRCPlayerApi._UseLegacyLocomotion += ClientSimPlayerManager.UseLegacyLocomotion;
+            VRCPlayerApi._Respawn += ClientSimPlayerManager.Respawn;
 
             VRCPlayerApi._CombatSetup += ClientSimCombatSystemHelper.CombatSetup;
             VRCPlayerApi._CombatSetMaxHitpoints += ClientSimCombatSystemHelper.CombatSetMaxHitpoints;
@@ -529,6 +530,7 @@ namespace VRC.SDK3.ClientSim
             VRCPlayerApi._SetGravityStrength -= ClientSimPlayerManager.SetGravityStrength;
             VRCPlayerApi.IsGrounded -= ClientSimPlayerManager.IsGrounded;
             VRCPlayerApi._UseLegacyLocomotion -= ClientSimPlayerManager.UseLegacyLocomotion;
+            VRCPlayerApi._Respawn += ClientSimPlayerManager.Respawn;
 
             VRCPlayerApi._CombatSetup -= ClientSimCombatSystemHelper.CombatSetup;
             VRCPlayerApi._CombatSetMaxHitpoints -= ClientSimCombatSystemHelper.CombatSetMaxHitpoints;

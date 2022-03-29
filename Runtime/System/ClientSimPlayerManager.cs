@@ -322,6 +322,18 @@ namespace VRC.SDK3.ClientSim
         {
             TeleportToOrientationLerp(player, position, rotation, VRC_SceneDescriptor.SpawnOrientation.Default, false);
         }
+        
+        
+        public static void Respawn(VRCPlayerApi playerApi)
+        {
+            ClientSimPlayer[] clientSimPlayers = Object.FindObjectsOfType<ClientSimPlayer>(); //TODO: don't use FindObjectsOfType if there's an api instead?
+            foreach (ClientSimPlayer clientSimPlayer in clientSimPlayers)
+            {
+                if(clientSimPlayer.Player != playerApi) continue;
+                clientSimPlayer.GetPlayerController().Respawn();
+                break;
+            }
+        }
 
         public static void PlayHapticEventInHand(VRCPlayerApi player, VRC_Pickup.PickupHand hand, float duration, float amplitude, float frequency)
         {

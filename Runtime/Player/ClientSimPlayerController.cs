@@ -200,7 +200,7 @@ namespace VRC.SDK3.ClientSim
             return _characterController.isGrounded;
         }
 
-        private void Respawn()
+        public void Respawn()
         {
             Teleport(_sceneManager.GetSpawnPoint(false), false);
             _eventDispatcher.SendEvent(new ClientSimOnPlayerRespawnEvent { player = _playerApi.Player });
