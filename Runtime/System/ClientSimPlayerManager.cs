@@ -326,7 +326,24 @@ namespace VRC.SDK3.ClientSim
         
         public static void Respawn(VRCPlayerApi playerApi)
         {
+            if (!playerApi.isLocal)
+            {
+                playerApi.LogWarning($"[VRCPlayerApi.Respawn] Respawn for remote players will do nothing.");
+                return;
+            }
+            
             playerApi.GetPlayerController().Respawn();
+        }
+
+        public static void RespawnWithIndex(VRCPlayerApi playerApi, int index)
+        {
+            if (!playerApi.isLocal)
+            {
+                playerApi.LogWarning($"[VRCPlayerApi.Respawn] Respawn for remote players will do nothing.");
+                return;
+            }
+            
+            playerApi.GetPlayerController().Respawn(index);
         }
 
         public static void PlayHapticEventInHand(VRCPlayerApi player, VRC_Pickup.PickupHand hand, float duration, float amplitude, float frequency)

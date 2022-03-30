@@ -10,24 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
-  m_Name: TestRespawnCube Udon Graph Program Asset
+  m_Name: TestRespawnWithIndexCube Udon Graph Program Asset
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: aef07edb3dd9b074a99497aa7d9dff88,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 1baa2e1e6c51d0d42a4fdbc8e11b6fc9,
     type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export respawned\r\n    .export delay\r\n   
     \r\n    __instance_0: %VRCUdonUdonBehaviour, this\r\n    __eventName_0: %SystemString,
     null\r\n    __delaySeconds_0: %SystemSingle, null\r\n    __eventTiming_0: %VRCUdonCommonEnumsEventTiming,
     null\r\n    __Boolean_0: %SystemBoolean, null\r\n    __instance_1: %VRCSDKBaseVRCPlayerApi,
-    null\r\n    respawned: %SystemBoolean, null\r\n    player: %VRCSDKBaseVRCPlayerApi,
-    null\r\n    delay: %SystemSingle, null\r\n\r\n.data_end\r\n\r\n.code_start\r\n\r\n   
-    .export _onPlayerTriggerEnter\r\n    \r\n    _onPlayerTriggerEnter:\r\n    \r\n       
-    PUSH, __instance_0\r\n        PUSH, __eventName_0\r\n        PUSH, delay\r\n       
-    PUSH, __eventTiming_0\r\n        EXTERN, \"VRCUdonCommonInterfacesIUdonEventReceiver.__SendCustomEventDelayedSeconds__SystemString_SystemSingle_VRCUdonCommonEnumsEventTiming__SystemVoid\"\r\n       
+    null\r\n    __spawnsIndex_0: %SystemInt32, null\r\n    respawned: %SystemBoolean,
+    null\r\n    player: %VRCSDKBaseVRCPlayerApi, null\r\n    delay: %SystemSingle,
+    null\r\n\r\n.data_end\r\n\r\n.code_start\r\n\r\n    .export _onPlayerTriggerEnter\r\n   
+    \r\n    _onPlayerTriggerEnter:\r\n    \r\n        PUSH, __instance_0\r\n       
+    PUSH, __eventName_0\r\n        PUSH, delay\r\n        PUSH, __eventTiming_0\r\n       
+    EXTERN, \"VRCUdonCommonInterfacesIUdonEventReceiver.__SendCustomEventDelayedSeconds__SystemString_SystemSingle_VRCUdonCommonEnumsEventTiming__SystemVoid\"\r\n       
     JUMP, 0xFFFFFFFC\r\n    \r\n    .export _onPlayerRespawn\r\n    \r\n    _onPlayerRespawn:\r\n   
     \r\n        PUSH, __Boolean_0\r\n        PUSH, respawned\r\n        COPY\r\n       
     JUMP, 0xFFFFFFFC\r\n    \r\n    .export DelayedRespawn\r\n    \r\n    DelayedRespawn:\r\n   
     \r\n        PUSH, __instance_1\r\n        EXTERN, \"VRCSDKBaseNetworking.__get_LocalPlayer__VRCSDKBaseVRCPlayerApi\"\r\n       
-    PUSH, __instance_1\r\n        EXTERN, \"VRCSDKBaseVRCPlayerApi.__Respawn__SystemVoid\"\r\n       
+    PUSH, __instance_1\r\n        PUSH, __spawnsIndex_0\r\n        EXTERN, \"VRCSDKBaseVRCPlayerApi.__Respawn__SystemInt32__SystemVoid\"\r\n       
     JUMP, 0xFFFFFFFC\r\n    \r\n\r\n.code_end\r\n"
   assemblyError: 
   graphData:
@@ -156,15 +157,18 @@ MonoBehaviour:
       nodeUIDs: []
       flowUIDs: []
       nodeValues: []
-    - fullName: VRCSDKBaseVRCPlayerApi.__Respawn__SystemVoid
+    - fullName: VRCSDKBaseVRCPlayerApi.__Respawn__SystemInt32__SystemVoid
       uid: 07eb66e3-bebc-4c91-9be7-5847662934e3
       position: {x: 725.1412, y: 439.25052}
       nodeUIDs:
       - 67f00a78-3de3-432c-9b5d-7aa0e488f765|0
+      - 
       flowUIDs: []
       nodeValues:
       - unityObjectValue: {fileID: 0}
         stringValue: 
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|1
     - fullName: Variable_SystemSingle
       uid: f2c54746-0fd2-4eac-822c-e1d200ff0dc0
       position: {x: 0, y: 0}
@@ -217,7 +221,7 @@ MonoBehaviour:
     jsonData: '{"uid":"5f51e0fc-0176-4431-9b17-1942709a54fb","layout":{"serializedVersion":"2","x":-220.00003051757813,"y":318.0,"width":628.0,"height":280.0},"containedElements":["b31f161c-aee5-4f1f-9ee8-415fd9cd5012","afbba111-8d21-43c2-b4b2-924316534624","166a6b05-ac98-4a6f-84e3-86375d75ecd5"],"title":"Detect
       Player, Set up Respawn Call","layer":0,"elementTypeColor":{"r":0.0,"g":0.0,"b":0.0,"a":0.0}}'
   viewTransform:
-    position: {x: 622, y: 42.000008}
-    scale: 1.15
+    position: {x: 301, y: 124.99999}
+    scale: 0.65751624
   version: 1.0.0
   showAssembly: 0

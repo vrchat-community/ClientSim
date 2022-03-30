@@ -114,6 +114,22 @@ namespace VRC.SDK3.ClientSim
             // Fallback to first spawn point
             return _descriptor.spawns[0];
         }
+
+        public Transform GetSpawnPoint(int index)
+        {
+            if (!HasSceneDescriptor())
+            {
+                throw new ClientSimException("Cannot get spawn point when there is no scene descriptor.");
+            }
+            
+            if (_descriptor.spawns.Length <= index || _descriptor.spawns[index] == null)
+            {
+                throw new ClientSimException("Cannot get spawn point when descriptor does not have a spawn set.");
+            }
+            
+            // Fallback to first spawn point
+            return _descriptor.spawns[index];
+        }
         
         private void CopyCameraValues(Camera refCamera, Camera camera)
         {

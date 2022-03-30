@@ -9,6 +9,8 @@ namespace ClientSimTest
     public class ClientSimIssue3RespawnTestObjectReferences : MonoBehaviour
     {
         public UdonBehaviour respawnCube;
-        public Transform spawn;
+        public UdonBehaviour respawnWithIndexCube;
+        public Transform spawn1;
+        public Transform spawn2;
     }
 }

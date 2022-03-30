@@ -566,6 +566,19 @@ namespace VRC.SDK3.ClientSim.Tests.IntegrationTests
             
             Assert.IsTrue(playerRespawned);
             
+            // Test calling the Udon Respawn Method
+            playerRespawned = false;
+            Assert.IsFalse(playerRespawned);
+            Networking.LocalPlayer.Respawn();
+            Assert.True(playerRespawned);
+            
+            // Test calling the Udon Respawn Method with an integer
+            playerRespawned = false;
+            Assert.IsFalse(playerRespawned);
+            var player = Networking.LocalPlayer;
+            player.Respawn(0);
+            Assert.True(playerRespawned);
+            
             EventDispatcher.Unsubscribe<ClientSimOnPlayerRespawnEvent>(OnPlayerRespawn);
         }
 

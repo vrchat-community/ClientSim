@@ -206,6 +206,12 @@ namespace VRC.SDK3.ClientSim
             _eventDispatcher.SendEvent(new ClientSimOnPlayerRespawnEvent { player = _playerApi.Player });
         }
 
+        public void Respawn(int index)
+        {
+            Teleport(_sceneManager.GetSpawnPoint(index), false);
+            _eventDispatcher.SendEvent(new ClientSimOnPlayerRespawnEvent { player =  _playerApi.Player });
+        }
+
         public void Teleport(Transform point, bool fromPlaySpace)
         {
             Teleport(point.position, Quaternion.Euler(0, point.rotation.eulerAngles.y, 0), fromPlaySpace);
