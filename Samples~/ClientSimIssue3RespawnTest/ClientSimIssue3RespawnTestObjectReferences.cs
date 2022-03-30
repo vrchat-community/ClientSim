@@ -8,6 +8,7 @@ namespace ClientSimTest
     [AddComponentMenu("")]
     public class ClientSimIssue3RespawnTestObjectReferences : MonoBehaviour
     {
-        public GameObject respawnCube;
+        public UdonBehaviour respawnCube;
+        public Transform spawn;
     }
 }

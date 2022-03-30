@@ -57,10 +57,9 @@ namespace ClientSimTest.Tests.WorldTests
         
         // Test will go through the example scene. This scene is a small "puzzle" requiring multiple steps to reach the end area. 
         [UnityTest]
-        public IEnumerator TestIssue3Scene()
+        public IEnumerator Player_WalkingIntoRespawnArea_ShouldRespawnAndTriggerRespawnEvent()
         {
             yield return WaitForClientSimStartup();
-
             
             // Verify initial state of objects in the scene.
             var testHelpers = Object.FindObjectOfType<ClientSimIssue3RespawnTestObjectReferences>();
@@ -73,19 +72,19 @@ namespace ClientSimTest.Tests.WorldTests
             
             // Walk into the respawn cube.
             Helper.TestInput.SetInputRun(true);
-            Transform[] path1 = 
-            {
-                testHelpers.respawnCube.transform
-            };
-            yield return Helper.WalkThroughPoints(path1, "Player failed to walk into the respawn cube.", 2f);
 
-            //Verify the player respawned
-            Vector3 playerPosition = Vector3.zero; //TODO: Get the player's position
-            float distance = Vector3.Distance(playerPosition, testHelpers.respawnCube.transform.position);
-            Assert.IsFalse(distance < 1f, "Player failed to respawn.");
-            yield return null;
+            yield return Helper.WalkToPoint(testHelpers.respawnCube.gameObject.transform, "Didn't reach RespawnCube");
+
+            // Wait for the same amount of time the UdonBehaviour uses to delay the Respawn call
+            yield return new WaitForSeconds(testHelpers.respawnCube.GetProgramVariable<float>("delay"));
+
+            //Verify that the player is very close to Spawn
+            Vector3 playerPosition = Helper.GetLastJoinPlayer().GetPosition();
+            float distance = Vector3.Distance(playerPosition, testHelpers.spawn.position);
+            Assert.IsTrue(distance < 0.25f, "Player failed to respawn.");
             
-            Assert.IsFalse(testHelpers.respawnCube.activeSelf, "Respawn Cube failed to disable.");
+            // Ensure OnPlayerRespawn event fired by checking variable set by this event
+            Assert.IsTrue(testHelpers.respawnCube.GetProgramVariable<bool>("respawned"));
         }
     }
 }
