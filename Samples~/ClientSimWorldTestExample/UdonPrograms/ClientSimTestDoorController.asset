@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: ClientSimTestDoorController
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 82e6a5a05585310498806a0f52a4dca8,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: f79496a9218cf4e4e9180ef3acef31fc,
     type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export DoorOpen\r\n    .export Door\r\n   
     .sync DoorOpen, none\r\n    \r\n    __instance_0: %UnityEngineGameObject, this\r\n   

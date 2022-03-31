@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: ClientSimTestPlayerDetector
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: d68723258edc3344d809422cf905199f,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 90694f8bb1ffb0e48975ab46c6498cd4,
     type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export Credits\r\n    \r\n    __Boolean_0:
     %SystemBoolean, null\r\n    __VRCPlayerApi_0: %VRCSDKBaseVRCPlayerApi, null\r\n   

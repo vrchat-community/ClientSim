@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.IO;
 using NUnit.Framework;
 using UnityEditor;
@@ -7,6 +8,7 @@ using UnityEngine.TestTools;
 using VRC.SDK3.ClientSim;
 using VRC.SDK3.ClientSim.Tests.WorldTests;
 using VRC.SDKBase;
+using Object = UnityEngine.Object;
 
 namespace ClientSimTest.Tests.WorldTests
 {
@@ -141,7 +143,7 @@ namespace ClientSimTest.Tests.WorldTests
         }
 
         [UnityTest]
-        public IEnumerator RemotePlayer_RespawnedViaApi_WillRespawn()
+        public IEnumerator Player_RespawnedWithInvalidIndex_RespawnsAtIndex0()
         {
             yield return WaitForClientSimStartup();
             
@@ -157,13 +159,17 @@ namespace ClientSimTest.Tests.WorldTests
             }
             EventDispatcher.Subscribe<ClientSimOnPlayerRespawnEvent>(OnPlayerRespawn);
 
-            // Call Respawn static method on PlayerManager
-            var remotePlayer = Helper.SpawnRemotePlayer("RemotePlayer");
-            ClientSimPlayerManager.Respawn(remotePlayer);
+            // Call Respawn with invalid index
+            ClientSimPlayerManager.RespawnWithIndex(Networking.LocalPlayer, -1);
             
             // Ensure OnPlayerRespawn fired by EventDispatcher
             Assert.IsTrue(respawnEventFromDispatcherTriggered);
             EventDispatcher.Unsubscribe<ClientSimOnPlayerRespawnEvent>(OnPlayerRespawn);
+            
+            // Check if Player is near spawn 0
+            Vector3 playerPosition = Networking.LocalPlayer.GetPosition();
+            float distance = Vector3.Distance(playerPosition, testHelpers.spawn1.position);
+            Assert.IsTrue(distance < 0.25f, "Player failed to respawn.");
         }
     }
 }

@@ -150,7 +150,7 @@ namespace VRC.SDK3.ClientSim
             {
                 if (_isAndroid)
                 {
-                    this.LogWarning("Post processing is not supported on Android");
+                    Debug.LogWarning("Post processing is not supported on Android");
                 }
                 else
                 {

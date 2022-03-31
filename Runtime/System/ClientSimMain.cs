@@ -90,8 +90,16 @@ namespace VRC.SDK3.ClientSim
             catch (ClientSimException e)
             {
 #if UNITY_EDITOR
-                Debug.LogError($"Play mode Stopped because: {e.Message}");
-                UnityEditor.EditorApplication.isPlaying = false;
+                // Tests expect certain exceptions, don't exit play mode
+                if (ClientSimRuntimeLoader.IsInUnityTest())
+                {
+                    throw e;
+                }
+                else
+                {
+                    Debug.LogError($"Play mode Stopped because: {e.Message}");
+                    UnityEditor.EditorApplication.isPlaying = false;
+                }
 #endif
             }
         }
