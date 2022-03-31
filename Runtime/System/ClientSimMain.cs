@@ -1,6 +1,6 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.IO;
+using UnityEditor;
 using UnityEngine;
 using VRC.SDK3.Video.Components.AVPro;
 using VRC.SDKBase;
@@ -83,8 +83,16 @@ namespace VRC.SDK3.ClientSim
             {
                 throw new ClientSimException("Failed to start Client Sim! Main system component not found.");
             }
-            
-            main.Initialize(settings, eventDispatcher);
+
+            try
+            {
+                main.Initialize(settings, eventDispatcher);
+            }
+            catch (ClientSimException e)
+            {
+                Debug.LogError($"Play mode Stopped because: {e.Message}");
+                EditorApplication.isPlaying = false;
+            }
         }
 
         public static bool HasInstance()
@@ -264,8 +272,12 @@ namespace VRC.SDK3.ClientSim
             // Enable the player if set to spawn in the settings.
             if (_settings.spawnPlayer)
             {
-                _player.isInstanceOwner = _settings.isInstanceOwner;
-                _player.EnablePlayer(_sceneManager.GetSpawnPoint(false));
+                // Player can be invalid if we weren't able to spawn it
+                if (_player)
+                {
+                    _player.isInstanceOwner = _settings.isInstanceOwner;
+                    _player.EnablePlayer(_sceneManager.GetSpawnPoint(false));
+                }
             }
             
             // Notify UdonManager that ClientSim is ready. This will then notify all registered UdonBehaviours that
@@ -468,8 +480,12 @@ namespace VRC.SDK3.ClientSim
             VRCStation.exitStationDelegate -= ClientSimStationHelper.ExitStation;
             VRCPlayerApi._UseAttachedStation -= ClientSimStationHelper.UseAttachedStation;
 
-            VRC_UiShape.GetEventCamera -= _player.GetCameraProvider().GetCamera;
-            
+            // Player can be invalid if we weren't able to spawn
+            if (_player)
+            {
+                VRC_UiShape.GetEventCamera -= _player.GetCameraProvider().GetCamera;
+            }
+
             VRC_Pickup.OnAwake -= ClientSimPickupHelper.InitializePickup;
             VRC_Pickup.ForceDrop -= ClientSimPickupHelper.ForceDrop;
             VRC_Pickup._GetCurrentPlayer -= ClientSimPickupHelper.GetCurrentPlayer;

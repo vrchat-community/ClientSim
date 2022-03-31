@@ -84,12 +84,14 @@ namespace VRC.SDK3.ClientSim
         {
             if (!HasSceneDescriptor())
             {
-                throw new ClientSimException("Cannot get spawn point when there is no scene descriptor.");
+                UnityEditor.EditorApplication.isPlaying = false;
+                throw new ClientSimException("Trying to get a Spawn Point but there is no Scene Descriptor. Add a SceneDescriptor or the VRCWorldPrefab to your scene.");
             }
             
             if (_descriptor.spawns.Length == 0 || _descriptor.spawns[0] == null)
             {
-                throw new ClientSimException("Cannot get spawn point when descriptor does not have a spawn set.");
+                UnityEditor.EditorApplication.isPlaying = false;
+                throw new ClientSimException("Trying to get a Spawn Point but the Scene Descriptor doesn't have one. Add a Transform to the 'Spawns' array in the VRC Scene Descriptor component.");
             }
 
             // Remote players always restart the list, so for now, only first spawn
