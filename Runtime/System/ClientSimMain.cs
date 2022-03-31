@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.IO;
-using UnityEditor;
 using UnityEngine;
 using VRC.SDK3.Video.Components.AVPro;
 using VRC.SDKBase;
@@ -90,8 +89,10 @@ namespace VRC.SDK3.ClientSim
             }
             catch (ClientSimException e)
             {
+#if UNITY_EDITOR
                 Debug.LogError($"Play mode Stopped because: {e.Message}");
-                EditorApplication.isPlaying = false;
+                UnityEditor.EditorApplication.isPlaying = false;
+#endif
             }
         }
 
