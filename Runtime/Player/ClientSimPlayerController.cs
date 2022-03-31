@@ -208,7 +208,14 @@ namespace VRC.SDK3.ClientSim
 
         public void Respawn(int index)
         {
-            Teleport(_sceneManager.GetSpawnPoint(index), false);
+            
+            Transform spawnPoint = _sceneManager.GetSpawnPoint(index);
+            if (spawnPoint == null)
+            {
+                this.LogError($"Spawn {index} not found. Spawning at spawn 0");
+                spawnPoint = _sceneManager.GetSpawnPoint(0);
+            }
+            Teleport(spawnPoint, false);
             _eventDispatcher.SendEvent(new ClientSimOnPlayerRespawnEvent { player =  _playerApi.Player });
         }
 

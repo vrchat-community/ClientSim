@@ -122,9 +122,10 @@ namespace VRC.SDK3.ClientSim
                 throw new ClientSimException("Cannot get spawn point when there is no scene descriptor.");
             }
             
-            if (_descriptor.spawns.Length <= index || _descriptor.spawns[index] == null)
+            if (index < 0 || index >= _descriptor.spawns.Length || _descriptor.spawns[index] == null)
             {
-                throw new ClientSimException("Cannot get spawn point when descriptor does not have a spawn set.");
+                this.LogWarning($"Using spawn point 0 instead of {index}, which is invalid.");
+                index = 0;
             }
             
             // Fallback to first spawn point
@@ -149,7 +150,7 @@ namespace VRC.SDK3.ClientSim
             {
                 if (_isAndroid)
                 {
-                    Debug.LogWarning("Post processing is not supported on Android");
+                    this.LogWarning("Post processing is not supported on Android");
                 }
                 else
                 {
