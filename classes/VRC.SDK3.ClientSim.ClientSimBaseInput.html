@@ -1,0 +1,1125 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ClientSimBaseInput
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ClientSimBaseInput
+   ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput">
+  
+  
+  <h1 id="VRC_SDK3_ClientSim_ClientSimBaseInput" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput" class="text-break">Class ClientSimBaseInput
+  </h1>
+  <div class="markdown level0 summary"><p>The system responsible for managing the mouse position for both ClientSim raycasting
+and for Unity's EventSystem to know where to raycast for UI elements.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ClientSimBaseInput</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="VRC.SDK3.ClientSim.IClientSimMousePositionProvider.html">IClientSimMousePositionProvider</a></div>
+    <div><span class="xref">IDisposable</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="VRC.SDK3.ClientSim.html">VRC.SDK3.ClientSim</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="VRC_SDK3_ClientSim_ClientSimBaseInput_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">class ClientSimBaseInput : BaseInput, IClientSimMousePositionProvider</code></pre>
+  </div>
+  <h5 id="VRC_SDK3_ClientSim_ClientSimBaseInput_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Sends Events:</p>
+<ul>
+<li>ClientSimMouseReleasedEvent</li>
+<li>ClientSimCurrentHandEvent
+Listens to Events:</li>
+<li>ClientSimMenuStateChangedEvent</li>
+<li>ClientSimRaycastHitResultsEvent
+Listens to Input Events:</li>
+<li>Use</li>
+<li>ReleaseMouse</li>
+</ul>
+</div>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput__eventDispatcher" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput._eventDispatcher">_eventDispatcher</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IClientSimEventDispatcher _eventDispatcher</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimEventDispatcher.html">IClientSimEventDispatcher</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput__frameTick" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput._frameTick">_frameTick</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int _frameTick</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput__input" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput._input">_input</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IClientSimInput _input</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimInput.html">IClientSimInput</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput__lastHandUsed" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput._lastHandUsed">_lastHandUsed</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">HandType _lastHandUsed</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">HandType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput__leftUseChangeTick" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput._leftUseChangeTick">_leftUseChangeTick</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int _leftUseChangeTick</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput__leftUseDown" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput._leftUseDown">_leftUseDown</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool _leftUseDown</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput__menuIsOpen" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput._menuIsOpen">_menuIsOpen</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool _menuIsOpen</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput__mouseReleaseKeyIsDown" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput._mouseReleaseKeyIsDown">_mouseReleaseKeyIsDown</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool _mouseReleaseKeyIsDown</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput__playerCamera" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput._playerCamera">_playerCamera</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Camera _playerCamera</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Camera</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput__prevMouseReleased" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput._prevMouseReleased">_prevMouseReleased</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool _prevMouseReleased</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput__raycastMousePosition" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput._raycastMousePosition">_raycastMousePosition</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Vector3 _raycastMousePosition</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput__rightUseChangeTick" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput._rightUseChangeTick">_rightUseChangeTick</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int _rightUseChangeTick</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput__rightUseDown" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput._rightUseDown">_rightUseDown</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool _rightUseDown</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput__settings" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput._settings">_settings</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ClientSimSettings _settings</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimSettings.html">ClientSimSettings</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput__uiShapeHit" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput._uiShapeHit">_uiShapeHit</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool _uiShapeHit</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_mousePosition_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.mousePosition*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_mousePosition" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.mousePosition">mousePosition</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Vector2 mousePosition { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector2</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_mouseScrollDelta_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.mouseScrollDelta*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_mouseScrollDelta" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.mouseScrollDelta">mouseScrollDelta</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Vector2 mouseScrollDelta { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector2</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_Awake_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.Awake*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_Awake" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.Awake">Awake()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Awake()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_CheckMouseRelease_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.CheckMouseRelease*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_CheckMouseRelease" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.CheckMouseRelease">CheckMouseRelease()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void CheckMouseRelease()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_Dispose_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.Dispose*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_Dispose" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_GetAxisRaw_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.GetAxisRaw*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_GetAxisRaw_System_String_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.GetAxisRaw(System.String)">GetAxisRaw(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override float GetAxisRaw(string axisName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">axisName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_GetButtonDown_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.GetButtonDown*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_GetButtonDown_System_String_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.GetButtonDown(System.String)">GetButtonDown(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool GetButtonDown(string buttonName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">buttonName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_GetMouseButton_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.GetMouseButton*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_GetMouseButton_System_Int32_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.GetMouseButton(System.Int32)">GetMouseButton(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool GetMouseButton(int button)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">button</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_GetMouseButtonDown_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.GetMouseButtonDown*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_GetMouseButtonDown_System_Int32_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.GetMouseButtonDown(System.Int32)">GetMouseButtonDown(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool GetMouseButtonDown(int button)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">button</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_GetMouseButtonUp_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.GetMouseButtonUp*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_GetMouseButtonUp_System_Int32_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.GetMouseButtonUp(System.Int32)">GetMouseButtonUp(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool GetMouseButtonUp(int button)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">button</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_GetMousePosition_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.GetMousePosition*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_GetMousePosition" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.GetMousePosition">GetMousePosition()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2 GetMousePosition()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector2</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_GetScreenCenter_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.GetScreenCenter*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_GetScreenCenter" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.GetScreenCenter">GetScreenCenter()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Vector2 GetScreenCenter()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector2</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_HitUIShape_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.HitUIShape*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_HitUIShape" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.HitUIShape">HitUIShape()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HitUIShape()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_Initialize_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.Initialize*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_Initialize_VRC_SDK3_ClientSim_IClientSimEventDispatcher_VRC_SDK3_ClientSim_IClientSimInput_VRC_SDK3_ClientSim_ClientSimSettings_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.Initialize(VRC.SDK3.ClientSim.IClientSimEventDispatcher,VRC.SDK3.ClientSim.IClientSimInput,VRC.SDK3.ClientSim.ClientSimSettings)">Initialize(IClientSimEventDispatcher, IClientSimInput, ClientSimSettings)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Initialize(IClientSimEventDispatcher eventDispatcher, IClientSimInput input, ClientSimSettings settings)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimEventDispatcher.html">IClientSimEventDispatcher</a></td>
+        <td><span class="parametername">eventDispatcher</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimInput.html">IClientSimInput</a></td>
+        <td><span class="parametername">input</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimSettings.html">ClientSimSettings</a></td>
+        <td><span class="parametername">settings</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_InputMouseReleased_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.InputMouseReleased*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_InputMouseReleased_System_Boolean_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.InputMouseReleased(System.Boolean)">InputMouseReleased(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void InputMouseReleased(bool value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_InputUse_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.InputUse*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_InputUse_System_Boolean_HandType_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.InputUse(System.Boolean,HandType)">InputUse(Boolean, HandType)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void InputUse(bool value, HandType handType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">HandType</span></td>
+        <td><span class="parametername">handType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_InternalLockUpdate_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.InternalLockUpdate*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_InternalLockUpdate" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.InternalLockUpdate">InternalLockUpdate()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void InternalLockUpdate()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_IsMouseFree_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.IsMouseFree*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_IsMouseFree" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.IsMouseFree">IsMouseFree()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsMouseFree()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_OnDestroy_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.OnDestroy*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_OnDestroy" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.OnDestroy">OnDestroy()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnDestroy()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_OnRaycastHit_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.OnRaycastHit*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_OnRaycastHit_VRC_SDK3_ClientSim_ClientSimRaycastHitResultsEvent_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.OnRaycastHit(VRC.SDK3.ClientSim.ClientSimRaycastHitResultsEvent)">OnRaycastHit(ClientSimRaycastHitResultsEvent)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnRaycastHit(ClientSimRaycastHitResultsEvent hitEvent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimRaycastHitResultsEvent.html">ClientSimRaycastHitResultsEvent</a></td>
+        <td><span class="parametername">hitEvent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_SetMenuOpen_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.SetMenuOpen*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_SetMenuOpen_VRC_SDK3_ClientSim_ClientSimMenuStateChangedEvent_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.SetMenuOpen(VRC.SDK3.ClientSim.ClientSimMenuStateChangedEvent)">SetMenuOpen(ClientSimMenuStateChangedEvent)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetMenuOpen(ClientSimMenuStateChangedEvent stateChangedEvent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimMenuStateChangedEvent.html">ClientSimMenuStateChangedEvent</a></td>
+        <td><span class="parametername">stateChangedEvent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_Start_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.Start*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_Start" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.Start">Start()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Start()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimBaseInput_Update_" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.Update*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimBaseInput_Update" data-uid="VRC.SDK3.ClientSim.ClientSimBaseInput.Update">Update()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Update()</code></pre>
+  </div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="VRC.SDK3.ClientSim.IClientSimMousePositionProvider.html">IClientSimMousePositionProvider</a>
+  </div>
+  <div>
+      <span class="xref">IDisposable</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

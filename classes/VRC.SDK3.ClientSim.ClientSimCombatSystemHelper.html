@@ -1,0 +1,1085 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ClientSimCombatSystemHelper
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ClientSimCombatSystemHelper
+   ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper">
+  
+  
+  <h1 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper" class="text-break">Class ClientSimCombatSystemHelper
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="VRC.SDK3.ClientSim.ClientSimBehaviour.html">ClientSimBehaviour</a></div>
+    <div class="level2"><span class="xref">ClientSimCombatSystemHelper</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">IVRC_Destructible</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="VRC.SDK3.ClientSim.ClientSimBehaviour.html#VRC_SDK3_ClientSim_ClientSimBehaviour_Awake">ClientSimBehaviour.Awake()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="VRC.SDK3.ClientSim.html">VRC.SDK3.ClientSim</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ClientSimCombatSystemHelper : ClientSimBehaviour</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper__dead" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper._dead">_dead</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool _dead</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper__eventDispatcher" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper._eventDispatcher">_eventDispatcher</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IClientSimEventDispatcher _eventDispatcher</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimEventDispatcher.html">IClientSimEventDispatcher</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper__player" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper._player">_player</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">VRCPlayerApi _player</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">VRCPlayerApi</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper__playerController" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper._playerController">_playerController</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ClientSimPlayerController _playerController</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimPlayerController.html">ClientSimPlayerController</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper__proxyProvider" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper._proxyProvider">_proxyProvider</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IClientSimProxyObjectProvider _proxyProvider</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimProxyObjectProvider.html">IClientSimProxyObjectProvider</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper__visualDamage" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper._visualDamage">_visualDamage</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">VRC_VisualDamage _visualDamage</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">VRC_VisualDamage</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper__visualDamageObj" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper._visualDamageObj">_visualDamageObj</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GameObject _visualDamageObj</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GameObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper__visualDamagePrefab" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper._visualDamagePrefab">_visualDamagePrefab</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GameObject _visualDamagePrefab</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GameObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper__visualDamagePrefabPath" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper._visualDamagePrefabPath">_visualDamagePrefabPath</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">static readonly string _visualDamagePrefabPath</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_currentHealth" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.currentHealth">currentHealth</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float currentHealth</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_maxPlayerHealth" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.maxPlayerHealth">maxPlayerHealth</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float maxPlayerHealth</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_resetHealthOnRespawn" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.resetHealthOnRespawn">resetHealthOnRespawn</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool resetHealthOnRespawn</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_respawnOnDeath" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.respawnOnDeath">respawnOnDeath</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool respawnOnDeath</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_respawnPoint" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.respawnPoint">respawnPoint</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Transform respawnPoint</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Transform</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_respawnTime" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.respawnTime">respawnTime</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float respawnTime</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_ApplyDamage_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.ApplyDamage*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_ApplyDamage_System_Single_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.ApplyDamage(System.Single)">ApplyDamage(Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ApplyDamage(float damage)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">damage</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_ApplyHealing_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.ApplyHealing*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_ApplyHealing_System_Single_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.ApplyHealing(System.Single)">ApplyHealing(Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ApplyHealing(float healing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">healing</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_ApplyVisualDamage_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.ApplyVisualDamage*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_ApplyVisualDamage" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.ApplyVisualDamage">ApplyVisualDamage()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ApplyVisualDamage()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_CombatGetCurrentHitpoints_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.CombatGetCurrentHitpoints*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_CombatGetCurrentHitpoints_VRCPlayerApi_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.CombatGetCurrentHitpoints(VRCPlayerApi)">CombatGetCurrentHitpoints(VRCPlayerApi)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float CombatGetCurrentHitpoints(VRCPlayerApi player)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">VRCPlayerApi</span></td>
+        <td><span class="parametername">player</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_CombatGetDestructible_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.CombatGetDestructible*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_CombatGetDestructible_VRCPlayerApi_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.CombatGetDestructible(VRCPlayerApi)">CombatGetDestructible(VRCPlayerApi)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IVRC_Destructible CombatGetDestructible(VRCPlayerApi player)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">VRCPlayerApi</span></td>
+        <td><span class="parametername">player</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IVRC_Destructible</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_CombatSetCurrentHitpoints_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.CombatSetCurrentHitpoints*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_CombatSetCurrentHitpoints_VRCPlayerApi_System_Single_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.CombatSetCurrentHitpoints(VRCPlayerApi,System.Single)">CombatSetCurrentHitpoints(VRCPlayerApi, Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void CombatSetCurrentHitpoints(VRCPlayerApi player, float health)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">VRCPlayerApi</span></td>
+        <td><span class="parametername">player</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">health</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_CombatSetDamageGraphic_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.CombatSetDamageGraphic*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_CombatSetDamageGraphic_VRCPlayerApi_GameObject_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.CombatSetDamageGraphic(VRCPlayerApi,GameObject)">CombatSetDamageGraphic(VRCPlayerApi, GameObject)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void CombatSetDamageGraphic(VRCPlayerApi player, GameObject visualDamage)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">VRCPlayerApi</span></td>
+        <td><span class="parametername">player</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">GameObject</span></td>
+        <td><span class="parametername">visualDamage</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_CombatSetMaxHitpoints_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.CombatSetMaxHitpoints*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_CombatSetMaxHitpoints_VRCPlayerApi_System_Single_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.CombatSetMaxHitpoints(VRCPlayerApi,System.Single)">CombatSetMaxHitpoints(VRCPlayerApi, Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void CombatSetMaxHitpoints(VRCPlayerApi player, float maxHealth)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">VRCPlayerApi</span></td>
+        <td><span class="parametername">player</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">maxHealth</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_CombatSetRespawn_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.CombatSetRespawn*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_CombatSetRespawn_VRCPlayerApi_System_Boolean_System_Single_Transform_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.CombatSetRespawn(VRCPlayerApi,System.Boolean,System.Single,Transform)">CombatSetRespawn(VRCPlayerApi, Boolean, Single, Transform)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void CombatSetRespawn(VRCPlayerApi player, bool respawnOnDeath, float respawnTime, Transform spawnPoint)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">VRCPlayerApi</span></td>
+        <td><span class="parametername">player</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">respawnOnDeath</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">respawnTime</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Transform</span></td>
+        <td><span class="parametername">spawnPoint</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_CombatSetup_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.CombatSetup*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_CombatSetup_VRCPlayerApi_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.CombatSetup(VRCPlayerApi)">CombatSetup(VRCPlayerApi)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void CombatSetup(VRCPlayerApi player)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">VRCPlayerApi</span></td>
+        <td><span class="parametername">player</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_CreateVisualDamage_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.CreateVisualDamage*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_CreateVisualDamage" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.CreateVisualDamage">CreateVisualDamage()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void CreateVisualDamage()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_GetCombatHelper_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.GetCombatHelper*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_GetCombatHelper_VRCPlayerApi_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.GetCombatHelper(VRCPlayerApi)">GetCombatHelper(VRCPlayerApi)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">static ClientSimCombatSystemHelper GetCombatHelper(VRCPlayerApi player)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">VRCPlayerApi</span></td>
+        <td><span class="parametername">player</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.html">ClientSimCombatSystemHelper</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_GetCurrentHealth_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.GetCurrentHealth*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_GetCurrentHealth" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.GetCurrentHealth">GetCurrentHealth()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float GetCurrentHealth()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_GetMaxHealth_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.GetMaxHealth*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_GetMaxHealth" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.GetMaxHealth">GetMaxHealth()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float GetMaxHealth()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_GetState_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.GetState*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_GetState" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.GetState">GetState()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object[] GetState()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_Initialize_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.Initialize*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_Initialize_VRCPlayerApi_VRC_SDK3_ClientSim_IClientSimEventDispatcher_VRC_SDK3_ClientSim_IClientSimProxyObjectProvider_VRC_SDK3_ClientSim_ClientSimPlayerController_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.Initialize(VRCPlayerApi,VRC.SDK3.ClientSim.IClientSimEventDispatcher,VRC.SDK3.ClientSim.IClientSimProxyObjectProvider,VRC.SDK3.ClientSim.ClientSimPlayerController)">Initialize(VRCPlayerApi, IClientSimEventDispatcher, IClientSimProxyObjectProvider, ClientSimPlayerController)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Initialize(VRCPlayerApi player, IClientSimEventDispatcher eventDispatcher, IClientSimProxyObjectProvider proxyProvider, ClientSimPlayerController playerController)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">VRCPlayerApi</span></td>
+        <td><span class="parametername">player</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimEventDispatcher.html">IClientSimEventDispatcher</a></td>
+        <td><span class="parametername">eventDispatcher</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimProxyObjectProvider.html">IClientSimProxyObjectProvider</a></td>
+        <td><span class="parametername">proxyProvider</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimPlayerController.html">ClientSimPlayerController</a></td>
+        <td><span class="parametername">playerController</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_PlayerDied_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.PlayerDied*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_PlayerDied" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.PlayerDied">PlayerDied()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerator PlayerDied()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerator</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_RevivePlayer_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.RevivePlayer*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_RevivePlayer" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.RevivePlayer">RevivePlayer()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RevivePlayer()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_SetState_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.SetState*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_SetState_System_Object___" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.SetState(System.Object[])">SetState(Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetState(object[] state)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">state</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_Start_" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.Start*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimCombatSystemHelper_Start" data-uid="VRC.SDK3.ClientSim.ClientSimCombatSystemHelper.Start">Start()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Start()</code></pre>
+  </div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">IVRC_Destructible</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

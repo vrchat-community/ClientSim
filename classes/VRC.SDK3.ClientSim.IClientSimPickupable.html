@@ -1,0 +1,531 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IClientSimPickupable
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IClientSimPickupable
+   ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable">
+  
+  
+  <h1 id="VRC_SDK3_ClientSim_IClientSimPickupable" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable" class="text-break">Interface IClientSimPickupable
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="VRC.SDK3.ClientSim.IClientSimInteractable.html#VRC_SDK3_ClientSim_IClientSimInteractable_GetProximity">IClientSimInteractable.GetProximity()</a>
+    </div>
+    <div>
+      <a class="xref" href="VRC.SDK3.ClientSim.IClientSimInteractable.html#VRC_SDK3_ClientSim_IClientSimInteractable_CanInteract">IClientSimInteractable.CanInteract()</a>
+    </div>
+    <div>
+      <a class="xref" href="VRC.SDK3.ClientSim.IClientSimInteractable.html#VRC_SDK3_ClientSim_IClientSimInteractable_GetInteractText">IClientSimInteractable.GetInteractText()</a>
+    </div>
+    <div>
+      <a class="xref" href="VRC.SDK3.ClientSim.IClientSimInteractable.html#VRC_SDK3_ClientSim_IClientSimInteractable_GetInteractTextPlacement">IClientSimInteractable.GetInteractTextPlacement()</a>
+    </div>
+    <div>
+      <a class="xref" href="VRC.SDK3.ClientSim.IClientSimInteractable.html#VRC_SDK3_ClientSim_IClientSimInteractable_Interact">IClientSimInteractable.Interact()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="VRC.SDK3.ClientSim.html">VRC.SDK3.ClientSim</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="VRC_SDK3_ClientSim_IClientSimPickupable_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IClientSimPickupable : IClientSimInteractable</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="VRC_SDK3_ClientSim_IClientSimPickupable_AllowManipulation_" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.AllowManipulation*"></a>
+  <h4 id="VRC_SDK3_ClientSim_IClientSimPickupable_AllowManipulation" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.AllowManipulation">AllowManipulation()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool AllowManipulation()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_IClientSimPickupable_AutoHold_" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.AutoHold*"></a>
+  <h4 id="VRC_SDK3_ClientSim_IClientSimPickupable_AutoHold" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.AutoHold">AutoHold()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool AutoHold()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_IClientSimPickupable_Drop_" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.Drop*"></a>
+  <h4 id="VRC_SDK3_ClientSim_IClientSimPickupable_Drop_VRCPlayerApi_" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.Drop(VRCPlayerApi)">Drop(VRCPlayerApi)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Drop(VRCPlayerApi player)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">VRCPlayerApi</span></td>
+        <td><span class="parametername">player</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_IClientSimPickupable_GetGameObject_" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.GetGameObject*"></a>
+  <h4 id="VRC_SDK3_ClientSim_IClientSimPickupable_GetGameObject" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.GetGameObject">GetGameObject()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GameObject GetGameObject()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GameObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_IClientSimPickupable_GetGripLocation_" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.GetGripLocation*"></a>
+  <h4 id="VRC_SDK3_ClientSim_IClientSimPickupable_GetGripLocation" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.GetGripLocation">GetGripLocation()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Transform GetGripLocation()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Transform</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_IClientSimPickupable_GetGunLocation_" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.GetGunLocation*"></a>
+  <h4 id="VRC_SDK3_ClientSim_IClientSimPickupable_GetGunLocation" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.GetGunLocation">GetGunLocation()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Transform GetGunLocation()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Transform</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_IClientSimPickupable_GetHoldingPlayer_" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.GetHoldingPlayer*"></a>
+  <h4 id="VRC_SDK3_ClientSim_IClientSimPickupable_GetHoldingPlayer" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.GetHoldingPlayer">GetHoldingPlayer()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">VRCPlayerApi GetHoldingPlayer()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">VRCPlayerApi</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_IClientSimPickupable_GetOrientation_" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.GetOrientation*"></a>
+  <h4 id="VRC_SDK3_ClientSim_IClientSimPickupable_GetOrientation" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.GetOrientation">GetOrientation()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">VRC_Pickup.PickupOrientation GetOrientation()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">VRC_Pickup.PickupOrientation</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_IClientSimPickupable_GetPickup_" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.GetPickup*"></a>
+  <h4 id="VRC_SDK3_ClientSim_IClientSimPickupable_GetPickup" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.GetPickup">GetPickup()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">VRC_Pickup GetPickup()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">VRC_Pickup</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_IClientSimPickupable_GetRigidbody_" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.GetRigidbody*"></a>
+  <h4 id="VRC_SDK3_ClientSim_IClientSimPickupable_GetRigidbody" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.GetRigidbody">GetRigidbody()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Rigidbody GetRigidbody()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Rigidbody</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_IClientSimPickupable_GetThrowVelocityBoostScale_" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.GetThrowVelocityBoostScale*"></a>
+  <h4 id="VRC_SDK3_ClientSim_IClientSimPickupable_GetThrowVelocityBoostScale" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.GetThrowVelocityBoostScale">GetThrowVelocityBoostScale()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float GetThrowVelocityBoostScale()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_IClientSimPickupable_GetTransform_" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.GetTransform*"></a>
+  <h4 id="VRC_SDK3_ClientSim_IClientSimPickupable_GetTransform" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.GetTransform">GetTransform()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Transform GetTransform()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Transform</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_IClientSimPickupable_IsHeld_" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.IsHeld*"></a>
+  <h4 id="VRC_SDK3_ClientSim_IClientSimPickupable_IsHeld" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.IsHeld">IsHeld()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsHeld()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_IClientSimPickupable_Pickup_" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.Pickup*"></a>
+  <h4 id="VRC_SDK3_ClientSim_IClientSimPickupable_Pickup_VRCPlayerApi_VRC_Pickup_PickupHand_Action_VRC_SDK3_ClientSim_IClientSimPickupable__" data-uid="VRC.SDK3.ClientSim.IClientSimPickupable.Pickup(VRCPlayerApi,VRC_Pickup.PickupHand,Action{VRC.SDK3.ClientSim.IClientSimPickupable})">Pickup(VRCPlayerApi, VRC_Pickup.PickupHand, Action&lt;IClientSimPickupable&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Pickup(VRCPlayerApi player, VRC_Pickup.PickupHand heldHand, Action&lt;IClientSimPickupable&gt; forceDrop)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">VRCPlayerApi</span></td>
+        <td><span class="parametername">player</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">VRC_Pickup.PickupHand</span></td>
+        <td><span class="parametername">heldHand</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<a class="xref" href="VRC.SDK3.ClientSim.IClientSimPickupable.html">IClientSimPickupable</a>&gt;</td>
+        <td><span class="parametername">forceDrop</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

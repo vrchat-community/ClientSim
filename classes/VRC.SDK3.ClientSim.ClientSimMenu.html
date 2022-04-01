@@ -1,0 +1,1431 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ClientSimMenu
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ClientSimMenu
+   ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="VRC.SDK3.ClientSim.ClientSimMenu">
+  
+  
+  <h1 id="VRC_SDK3_ClientSim_ClientSimMenu" data-uid="VRC.SDK3.ClientSim.ClientSimMenu" class="text-break">Class ClientSimMenu
+  </h1>
+  <div class="markdown level0 summary"><p>System responsible for displaying the menu to the players and updating settings.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="VRC.SDK3.ClientSim.ClientSimBehaviour.html">ClientSimBehaviour</a></div>
+    <div class="level2"><span class="xref">ClientSimMenu</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">IDisposable</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="VRC.SDK3.ClientSim.html">VRC.SDK3.ClientSim</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="VRC_SDK3_ClientSim_ClientSimMenu_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ClientSimMenu : ClientSimBehaviour</code></pre>
+  </div>
+  <h5 id="VRC_SDK3_ClientSim_ClientSimMenu_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Sends Events:</p>
+<ul>
+<li>ClientSimMenuStateChangedEvent</li>
+<li>ClientSimMenuRespawnClickedEvent</li>
+<li>ClientSimOnPlayerHeightUpdateEvent
+Listens to Events:</li>
+<li>ClientSimReadyEvent</li>
+<li>ClientSimOnPlayerMovedEvent</li>
+<li>ClientSimOnNewMasterEvent</li>
+<li>ClientSimOnPlayerJoinedEvent
+Listens to Input Events:</li>
+<li>ToggleMenu</li>
+</ul>
+</div>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu__displayedPage" data-uid="VRC.SDK3.ClientSim.ClientSimMenu._displayedPage">_displayedPage</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ClientSimMenu.ClientSimDisplayedPage _displayedPage</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimMenu.ClientSimDisplayedPage.html">ClientSimMenu.ClientSimDisplayedPage</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu__eventDispatcher" data-uid="VRC.SDK3.ClientSim.ClientSimMenu._eventDispatcher">_eventDispatcher</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IClientSimEventDispatcher _eventDispatcher</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimEventDispatcher.html">IClientSimEventDispatcher</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu__input" data-uid="VRC.SDK3.ClientSim.ClientSimMenu._input">_input</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IClientSimInput _input</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimInput.html">IClientSimInput</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu__menuCanvas" data-uid="VRC.SDK3.ClientSim.ClientSimMenu._menuCanvas">_menuCanvas</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Canvas _menuCanvas</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Canvas</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu__menuIsActive" data-uid="VRC.SDK3.ClientSim.ClientSimMenu._menuIsActive">_menuIsActive</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool _menuIsActive</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu__playerHeightOriginalMaxvalue" data-uid="VRC.SDK3.ClientSim.ClientSimMenu._playerHeightOriginalMaxvalue">_playerHeightOriginalMaxvalue</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float _playerHeightOriginalMaxvalue</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu__sessionState" data-uid="VRC.SDK3.ClientSim.ClientSimMenu._sessionState">_sessionState</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IClientSimSessionState _sessionState</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimSessionState.html">IClientSimSessionState</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu__settings" data-uid="VRC.SDK3.ClientSim.ClientSimMenu._settings">_settings</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ClientSimSettings _settings</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimSettings.html">ClientSimSettings</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_checkValidSettingsHook" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.checkValidSettingsHook">checkValidSettingsHook</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">static Func&lt;bool&gt; checkValidSettingsHook</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_consoleLoggingToggle" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.consoleLoggingToggle">consoleLoggingToggle</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Toggle consoleLoggingToggle</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Toggle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_delayStartPage" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.delayStartPage">delayStartPage</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GameObject delayStartPage</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GameObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_GUI_ZTEST_MODE_PROPERTY_NAME" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.GUI_ZTEST_MODE_PROPERTY_NAME">GUI_ZTEST_MODE_PROPERTY_NAME</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">const string GUI_ZTEST_MODE_PROPERTY_NAME = &quot;unity_GUIZTestMode&quot;</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_HAS_USER_ACCEPTED_WARNING" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.HAS_USER_ACCEPTED_WARNING">HAS_USER_ACCEPTED_WARNING</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">const string HAS_USER_ACCEPTED_WARNING = &quot;accepted_warning&quot;</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_invalidSettingsPage" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.invalidSettingsPage">invalidSettingsPage</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GameObject invalidSettingsPage</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GameObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_invertMouseToggle" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.invertMouseToggle">invertMouseToggle</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Toggle invertMouseToggle</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Toggle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_isInstanceOwnerToggle" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.isInstanceOwnerToggle">isInstanceOwnerToggle</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Toggle isInstanceOwnerToggle</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Toggle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_isMasterToggle" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.isMasterToggle">isMasterToggle</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Toggle isMasterToggle</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Toggle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_menu" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.menu">menu</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GameObject menu</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GameObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_menuScaleFactor" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.menuScaleFactor">menuScaleFactor</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float menuScaleFactor</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_openSettingsHook" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.openSettingsHook">openSettingsHook</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">static Action openSettingsHook</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Action</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_pauseMenu" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.pauseMenu">pauseMenu</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GameObject pauseMenu</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GameObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_playerHeightSlider" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.playerHeightSlider">playerHeightSlider</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Slider playerHeightSlider</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Slider</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_playerHeightText" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.playerHeightText">playerHeightText</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Text playerHeightText</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Text</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_playerIdText" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.playerIdText">playerIdText</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Text playerIdText</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Text</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_playerNameText" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.playerNameText">playerNameText</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Text playerNameText</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Text</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_reticleToggle" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.reticleToggle">reticleToggle</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Toggle reticleToggle</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Toggle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_tooltipsToggle" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.tooltipsToggle">tooltipsToggle</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Toggle tooltipsToggle</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Toggle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_warningsPage" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.warningsPage">warningsPage</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GameObject warningsPage</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GameObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_Awake_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.Awake*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_Awake" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.Awake">Awake()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Awake()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="VRC.SDK3.ClientSim.ClientSimBehaviour.html#VRC_SDK3_ClientSim_ClientSimBehaviour_Awake">ClientSimBehaviour.Awake()</a></div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_ClampPlayerHeightSliderMaxValue_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.ClampPlayerHeightSliderMaxValue*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_ClampPlayerHeightSliderMaxValue" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.ClampPlayerHeightSliderMaxValue">ClampPlayerHeightSliderMaxValue()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ClampPlayerHeightSliderMaxValue()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_CloseMenu_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.CloseMenu*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_CloseMenu" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.CloseMenu">CloseMenu()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CloseMenu()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_DisplayInitialPageForPlayer_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.DisplayInitialPageForPlayer*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_DisplayInitialPageForPlayer" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.DisplayInitialPageForPlayer">DisplayInitialPageForPlayer()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void DisplayInitialPageForPlayer()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_Dispose_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.Dispose*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_Dispose" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_ExitPlaymode_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.ExitPlaymode*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_ExitPlaymode" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.ExitPlaymode">ExitPlaymode()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ExitPlaymode()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_GetDisplayedPage_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.GetDisplayedPage*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_GetDisplayedPage" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.GetDisplayedPage">GetDisplayedPage()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ClientSimMenu.ClientSimDisplayedPage GetDisplayedPage()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimMenu.ClientSimDisplayedPage.html">ClientSimMenu.ClientSimDisplayedPage</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_HandleInputMenuToggle_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.HandleInputMenuToggle*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_HandleInputMenuToggle_System_Boolean_HandType_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.HandleInputMenuToggle(System.Boolean,HandType)">HandleInputMenuToggle(Boolean, HandType)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void HandleInputMenuToggle(bool value, HandType hand)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">HandType</span></td>
+        <td><span class="parametername">hand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_Initialize_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.Initialize*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_Initialize_VRC_SDK3_ClientSim_IClientSimEventDispatcher_VRC_SDK3_ClientSim_IClientSimInput_VRC_SDK3_ClientSim_ClientSimSettings_VRC_SDK3_ClientSim_IClientSimSessionState_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.Initialize(VRC.SDK3.ClientSim.IClientSimEventDispatcher,VRC.SDK3.ClientSim.IClientSimInput,VRC.SDK3.ClientSim.ClientSimSettings,VRC.SDK3.ClientSim.IClientSimSessionState)">Initialize(IClientSimEventDispatcher, IClientSimInput, ClientSimSettings, IClientSimSessionState)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Initialize(IClientSimEventDispatcher eventDispatcher, IClientSimInput input, ClientSimSettings settings, IClientSimSessionState sessionState)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimEventDispatcher.html">IClientSimEventDispatcher</a></td>
+        <td><span class="parametername">eventDispatcher</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimInput.html">IClientSimInput</a></td>
+        <td><span class="parametername">input</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimSettings.html">ClientSimSettings</a></td>
+        <td><span class="parametername">settings</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimSessionState.html">IClientSimSessionState</a></td>
+        <td><span class="parametername">sessionState</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_OnDestroy_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.OnDestroy*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_OnDestroy" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.OnDestroy">OnDestroy()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnDestroy()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_OnMasterChange_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.OnMasterChange*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_OnMasterChange_VRC_SDK3_ClientSim_ClientSimOnNewMasterEvent_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.OnMasterChange(VRC.SDK3.ClientSim.ClientSimOnNewMasterEvent)">OnMasterChange(ClientSimOnNewMasterEvent)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnMasterChange(ClientSimOnNewMasterEvent masterEvent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimOnNewMasterEvent.html">ClientSimOnNewMasterEvent</a></td>
+        <td><span class="parametername">masterEvent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_OnPlayerJoined_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.OnPlayerJoined*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_OnPlayerJoined_VRC_SDK3_ClientSim_ClientSimOnPlayerJoinedEvent_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.OnPlayerJoined(VRC.SDK3.ClientSim.ClientSimOnPlayerJoinedEvent)">OnPlayerJoined(ClientSimOnPlayerJoinedEvent)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnPlayerJoined(ClientSimOnPlayerJoinedEvent joinEvent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimOnPlayerJoinedEvent.html">ClientSimOnPlayerJoinedEvent</a></td>
+        <td><span class="parametername">joinEvent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_OnPlayerMoved_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.OnPlayerMoved*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_OnPlayerMoved_VRC_SDK3_ClientSim_ClientSimOnPlayerMovedEvent_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.OnPlayerMoved(VRC.SDK3.ClientSim.ClientSimOnPlayerMovedEvent)">OnPlayerMoved(ClientSimOnPlayerMovedEvent)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnPlayerMoved(ClientSimOnPlayerMovedEvent movedEvent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimOnPlayerMovedEvent.html">ClientSimOnPlayerMovedEvent</a></td>
+        <td><span class="parametername">movedEvent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_OnReady_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.OnReady*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_OnReady_VRC_SDK3_ClientSim_ClientSimReadyEvent_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.OnReady(VRC.SDK3.ClientSim.ClientSimReadyEvent)">OnReady(ClientSimReadyEvent)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnReady(ClientSimReadyEvent readyEvent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimReadyEvent.html">ClientSimReadyEvent</a></td>
+        <td><span class="parametername">readyEvent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_OpenMenu_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.OpenMenu*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_OpenMenu" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.OpenMenu">OpenMenu()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OpenMenu()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_OpenSettings_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.OpenSettings*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_OpenSettings" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.OpenSettings">OpenSettings()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OpenSettings()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_Respawn_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.Respawn*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_Respawn" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.Respawn">Respawn()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Respawn()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_SaveSettings_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.SaveSettings*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_SaveSettings" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.SaveSettings">SaveSettings()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SaveSettings()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_SetDisplayedPage_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.SetDisplayedPage*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_SetDisplayedPage_VRC_SDK3_ClientSim_ClientSimMenu_ClientSimDisplayedPage_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.SetDisplayedPage(VRC.SDK3.ClientSim.ClientSimMenu.ClientSimDisplayedPage)">SetDisplayedPage(ClientSimMenu.ClientSimDisplayedPage)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetDisplayedPage(ClientSimMenu.ClientSimDisplayedPage page)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimMenu.ClientSimDisplayedPage.html">ClientSimMenu.ClientSimDisplayedPage</a></td>
+        <td><span class="parametername">page</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_SetUIOverlayMaterial_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.SetUIOverlayMaterial*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_SetUIOverlayMaterial" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.SetUIOverlayMaterial">SetUIOverlayMaterial()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetUIOverlayMaterial()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_SpawnRemotePlayer_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.SpawnRemotePlayer*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_SpawnRemotePlayer" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.SpawnRemotePlayer">SpawnRemotePlayer()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SpawnRemotePlayer()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_Start_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.Start*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_Start" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.Start">Start()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Start()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_ToggleMenu_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.ToggleMenu*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_ToggleMenu_System_Boolean_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.ToggleMenu(System.Boolean)">ToggleMenu(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ToggleMenu(bool isActive)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">isActive</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_Update_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.Update*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_Update" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.Update">Update()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Update()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_UpdateCanvasLocation_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.UpdateCanvasLocation*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_UpdateCanvasLocation" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.UpdateCanvasLocation">UpdateCanvasLocation()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void UpdateCanvasLocation()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_UpdateConsoleLogging_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.UpdateConsoleLogging*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_UpdateConsoleLogging_System_Boolean_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.UpdateConsoleLogging(System.Boolean)">UpdateConsoleLogging(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateConsoleLogging(bool consoleLogging)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">consoleLogging</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_UpdateInvertMouseLook_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.UpdateInvertMouseLook*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_UpdateInvertMouseLook_System_Boolean_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.UpdateInvertMouseLook(System.Boolean)">UpdateInvertMouseLook(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateInvertMouseLook(bool invertMouseLook)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">invertMouseLook</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_UpdatePlayerHeight_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.UpdatePlayerHeight*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_UpdatePlayerHeight_System_Single_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.UpdatePlayerHeight(System.Single)">UpdatePlayerHeight(Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdatePlayerHeight(float playerHeight)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">playerHeight</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_UpdateShowReticle_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.UpdateShowReticle*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_UpdateShowReticle_System_Boolean_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.UpdateShowReticle(System.Boolean)">UpdateShowReticle(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateShowReticle(bool showReticle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">showReticle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_UpdateShowTooltips_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.UpdateShowTooltips*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_UpdateShowTooltips_System_Boolean_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.UpdateShowTooltips(System.Boolean)">UpdateShowTooltips(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateShowTooltips(bool showTooltips)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">showTooltips</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_UpdateValuesFromSettings_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.UpdateValuesFromSettings*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_UpdateValuesFromSettings" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.UpdateValuesFromSettings">UpdateValuesFromSettings()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void UpdateValuesFromSettings()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimMenu_WarningAccepted_" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.WarningAccepted*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimMenu_WarningAccepted" data-uid="VRC.SDK3.ClientSim.ClientSimMenu.WarningAccepted">WarningAccepted()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WarningAccepted()</code></pre>
+  </div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">IDisposable</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

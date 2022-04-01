@@ -1,0 +1,582 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ClientSimUdonManager
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ClientSimUdonManager
+   ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager">
+  
+  
+  <h1 id="VRC_SDK3_ClientSim_ClientSimUdonManager" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager" class="text-break">Class ClientSimUdonManager
+  </h1>
+  <div class="markdown level0 summary"><p>System to hold all the current initialized Udon in the scene</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ClientSimUdonManager</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="VRC.SDK3.ClientSim.IClientSimUdonManager.html">IClientSimUdonManager</a></div>
+    <div><span class="xref">IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="VRC.SDK3.ClientSim.html">VRC.SDK3.ClientSim</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="VRC_SDK3_ClientSim_ClientSimUdonManager_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ClientSimUdonManager : IClientSimUdonManager</code></pre>
+  </div>
+  <h5 id="VRC_SDK3_ClientSim_ClientSimUdonManager_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Listens to Events:</p>
+<ul>
+<li>ClientSimOnPlayerJoinedEvent</li>
+<li>ClientSimOnPlayerLeftEvent</li>
+<li>ClientSimOnPlayerRespawnEvent</li>
+</ul>
+</div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimUdonManager__ctor_" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager.#ctor*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimUdonManager__ctor_VRC_SDK3_ClientSim_IClientSimEventDispatcher_VRC_SDK3_ClientSim_IClientSimSyncedObjectManager_VRC_SDK3_ClientSim_IClientSimUdonEventSender_" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager.#ctor(VRC.SDK3.ClientSim.IClientSimEventDispatcher,VRC.SDK3.ClientSim.IClientSimSyncedObjectManager,VRC.SDK3.ClientSim.IClientSimUdonEventSender)">ClientSimUdonManager(IClientSimEventDispatcher, IClientSimSyncedObjectManager, IClientSimUdonEventSender)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ClientSimUdonManager(IClientSimEventDispatcher eventDispatcher, IClientSimSyncedObjectManager syncedObjectManager, IClientSimUdonEventSender udonEventSender)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimEventDispatcher.html">IClientSimEventDispatcher</a></td>
+        <td><span class="parametername">eventDispatcher</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimSyncedObjectManager.html">IClientSimSyncedObjectManager</a></td>
+        <td><span class="parametername">syncedObjectManager</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimUdonEventSender.html">IClientSimUdonEventSender</a></td>
+        <td><span class="parametername">udonEventSender</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimUdonManager__eventDispatcher" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager._eventDispatcher">_eventDispatcher</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IClientSimEventDispatcher _eventDispatcher</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimEventDispatcher.html">IClientSimEventDispatcher</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimUdonManager__isReady" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager._isReady">_isReady</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool _isReady</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimUdonManager__syncedObjectManager" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager._syncedObjectManager">_syncedObjectManager</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IClientSimSyncedObjectManager _syncedObjectManager</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimSyncedObjectManager.html">IClientSimSyncedObjectManager</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimUdonManager__udonBehaviours" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager._udonBehaviours">_udonBehaviours</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">readonly ClientSimObjectCollection&lt;UdonBehaviour&gt; _udonBehaviours</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimObjectCollection-1.html">ClientSimObjectCollection</a>&lt;<span class="xref">UdonBehaviour</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimUdonManager__udonEventSender" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager._udonEventSender">_udonEventSender</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IClientSimUdonEventSender _udonEventSender</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimUdonEventSender.html">IClientSimUdonEventSender</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimUdonManager_AddUdonBehaviour_" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager.AddUdonBehaviour*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimUdonManager_AddUdonBehaviour_UdonBehaviour_" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager.AddUdonBehaviour(UdonBehaviour)">AddUdonBehaviour(UdonBehaviour)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddUdonBehaviour(UdonBehaviour udonBehaviour)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UdonBehaviour</span></td>
+        <td><span class="parametername">udonBehaviour</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimUdonManager_Dispose_" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager.Dispose*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimUdonManager_Dispose" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimUdonManager_Finalize_" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager.Finalize*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimUdonManager_Finalize" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager.Finalize">Finalize()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void Finalize()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimUdonManager_InitUdon_" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager.InitUdon*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimUdonManager_InitUdon_UdonBehaviour_IUdonProgram_" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager.InitUdon(UdonBehaviour,IUdonProgram)">InitUdon(UdonBehaviour, IUdonProgram)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void InitUdon(UdonBehaviour behaviour, IUdonProgram program)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UdonBehaviour</span></td>
+        <td><span class="parametername">behaviour</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IUdonProgram</span></td>
+        <td><span class="parametername">program</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimUdonManager_OnClientSimReady_" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager.OnClientSimReady*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimUdonManager_OnClientSimReady" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager.OnClientSimReady">OnClientSimReady()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator OnClientSimReady()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerator</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimUdonManager_OnPlayerJoined_" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager.OnPlayerJoined*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimUdonManager_OnPlayerJoined_VRC_SDK3_ClientSim_ClientSimOnPlayerJoinedEvent_" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager.OnPlayerJoined(VRC.SDK3.ClientSim.ClientSimOnPlayerJoinedEvent)">OnPlayerJoined(ClientSimOnPlayerJoinedEvent)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnPlayerJoined(ClientSimOnPlayerJoinedEvent joinEvent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimOnPlayerJoinedEvent.html">ClientSimOnPlayerJoinedEvent</a></td>
+        <td><span class="parametername">joinEvent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimUdonManager_OnPlayerLeft_" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager.OnPlayerLeft*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimUdonManager_OnPlayerLeft_VRC_SDK3_ClientSim_ClientSimOnPlayerLeftEvent_" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager.OnPlayerLeft(VRC.SDK3.ClientSim.ClientSimOnPlayerLeftEvent)">OnPlayerLeft(ClientSimOnPlayerLeftEvent)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnPlayerLeft(ClientSimOnPlayerLeftEvent leftEvent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimOnPlayerLeftEvent.html">ClientSimOnPlayerLeftEvent</a></td>
+        <td><span class="parametername">leftEvent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimUdonManager_OnPlayerRespawn_" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager.OnPlayerRespawn*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimUdonManager_OnPlayerRespawn_VRC_SDK3_ClientSim_ClientSimOnPlayerRespawnEvent_" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager.OnPlayerRespawn(VRC.SDK3.ClientSim.ClientSimOnPlayerRespawnEvent)">OnPlayerRespawn(ClientSimOnPlayerRespawnEvent)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnPlayerRespawn(ClientSimOnPlayerRespawnEvent respawnEvent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimOnPlayerRespawnEvent.html">ClientSimOnPlayerRespawnEvent</a></td>
+        <td><span class="parametername">respawnEvent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimUdonManager_RemoveUdonBehaviour_" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager.RemoveUdonBehaviour*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimUdonManager_RemoveUdonBehaviour_UdonBehaviour_" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager.RemoveUdonBehaviour(UdonBehaviour)">RemoveUdonBehaviour(UdonBehaviour)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveUdonBehaviour(UdonBehaviour udonBehaviour)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UdonBehaviour</span></td>
+        <td><span class="parametername">udonBehaviour</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimUdonManager_Subscribe_" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager.Subscribe*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimUdonManager_Subscribe" data-uid="VRC.SDK3.ClientSim.ClientSimUdonManager.Subscribe">Subscribe()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Subscribe()</code></pre>
+  </div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="VRC.SDK3.ClientSim.IClientSimUdonManager.html">IClientSimUdonManager</a>
+  </div>
+  <div>
+      <span class="xref">IDisposable</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
