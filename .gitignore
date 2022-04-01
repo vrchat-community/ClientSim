@@ -1,2 +1,10 @@
 
 .idea/
+
+Editor/obj/
+
+.automation/Build/ClientSimBuild/obj/
+
+.automation/Build/ClientSimBuild/bin/
+
+.automation/Build/.nuke/temp/

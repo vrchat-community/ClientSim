@@ -1,39 +1,41 @@
-using System;
-using System.Linq;
 using Nuke.Common;
-using Nuke.Common.CI;
-using Nuke.Common.Execution;
 using Nuke.Common.IO;
-using Nuke.Common.ProjectModel;
-using Nuke.Common.Tooling;
-using Nuke.Common.Utilities.Collections;
-using static Nuke.Common.EnvironmentInfo;
-using static Nuke.Common.IO.FileSystemTasks;
-using static Nuke.Common.IO.PathConstruction;
+using Nuke.Common.Tools.DocFX;
 
 class Build : NukeBuild
 {
-    public static int Main () => Execute<Build>(x => x.Compile);
+    AbsolutePath DocFxPath = RootDirectory.Parent / "Docs";
+    AbsolutePath DocFxConfigPath => DocFxPath / "docfx.json";
+    AbsolutePath DocFXServePath => DocFxPath / "_site";
+
+    public static int Main () => Execute<Build>(x => x.DocFxBuild);
 
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
 
-    Target Clean => _ => _
-        .Before(Restore)
+    Target DocFxServe => _ => _
+        .DependsOn(DocFxBuild)
         .Executes(() =>
         {
+            DocFXTasks.DocFXServe(s => s
+                .SetFolder(DocFXServePath));
         });
 
-    Target Restore => _ => _
+    Target DocFxBuild => _ => _
+        .DependsOn(DocFxMetadata)
         .Executes(() =>
         {
+            DocFXTasks.DocFXBuild(s => s
+                .SetConfigFile(DocFxConfigPath)
+                .SetDisableGitFeatures(true)
+            );
         });
-
-    Target Compile => _ => _
-        .DependsOn(Restore)
+    
+    Target DocFxMetadata => _ => _
         .Executes(() =>
         {
-            Serilog.Log.Information("COMPILE");
+            Assert.FileExists(DocFxConfigPath);
+            DocFXTasks.DocFX($"metadata {DocFxConfigPath}", DocFxPath);
         });
 
 }
