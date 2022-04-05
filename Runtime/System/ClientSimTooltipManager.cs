@@ -73,6 +73,10 @@ namespace VRC.SDK3.ClientSim
 
         private void LateUpdate()
         {
+            if (_trackingProvider == null)
+            {
+                return;
+            }
             Transform playerHead = _trackingProvider.GetTrackingTransform(VRCPlayerApi.TrackingDataType.Head);
             Vector3 playerPos = playerHead.position;
             Vector3 playerUp = playerHead.up;

@@ -200,10 +200,23 @@ namespace VRC.SDK3.ClientSim
             return _characterController.isGrounded;
         }
 
-        private void Respawn()
+        public void Respawn()
         {
             Teleport(_sceneManager.GetSpawnPoint(false), false);
             _eventDispatcher.SendEvent(new ClientSimOnPlayerRespawnEvent { player = _playerApi.Player });
+        }
+
+        public void Respawn(int index)
+        {
+            
+            Transform spawnPoint = _sceneManager.GetSpawnPoint(index);
+            if (spawnPoint == null)
+            {
+                this.LogError($"Spawn {index} not found. Spawning at spawn 0");
+                spawnPoint = _sceneManager.GetSpawnPoint(0);
+            }
+            Teleport(spawnPoint, false);
+            _eventDispatcher.SendEvent(new ClientSimOnPlayerRespawnEvent { player =  _playerApi.Player });
         }
 
         public void Teleport(Transform point, bool fromPlaySpace)

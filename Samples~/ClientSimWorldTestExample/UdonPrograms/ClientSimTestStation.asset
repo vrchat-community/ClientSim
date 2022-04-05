@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: ClientSimTestStation
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 5cd1744c02ae0c145b9d1271662e29ab,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 54bc1dbbddf26804fa787ab9c2239963,
     type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export Menu\r\n    \r\n    __instance_0:
     %VRCSDKBaseVRCPlayerApi, null\r\n    __Boolean_0: %SystemBoolean, null\r\n   
