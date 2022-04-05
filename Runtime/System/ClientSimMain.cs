@@ -372,8 +372,11 @@ namespace VRC.SDK3.ClientSim
             VRCStation.exitStationDelegate += ClientSimStationHelper.ExitStation;
             VRCPlayerApi._UseAttachedStation += ClientSimStationHelper.UseAttachedStation;
 
-            VRC_UiShape.GetEventCamera += _player.GetCameraProvider().GetCamera;
-            
+            if (_player != null)
+            {
+                VRC_UiShape.GetEventCamera += _player.GetCameraProvider().GetCamera;
+            }
+
             VRC_Pickup.OnAwake += ClientSimPickupHelper.InitializePickup;
             VRC_Pickup.ForceDrop += ClientSimPickupHelper.ForceDrop;
             VRC_Pickup._GetCurrentPlayer += ClientSimPickupHelper.GetCurrentPlayer;
