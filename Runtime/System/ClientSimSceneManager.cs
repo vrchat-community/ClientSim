@@ -84,12 +84,12 @@ namespace VRC.SDK3.ClientSim
         {
             if (!HasSceneDescriptor())
             {
-                throw new ClientSimException("Cannot get spawn point when there is no scene descriptor.");
+                throw new ClientSimException("Trying to get a Spawn Point but there is no Scene Descriptor. Add a SceneDescriptor or the VRCWorldPrefab to your scene.");
             }
             
             if (_descriptor.spawns.Length == 0 || _descriptor.spawns[0] == null)
             {
-                throw new ClientSimException("Cannot get spawn point when descriptor does not have a spawn set.");
+                throw new ClientSimException("Trying to get a Spawn Point but the Scene Descriptor doesn't have one. Add a Transform to the 'Spawns' array in the VRC Scene Descriptor component.");
             }
 
             // Remote players always restart the list, so for now, only first spawn
@@ -113,6 +113,23 @@ namespace VRC.SDK3.ClientSim
             
             // Fallback to first spawn point
             return _descriptor.spawns[0];
+        }
+
+        public Transform GetSpawnPoint(int index)
+        {
+            if (!HasSceneDescriptor())
+            {
+                throw new ClientSimException("Cannot get spawn point when there is no scene descriptor.");
+            }
+            
+            if (index < 0 || index >= _descriptor.spawns.Length || _descriptor.spawns[index] == null)
+            {
+                this.LogWarning($"Using spawn point 0 instead of {index}, which is invalid.");
+                index = 0;
+            }
+            
+            // Fallback to first spawn point
+            return _descriptor.spawns[index];
         }
         
         private void CopyCameraValues(Camera refCamera, Camera camera)

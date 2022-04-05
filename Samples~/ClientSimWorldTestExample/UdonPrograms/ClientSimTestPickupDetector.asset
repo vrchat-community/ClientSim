@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: ClientSimTestPickupDetector
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: ddbcd1e990ba6a845b41e4082babd76e,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 814cee1586beadc47b789d2082d40455,
     type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export Pickup\r\n    .export OnDetectUdon\r\n   
     .export OnDetectEvent\r\n    \r\n    __Boolean_0: %SystemBoolean, null\r\n   
