@@ -1,7 +1,0 @@
-- name: Articles
-  href: articles/
-  homepage: articles/index.md
-  
-- name: Classes
-  href: classes/
-  homepage: classes/index.md

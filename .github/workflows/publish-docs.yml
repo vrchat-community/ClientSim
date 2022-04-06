@@ -9,18 +9,21 @@ jobs:
       - uses: actions/checkout@v3
         with:
           lfs: 'true'
+          
       - name: Cache .nuke/temp, ~/.nuget/packages
         uses: actions/cache@v2
         with:
           path: |
-            .automation/Build/.nuke/temp
+            .github/.nuke/temp
             ~/.nuget/packages
           key: ${{ runner.os }}-${{ hashFiles('**/global.json', '**/*.csproj') }}
+          
       - name: Build Docs
-        working-directory: .automation/Build
+        working-directory: .github
         run: ./build.cmd DocFxBuild
+        
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .automation/Docs/_site
+          publish_dir: Docs/Publish

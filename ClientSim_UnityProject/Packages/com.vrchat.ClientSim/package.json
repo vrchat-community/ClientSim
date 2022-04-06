@@ -1,0 +1,36 @@
+{
+	"name" : "com.vrchat.clientsim",
+	"displayName" : "VRChat Client Simulator",
+	"version" : "1.1.0",
+	"unity" : "2019.4",
+	"description" : "VRChat Client Simulator for testing SDK3 worlds in Unity.",
+	"author" : {
+		"name" : "VRChat",
+		"email" : "developer@vrchat.com",
+		"url" : "https://github.com/vrchat-community/ClientSim"
+	},
+	"dependencies" : {
+		"com.unity.xr.oculus.standalone" : "2.38.4",
+		"com.unity.inputsystem" : "1.0.2"
+	},
+	"gitDependencies" : {
+		"com.vrchat.base" : "https://github.com/vrchat/packages.git?path=/packages/com.vrchat.base#3.0.1",
+		"com.vrchat.worlds" : "https://github.com/vrchat/packages.git?path=/packages/com.vrchat.worlds#3.0.1"
+	},
+	"url" : "https://github.com/vrchat-community/ClientSim.git#1.1.0",
+	"samples" : [
+		{
+			"displayName" : "ClientSimWorldTestExample",
+			"description" : "An example of a world test using the Test Framework included in ClientSim. Automate interactions in your world and verify the results. Currently requires knowledge of C# and Unity Testing.",
+			"path" : "Samples~/ClientSimWorldTestExample"
+		},
+		{
+			"displayName" : "ClientSimIssue3RespawnTest",
+			"description" : "A  world test to reproduce the ClientSim Respawn issue.",
+			"path" : "Samples~/ClientSimIssue3RespawnTest"
+		}
+	],
+	"legacyFolders" : {
+		"Assets\\CyanEmu" : "91b9a83a129504741a363d9a324de958"
+	}
+}

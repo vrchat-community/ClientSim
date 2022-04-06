@@ -1,0 +1,11 @@
+- name: Tutorials
+  href: tutorials/
+  homepage: tutorials/index.md
+  
+- name: Systems
+  href: systems/
+  homepage: systems/index.md
+  
+- name: Classes
+  href: classes/
+  homepage: classes/index.md
