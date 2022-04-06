@@ -1,0 +1,1122 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ClientSimTrackingProviderBase
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ClientSimTrackingProviderBase
+   ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase">
+  
+  
+  <h1 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase" class="text-break">Class ClientSimTrackingProviderBase
+  </h1>
+  <div class="markdown level0 summary"><p>System responsible for providing tracking data to the rest of ClientSim.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="VRC.SDK3.ClientSim.ClientSimBehaviour.html">ClientSimBehaviour</a></div>
+    <div class="level2"><span class="xref">ClientSimTrackingProviderBase</span></div>
+      <div class="level3"><a class="xref" href="VRC.SDK3.ClientSim.ClientSimDesktopTrackingProvider.html">ClientSimDesktopTrackingProvider</a></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="VRC.SDK3.ClientSim.IClientSimTrackingProvider.html">IClientSimTrackingProvider</a></div>
+    <div><a class="xref" href="VRC.SDK3.ClientSim.IClientSimPlayerCameraProvider.html">IClientSimPlayerCameraProvider</a></div>
+    <div><span class="xref">IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="VRC.SDK3.ClientSim.ClientSimBehaviour.html#VRC_SDK3_ClientSim_ClientSimBehaviour_Awake">ClientSimBehaviour.Awake()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="VRC.SDK3.ClientSim.html">VRC.SDK3.ClientSim</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class ClientSimTrackingProviderBase : ClientSimBehaviour, IClientSimTrackingProvider, IClientSimPlayerCameraProvider</code></pre>
+  </div>
+  <h5 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Currently only used for DesktopTracking, but can be extended for VR and even fake VR implementations.
+Sends Events:</p>
+<ul>
+<li>ClientSimOnPlayerHeightUpdateEvent</li>
+<li>ClientSimOnTrackingScaleUpdateEvent
+Listens to Events:</li>
+<li>ClientSimOnPlayerHeightUpdateEvent</li>
+</ul>
+</div>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase__trackingScale" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase._trackingScale">_trackingScale</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float _trackingScale</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_AVATAR_HEIGHT" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.AVATAR_HEIGHT">AVATAR_HEIGHT</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const float AVATAR_HEIGHT = 1.9F</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_CROUCHING_HEIGHT" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.CROUCHING_HEIGHT">CROUCHING_HEIGHT</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected const float CROUCHING_HEIGHT = 1F</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_eventDispatcher" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.eventDispatcher">eventDispatcher</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected IClientSimEventDispatcher eventDispatcher</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimEventDispatcher.html">IClientSimEventDispatcher</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_head" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.head">head</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Transform head</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Transform</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_input" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.input">input</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected IClientSimInput input</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimInput.html">IClientSimInput</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_leftHand" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.leftHand">leftHand</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Transform leftHand</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Transform</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_MAXIMUM_TRACKING_SCALE" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.MAXIMUM_TRACKING_SCALE">MAXIMUM_TRACKING_SCALE</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">const float MAXIMUM_TRACKING_SCALE = 50F</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_MINIMUM_TRACKING_SCALE" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.MINIMUM_TRACKING_SCALE">MINIMUM_TRACKING_SCALE</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">const float MINIMUM_TRACKING_SCALE = 0.1F</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_playerAudioListener" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.playerAudioListener">playerAudioListener</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Transform playerAudioListener</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Transform</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_playerCamera" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.playerCamera">playerCamera</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Camera playerCamera</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Camera</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_playspace" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.playspace">playspace</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Transform playspace</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Transform</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_PRONE_HEIGHT" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.PRONE_HEIGHT">PRONE_HEIGHT</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected const float PRONE_HEIGHT = 0.5F</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_rightHand" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.rightHand">rightHand</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Transform rightHand</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Transform</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_settings" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.settings">settings</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ClientSimSettings settings</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimSettings.html">ClientSimSettings</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_SITTING_HEIGHT" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.SITTING_HEIGHT">SITTING_HEIGHT</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected const float SITTING_HEIGHT = 1.2F</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_STANDING_HEIGHT" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.STANDING_HEIGHT">STANDING_HEIGHT</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected const float STANDING_HEIGHT = 1.75F</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_CalculatePlayerHeightFromTrackingScale_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.CalculatePlayerHeightFromTrackingScale*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_CalculatePlayerHeightFromTrackingScale_System_Single_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.CalculatePlayerHeightFromTrackingScale(System.Single)">CalculatePlayerHeightFromTrackingScale(Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float CalculatePlayerHeightFromTrackingScale(float trackingScale)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">trackingScale</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_CalculateTrackingScaleFromPlayerHeight_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.CalculateTrackingScaleFromPlayerHeight*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_CalculateTrackingScaleFromPlayerHeight_System_Single_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.CalculateTrackingScaleFromPlayerHeight(System.Single)">CalculateTrackingScaleFromPlayerHeight(Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float CalculateTrackingScaleFromPlayerHeight(float playerHeight)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">playerHeight</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_Dispose_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.Dispose*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_Dispose" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_GetCamera_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.GetCamera*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_GetCamera" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.GetCamera">GetCamera()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Camera GetCamera()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Camera</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_GetHandRaycastTransform_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.GetHandRaycastTransform*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_GetHandRaycastTransform_HandType_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.GetHandRaycastTransform(HandType)">GetHandRaycastTransform(HandType)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract Transform GetHandRaycastTransform(HandType handType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">HandType</span></td>
+        <td><span class="parametername">handType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Transform</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_GetPlayerStance_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.GetPlayerStance*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_GetPlayerStance" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.GetPlayerStance">GetPlayerStance()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ClientSimPlayerStanceEnum GetPlayerStance()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimPlayerStanceEnum.html">ClientSimPlayerStanceEnum</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_GetTrackingData_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.GetTrackingData*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_GetTrackingData_VRCPlayerApi_TrackingDataType_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.GetTrackingData(VRCPlayerApi.TrackingDataType)">GetTrackingData(VRCPlayerApi.TrackingDataType)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual VRCPlayerApi.TrackingData GetTrackingData(VRCPlayerApi.TrackingDataType trackingDataType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">VRCPlayerApi.TrackingDataType</span></td>
+        <td><span class="parametername">trackingDataType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">VRCPlayerApi.TrackingData</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_GetTrackingScale_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.GetTrackingScale*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_GetTrackingScale" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.GetTrackingScale">GetTrackingScale()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float GetTrackingScale()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_GetTrackingTransform_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.GetTrackingTransform*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_GetTrackingTransform_VRCPlayerApi_TrackingDataType_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.GetTrackingTransform(VRCPlayerApi.TrackingDataType)">GetTrackingTransform(VRCPlayerApi.TrackingDataType)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Transform GetTrackingTransform(VRCPlayerApi.TrackingDataType trackingDataType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">VRCPlayerApi.TrackingDataType</span></td>
+        <td><span class="parametername">trackingDataType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Transform</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_Initialize_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.Initialize*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_Initialize_VRC_SDK3_ClientSim_IClientSimEventDispatcher_VRC_SDK3_ClientSim_IClientSimInput_VRC_SDK3_ClientSim_ClientSimSettings_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.Initialize(VRC.SDK3.ClientSim.IClientSimEventDispatcher,VRC.SDK3.ClientSim.IClientSimInput,VRC.SDK3.ClientSim.ClientSimSettings)">Initialize(IClientSimEventDispatcher, IClientSimInput, ClientSimSettings)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Initialize(IClientSimEventDispatcher eventDispatcher, IClientSimInput input, ClientSimSettings settings)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimEventDispatcher.html">IClientSimEventDispatcher</a></td>
+        <td><span class="parametername">eventDispatcher</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimInput.html">IClientSimInput</a></td>
+        <td><span class="parametername">input</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimSettings.html">ClientSimSettings</a></td>
+        <td><span class="parametername">settings</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_IsVR_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.IsVR*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_IsVR" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.IsVR">IsVR()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract bool IsVR()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_LookTowardsPoint_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.LookTowardsPoint*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_LookTowardsPoint_Vector3_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.LookTowardsPoint(Vector3)">LookTowardsPoint(Vector3)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract void LookTowardsPoint(Vector3 point)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td><span class="parametername">point</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_OnDestroy_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.OnDestroy*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_OnDestroy" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.OnDestroy">OnDestroy()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnDestroy()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_OnPlayerHeightUpdate_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.OnPlayerHeightUpdate*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_OnPlayerHeightUpdate_VRC_SDK3_ClientSim_ClientSimOnPlayerHeightUpdateEvent_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.OnPlayerHeightUpdate(VRC.SDK3.ClientSim.ClientSimOnPlayerHeightUpdateEvent)">OnPlayerHeightUpdate(ClientSimOnPlayerHeightUpdateEvent)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnPlayerHeightUpdate(ClientSimOnPlayerHeightUpdateEvent heightEvent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimOnPlayerHeightUpdateEvent.html">ClientSimOnPlayerHeightUpdateEvent</a></td>
+        <td><span class="parametername">heightEvent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_SetTrackingScale_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.SetTrackingScale*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_SetTrackingScale_System_Single_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.SetTrackingScale(System.Single)">SetTrackingScale(Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetTrackingScale(float scale)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_Start_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.Start*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_Start" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.Start">Start()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void Start()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_SubscribeEvents_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.SubscribeEvents*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_SubscribeEvents" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.SubscribeEvents">SubscribeEvents()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void SubscribeEvents()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_SubscribeInputEvents_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.SubscribeInputEvents*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_SubscribeInputEvents" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.SubscribeInputEvents">SubscribeInputEvents()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void SubscribeInputEvents()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_SupportsPickupAutoHold_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.SupportsPickupAutoHold*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_SupportsPickupAutoHold" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.SupportsPickupAutoHold">SupportsPickupAutoHold()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract bool SupportsPickupAutoHold()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_UnsubscribeEvents_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.UnsubscribeEvents*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_UnsubscribeEvents" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.UnsubscribeEvents">UnsubscribeEvents()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void UnsubscribeEvents()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_UnsubscribeInputEvents_" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.UnsubscribeInputEvents*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimTrackingProviderBase_UnsubscribeInputEvents" data-uid="VRC.SDK3.ClientSim.ClientSimTrackingProviderBase.UnsubscribeInputEvents">UnsubscribeInputEvents()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void UnsubscribeInputEvents()</code></pre>
+  </div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="VRC.SDK3.ClientSim.IClientSimTrackingProvider.html">IClientSimTrackingProvider</a>
+  </div>
+  <div>
+      <a class="xref" href="VRC.SDK3.ClientSim.IClientSimPlayerCameraProvider.html">IClientSimPlayerCameraProvider</a>
+  </div>
+  <div>
+      <span class="xref">IDisposable</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

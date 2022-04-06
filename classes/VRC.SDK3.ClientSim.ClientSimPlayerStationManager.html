@@ -1,0 +1,624 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ClientSimPlayerStationManager
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ClientSimPlayerStationManager
+   ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager">
+  
+  
+  <h1 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager" class="text-break">Class ClientSimPlayerStationManager
+  </h1>
+  <div class="markdown level0 summary"><p>This system is responsible for the player entering and exiting stations as well as repositioning the player to the station at the end of frame.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="VRC.SDK3.ClientSim.ClientSimBehaviour.html">ClientSimBehaviour</a></div>
+    <div class="level2"><span class="xref">ClientSimPlayerStationManager</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="VRC.SDK3.ClientSim.IClientSimPlayerStationManager.html">IClientSimPlayerStationManager</a></div>
+    <div><span class="xref">IDisposable</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="VRC.SDK3.ClientSim.html">VRC.SDK3.ClientSim</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ClientSimPlayerStationManager : ClientSimBehaviour, IClientSimPlayerStationManager</code></pre>
+  </div>
+  <h5 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Sends Events:</p>
+<ul>
+<li>ClientSimOnPlayerEnteredStationEvent</li>
+<li>ClientSimOnPlayerExitedStationEvent
+Listens to Events:</li>
+<li>ClientSimOnPlayerTeleportedEvent</li>
+</ul>
+</div>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager__currentStation" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager._currentStation">_currentStation</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IClientSimStation _currentStation</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimStation.html">IClientSimStation</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager__eventDispatcher" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager._eventDispatcher">_eventDispatcher</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IClientSimEventDispatcher _eventDispatcher</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimEventDispatcher.html">IClientSimEventDispatcher</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager__playerApiProvider" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager._playerApiProvider">_playerApiProvider</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IClientSimPlayerApiProvider _playerApiProvider</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimPlayerApiProvider.html">IClientSimPlayerApiProvider</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager__playerController" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager._playerController">_playerController</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ClientSimPlayerController _playerController</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimPlayerController.html">ClientSimPlayerController</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_Awake_" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.Awake*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_Awake" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.Awake">Awake()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Awake()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="VRC.SDK3.ClientSim.ClientSimBehaviour.html#VRC_SDK3_ClientSim_ClientSimBehaviour_Awake">ClientSimBehaviour.Awake()</a></div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_CanPlayerMove_" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.CanPlayerMove*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_CanPlayerMove_System_Single_" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.CanPlayerMove(System.Single)">CanPlayerMove(Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool CanPlayerMove(float moveValue)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">moveValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_CanPlayerMoveWhileSeated_" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.CanPlayerMoveWhileSeated*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_CanPlayerMoveWhileSeated_System_Single_" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.CanPlayerMoveWhileSeated(System.Single)">CanPlayerMoveWhileSeated(Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool CanPlayerMoveWhileSeated(float speed)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">speed</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_Dispose_" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.Dispose*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_Dispose" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_EnterStation_" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.EnterStation*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_EnterStation_VRC_SDK3_ClientSim_IClientSimStation_" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.EnterStation(VRC.SDK3.ClientSim.IClientSimStation)">EnterStation(IClientSimStation)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EnterStation(IClientSimStation station)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimStation.html">IClientSimStation</a></td>
+        <td><span class="parametername">station</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_ExitStation_" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.ExitStation*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_ExitStation_VRC_SDK3_ClientSim_IClientSimStation_System_Boolean_" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.ExitStation(VRC.SDK3.ClientSim.IClientSimStation,System.Boolean)">ExitStation(IClientSimStation, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ExitStation(IClientSimStation station, bool forcedExit = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimStation.html">IClientSimStation</a></td>
+        <td><span class="parametername">station</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">forcedExit</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_FixedUpdate_" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.FixedUpdate*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_FixedUpdate" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.FixedUpdate">FixedUpdate()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void FixedUpdate()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_GetCurrentStation_" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.GetCurrentStation*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_GetCurrentStation" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.GetCurrentStation">GetCurrentStation()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IClientSimStation GetCurrentStation()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimStation.html">IClientSimStation</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_Initialize_" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.Initialize*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_Initialize_VRC_SDK3_ClientSim_IClientSimEventDispatcher_VRC_SDK3_ClientSim_IClientSimPlayerApiProvider_" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.Initialize(VRC.SDK3.ClientSim.IClientSimEventDispatcher,VRC.SDK3.ClientSim.IClientSimPlayerApiProvider)">Initialize(IClientSimEventDispatcher, IClientSimPlayerApiProvider)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Initialize(IClientSimEventDispatcher eventDispatcher, IClientSimPlayerApiProvider playerApiProvider)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimEventDispatcher.html">IClientSimEventDispatcher</a></td>
+        <td><span class="parametername">eventDispatcher</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.IClientSimPlayerApiProvider.html">IClientSimPlayerApiProvider</a></td>
+        <td><span class="parametername">playerApiProvider</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_InStation_" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.InStation*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_InStation" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.InStation">InStation()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool InStation()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_IsLockedInStation_" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.IsLockedInStation*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_IsLockedInStation" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.IsLockedInStation">IsLockedInStation()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsLockedInStation()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_LateUpdate_" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.LateUpdate*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_LateUpdate" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.LateUpdate">LateUpdate()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LateUpdate()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_OnDestroy_" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.OnDestroy*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_OnDestroy" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.OnDestroy">OnDestroy()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnDestroy()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_OnPlayerTeleported_" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.OnPlayerTeleported*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_OnPlayerTeleported_VRC_SDK3_ClientSim_ClientSimOnPlayerTeleportedEvent_" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.OnPlayerTeleported(VRC.SDK3.ClientSim.ClientSimOnPlayerTeleportedEvent)">OnPlayerTeleported(ClientSimOnPlayerTeleportedEvent)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnPlayerTeleported(ClientSimOnPlayerTeleportedEvent teleportEvent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRC.SDK3.ClientSim.ClientSimOnPlayerTeleportedEvent.html">ClientSimOnPlayerTeleportedEvent</a></td>
+        <td><span class="parametername">teleportEvent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_Update_" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.Update*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_Update" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.Update">Update()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Update()</code></pre>
+  </div>
+  
+  
+  <a id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_UpdateStationPosition_" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.UpdateStationPosition*"></a>
+  <h4 id="VRC_SDK3_ClientSim_ClientSimPlayerStationManager_UpdateStationPosition" data-uid="VRC.SDK3.ClientSim.ClientSimPlayerStationManager.UpdateStationPosition">UpdateStationPosition()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void UpdateStationPosition()</code></pre>
+  </div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="VRC.SDK3.ClientSim.IClientSimPlayerStationManager.html">IClientSimPlayerStationManager</a>
+  </div>
+  <div>
+      <span class="xref">IDisposable</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

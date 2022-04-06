@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Client Sim Menu </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Client Sim Menu ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="menu">
+<h1 id="client-sim-menu">Client Sim Menu</h1>
+
+<p>The ClientSimMenu has four pages that can be displayed depending on the situation. The menu is now positioned in world space instead of being an overlay to the camera. It will render on top of everything to ensure players can use the menu.</p>
+<h2 id="warning-page">Warning Page</h2>
+<p><img src="../../images/warning.png" alt="Warning"></p>
+<p>The Warning page will be displayed every time ClientSim starts. This page informs the user that ClientSim is not the same as VRChat, and there will be differences. It only has one button, which the user must press to dismiss the page and close the menu.</p>
+<h2 id="pause-page">Pause Page</h2>
+<p><img src="../../images/pause.png" alt="Warning"></p>
+<p>The Pause page is displayed whenever the user opens the menu after accepting the Warning page. This page has three sections: Actions, Player Info, and Settings.</p>
+<h2 id="actions">Actions</h2>
+<p>The actions section contains four buttons:</p>
+<ol>
+<li>Close Menu - Close the menu and allow player movement</li>
+<li>Respawn - Close the menu and teleport the player to the spawn point</li>
+<li>Settings Window - Open the ClientSim <a class="xref" href="../editor-systems/settings-window.html">Settings Window</a></li>
+<li>Exit Playmode - Exit Play mode and go back to Edit mode.</li>
+</ol>
+<h2 id="player-info">Player Info</h2>
+<p>The Player Info section contains info regarding the local player.</p>
+<ol>
+<li>Player Name</li>
+<li>Player ID</li>
+<li>Is the local player the master</li>
+<li>Is the local player the instance owner</li>
+<li>A button to spawn remote players for testing</li>
+</ol>
+<h2 id="settings">Settings</h2>
+<p>The Settings section provides options to change the current ClientSim Runtime Settings. Changing these will save the values even after Playmode ends.</p>
+<ul>
+<li><strong>Show Tooltips</strong> - Toggle the display of interaction tooltips.</li>
+<li><strong>Desktop Reticle</strong> - Toggle the desktop reticle in the center of the screen. This does not disable the UI pointer if hovering over a UI interactive object.</li>
+<li><strong>Invert Mouse Look</strong> - Toggle whether the mouse Y should be inverted.</li>
+<li><strong>Console Logging</strong> - Toggle whether debug information should be logged to the console.</li>
+<li><strong>Player Height</strong> - A slider to set the player’s height. Default value is 1.9 Unity units tall. The slider is limited between 0.2 and 4 units. If the value in the ClientSim Unity Settings Window is set, then the height can be overridden up to 80 units. Toggling the menu will clamp the max value to keep the slider usable without exiting playmode. Note that PlayerHeight is different from TrackingScale, although the values are related.</li>
+</ul>
+<h2 id="delay-start-page">Delay Start Page</h2>
+<p><img src="../../images/delay.png" alt="Delay"></p>
+<p>The Delay Start page is displayed whenever the <a class="xref" href="settings.html">ClientSim Settings</a> has a non zero value for how long ClientSim should be delayed before starting. This page will dismiss automatically when ClientSim starts. If the player controller was spawned, the Warning page will then be displayed. The user cannot close out of this page and must wait the duration or exit playmode.</p>
+<h2 id="invalid-settings-page">Invalid Settings Page</h2>
+<p><img src="../../images/invalid-settings.png" alt="Invalid Settings"></p>
+<p>The Invalid Settings page is displayed when the user has Unity Project Settings that are not set up to use ClientSim. This can happen when ClientSim has just imported, or if the user modifies a setting that ClientSim relies on. When this is displayed, the <a class="xref" href="../editor-systems/settings-window.html">Settings Window</a> is forced to be displayed so that users can click the buttons needed to modify project settings. In the case the player does not have the correct Unity Input settings, the buttons on the menu will do nothing. There is no way to get past this page except to exit playmode and correct the invalid settings.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
