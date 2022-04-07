@@ -26,7 +26,7 @@ The VRChat Client Simulator, or ClientSim for short, is a tool that enables you 
 - In your project, open the Unity Package Manager, click the + button and choose 'Add package from git URL...'.
   - Put in `https://github.com/vrchat/packages.git?path=/packages/com.vrchat.base#vcc`. Then wait as the package imports or press Ctrl+R to refresh if you have auto-refresh turned off.
   - Click the + button again and add this git url: `https://github.com/vrchat/packages.git?path=/packages/com.vrchat.worlds#vcc`
-  - Press the + button one last time and add this url: `https://github.com/vrchat-community/ClientSim.git?path=/ClientSim_UnityProject/Packages/com.vrchat.ClientSim#issue-12-make-docs`
+  - Press the + button one last time and add this url: `https://github.com/vrchat-community/ClientSim.git?path=/ClientSim_UnityProject/Packages/com.vrchat.ClientSim#vcc`
 
 ### Getting started
 
