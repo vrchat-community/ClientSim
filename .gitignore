@@ -16,3 +16,9 @@ Docs/Published/
 ClientSim_UnityProject/Packages/com.vrchat.ClientSim/Editor/obj/
 
 ClientSim_UnityProject/Packages/com.vrchat.ClientSim/Editor/obj.meta
+
+Tools/Docusaurus/static/images/
+
+Tools/Nuke/.nuke/
+
+Tools/DocFx/obj/

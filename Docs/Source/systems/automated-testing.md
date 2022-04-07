@@ -1,7 +1,3 @@
----
-uid: automated-testing
----
-
 # Automated Testing
 
 ClientSim has many different tests to verify the behaviour of the program. The majority of the tests are Integration tests, but support for Unit tests is available. See Unity’s TestRunner to view all tests. When importing ClientSim as a package, tests can be enabled by adding the following line to the project’s package manifest after the `“dependencies” :{}` section:
@@ -14,7 +10,7 @@ ClientSim has many different tests to verify the behaviour of the program. The m
 
 Once added, Unity will import the tests and you will see them populated in the Test Runner Window.
 
-![Test Runner](~/images/test-runner.png)
+![Test Runner](/images/test-runner.png)
 
 ## Unit Tests
 

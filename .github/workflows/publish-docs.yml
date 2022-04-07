@@ -14,16 +14,22 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            .github/.nuke/temp
+            Tools/.nuke/temp
             ~/.nuget/packages
           key: ${{ runner.os }}-${{ hashFiles('**/global.json', '**/*.csproj') }}
           
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'npm'
+          cache-dependency-path: Tools/Docusaurus/package-lock.json
+          
       - name: Build Docs
-        working-directory: .github
-        run: ./build.cmd DocFxBuild
+        working-directory: Tools/Nuke
+        run: ./build.cmd DocusaurusBuild
         
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: Docs/Published
+          publish_dir: Tools/Docusaurus/build

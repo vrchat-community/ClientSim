@@ -1,7 +1,3 @@
----
-uid: script-execution-order
----
-
 # Script Execution Order
 
 | Execution Order | System Name          | Description                                                                                                                                                    |
