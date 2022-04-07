@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkclient_sim=self.webpackChunkclient_sim||[]).push([[1638],{1878:function(e){e.exports=JSON.parse('{"allTagsPath":"/ClientSim/news/tags","name":"hello","count":1,"permalink":"/ClientSim/news/tags/hello"}')}}]);
