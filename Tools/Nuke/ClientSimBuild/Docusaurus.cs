@@ -118,9 +118,8 @@ namespace VRC.ClientSim.Build
 
         private string WriteTextToDocusaurusPath(string path, string text)
         {
-            string pathFromDocsSource = path.Replace(DocsSource.ToString(), "");
-            Serilog.Log.Information($"Combining {DocusaurusDocsPath} with {pathFromDocsSource}");
-            var newPath = Path.Combine(DocusaurusDocsPath, pathFromDocsSource);
+            string pathFromDocsSource = path.Replace($"{DocsSource}{Path.PathSeparator}", "");
+            var newPath = DocusaurusDocsPath / pathFromDocsSource;
             FileSystemTasks.EnsureExistingParentDirectory(newPath);
             File.WriteAllText(newPath, text);
             return newPath;
