@@ -108,6 +108,7 @@ namespace VRC.ClientSim.Build
 
         Target ReorderIntroPage => _ => _
             .TriggeredBy(TransformDocsForDocusaurus)
+            .Before(DocusaurusBuild)
             .Executes(() =>
             {
                 var introPage = DocusaurusDocsPath / "index.md";
@@ -127,16 +128,23 @@ namespace VRC.ClientSim.Build
             return newPath;
         }
 
-        Target DocusaurusBuild => _ => _
-            .DependsOn(CleanDocusaurusGenerated)
-            .DependsOn(TransformDocsForDocusaurus)
-            .DependsOn(CopyImagesToDocusaurus)
+        Target InstallDocusaurus => _ => _
             .Executes(() =>
             {
                 if (IsServerBuild)
                 {
                     NpmTasks.NpmCi(s => s.SetProcessWorkingDirectory(DocusaurusPath));
                 }
+            });
+
+        Target DocusaurusBuild => _ => _
+            .DependsOn(CleanDocusaurusGenerated)
+            .DependsOn(TransformDocsForDocusaurus)
+            .DependsOn(CopyImagesToDocusaurus)
+            .DependsOn(InstallDocusaurus)
+            .Executes(() =>
+            {
+                
                 NpmTasks.NpmRun(s => s.SetProcessWorkingDirectory(DocusaurusPath).SetCommand("build"));
             });
     }
