@@ -1,0 +1,19 @@
+{
+    "name": "VRC.ClientSim",
+    "references": [
+        "Unity.Postprocessing.Runtime",
+        "Unity.InputSystem",
+        "VRC.Udon",
+        "VRC.SDKBase",
+        "VRC.ClientSim.SelectionHighlight"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,2 +1,17 @@
+**/.idea/
+Editor/obj/
 
-.idea/
+# Nuke Artifacts
+Tools/Nuke/ClientSimBuild/obj/
+Tools/Nuke/ClientSimBuild/bin/
+Tools/Nuke/.nuke/temp/
+
+
+# DocFx artifacts
+ClientSim_UnityProject/Packages/com.vrchat.ClientSim/Editor/obj/
+ClientSim_UnityProject/Packages/com.vrchat.ClientSim/Editor/obj.meta
+Tools/DocFx/obj/
+Docs/Published
+
+# Copied Images
+Tools/Docusaurus/static/images/

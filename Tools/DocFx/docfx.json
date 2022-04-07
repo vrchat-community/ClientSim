@@ -1,0 +1,21 @@
+{
+	"metadata" : [
+		{
+			"src" : [
+				{
+					"files" : [ "**/*.cs" ],
+					"exclude" : [ ],
+					"src" : "../../ClientSim_UnityProject/Packages/com.vrchat.ClientSim/Runtime"
+				},
+				{
+					"files" : [ "**/*.cs" ],
+					"exclude" : [ ],
+					"src" : "../../ClientSim_UnityProject/Packages/com.vrchat.ClientSim/Editor"
+				}
+			],
+			"dest" : "classes",
+			"disableGitFeatures" : false,
+			"disableDefaultFilter" : true
+		}
+	]
+}

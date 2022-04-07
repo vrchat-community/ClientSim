@@ -1,0 +1,3 @@
+# Event Dispatcher and Events
+
+The EventDispatcher is responsible for notifying other systems when specific events happen within ClientSim. A behaviour can subscribe to an event type or send an event of specific type to all of ClientSim without knowing what will handle it. The EventDispatcher is just a collection of event types paired with event handlers. This method decouples the different systems in ClientSim without needing to create a direct dependency. All events sent must extend the IClientSimEvent interface, but can contain any data needed with the event.

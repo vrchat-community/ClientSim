@@ -1,4 +1,4 @@
-﻿name: Publish Docs
+name: Publish Docs
 on:
   workflow_dispatch: {}
 jobs:
@@ -9,18 +9,27 @@ jobs:
       - uses: actions/checkout@v3
         with:
           lfs: 'true'
+          
       - name: Cache .nuke/temp, ~/.nuget/packages
         uses: actions/cache@v2
         with:
           path: |
-            .automation/Build/.nuke/temp
+            Tools/.nuke/temp
             ~/.nuget/packages
           key: ${{ runner.os }}-${{ hashFiles('**/global.json', '**/*.csproj') }}
+          
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'npm'
+          cache-dependency-path: Tools/Docusaurus/package-lock.json
+          
       - name: Build Docs
-        working-directory: .automation/Build
-        run: ./build.cmd DocFxBuild
+        working-directory: Tools/Nuke
+        run: ./build.cmd DocusaurusBuild
+        
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .automation/Docs/_site
+          publish_dir: Tools/Docusaurus/build
