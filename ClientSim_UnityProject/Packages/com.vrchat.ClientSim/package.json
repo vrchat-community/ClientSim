@@ -17,7 +17,7 @@
 		"com.vrchat.base" : "https://github.com/vrchat/packages.git?path=/packages/com.vrchat.base#3.0.1",
 		"com.vrchat.worlds" : "https://github.com/vrchat/packages.git?path=/packages/com.vrchat.worlds#3.0.1"
 	},
-	"url" : "https://github.com/vrchat-community/ClientSim.git#1.1.1",
+	"url" : "https://github.com/vrchat-community/ClientSim.git?path=/ClientSim_UnityProject/Packages/com.vrchat.ClientSim#1.1.1",
 	"samples" : [
 		{
 			"displayName" : "ClientSimWorldTestExample",
