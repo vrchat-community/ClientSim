@@ -120,7 +120,7 @@ namespace VRC.ClientSim.Build
         private string WriteTextToDocusaurusPath(string path, string text)
         {
             string pathFromDocsSource = path.Replace($"{DocsSource}", "");
-            pathFromDocsSource = pathFromDocsSource.TrimStart(Path.PathSeparator);
+            pathFromDocsSource = pathFromDocsSource.TrimStart("/");
             Serilog.Log.Information($"PathFromDocsSource is {pathFromDocsSource}");
             var newPath = DocusaurusDocsPath / pathFromDocsSource;
             FileSystemTasks.EnsureExistingParentDirectory(newPath);
