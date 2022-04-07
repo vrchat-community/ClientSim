@@ -10,6 +10,7 @@ using Nuke.Common;
 using Nuke.Common.IO;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.Npm;
+using Nuke.Common.Utilities;
 using YamlDotNet.Serialization;
 
 namespace VRC.ClientSim.Build
@@ -118,7 +119,9 @@ namespace VRC.ClientSim.Build
 
         private string WriteTextToDocusaurusPath(string path, string text)
         {
-            string pathFromDocsSource = path.Replace($"{DocsSource}{Path.PathSeparator}", "");
+            string pathFromDocsSource = path.Replace($"{DocsSource}", "");
+            pathFromDocsSource = pathFromDocsSource.TrimStart(Path.PathSeparator);
+            Serilog.Log.Information($"PathFromDocsSource is {pathFromDocsSource}");
             var newPath = DocusaurusDocsPath / pathFromDocsSource;
             FileSystemTasks.EnsureExistingParentDirectory(newPath);
             File.WriteAllText(newPath, text);
