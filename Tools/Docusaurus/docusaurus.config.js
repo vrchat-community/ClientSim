@@ -10,7 +10,7 @@ const config = {
   tagline: 'Client Simulator for World Building',
   url: 'https://vrchat-community.github.io',
   // baseUrl: '/',
-  baseUrl: '/ClientSim/',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'images/favicon.ico',
