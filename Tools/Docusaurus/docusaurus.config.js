@@ -8,9 +8,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'ClientSim',
   tagline: 'Client Simulator for World Building',
-  url: 'https://vrchat-community.github.io',
-  // baseUrl: '/',
-  baseUrl: '/ClientSim/',
+  url: 'https://clientsim.docs.vrchat.com',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'images/favicon.ico',
@@ -26,15 +25,14 @@ const config = {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          // editUrl: 'https://github.com/vrchat-community/ClientSim/tree/main/ClientSim_UnityProject/Packages/com.vrchat.ClientSim/',
+          editUrl: 'https://github.com/vrchat-community/ClientSim/Docs/Source',
         },
         blog: {
           path: 'news',
           routeBasePath: 'news',
           showReadingTime: false,
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/vrchat-community/ClientSim/tree/main/ClientSim_UnityProject/Packages/com.vrchat.ClientSim/',
+          // editUrl: 'https://github.com/vrchat-community/ClientSim',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
