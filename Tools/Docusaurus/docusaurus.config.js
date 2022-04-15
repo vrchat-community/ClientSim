@@ -25,7 +25,9 @@ const config = {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/vrchat-community/ClientSim/Docs/Source',
+          editUrl: ({versionDocsDirPath, docPath}) =>
+              'https://github.com/vrchat-community/ClientSim/edit/main/Docs/Source/${docPath}',
+          
         },
         blog: {
           path: 'news',
