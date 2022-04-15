@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://vrchat-community.github.io/news</id>
+    <id>https://clientsim.docs.vrchat.com/news</id>
     <title>ClientSim Blog</title>
     <updated>2022-04-07T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://vrchat-community.github.io/news"/>
+    <link rel="alternate" href="https://clientsim.docs.vrchat.com/news"/>
     <subtitle>ClientSim Blog</subtitle>
-    <icon>https://vrchat-community.github.io/images/favicon.ico</icon>
+    <icon>https://clientsim.docs.vrchat.com/images/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[Welcome]]></title>
         <id>welcome</id>
-        <link href="https://vrchat-community.github.io/news/welcome"/>
+        <link href="https://clientsim.docs.vrchat.com/news/welcome"/>
         <updated>2022-04-07T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Just testing out the blog function]]></summary>
         <content type="html"><![CDATA[<p>Just testing out the blog function</p>]]></content>

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>ClientSim Blog</title>
-        <link>https://vrchat-community.github.io/news</link>
+        <link>https://clientsim.docs.vrchat.com/news</link>
         <description>ClientSim Blog</description>
         <lastBuildDate>Thu, 07 Apr 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
@@ -10,7 +10,7 @@
         <language>en</language>
         <item>
             <title><![CDATA[Welcome]]></title>
-            <link>https://vrchat-community.github.io/news/welcome</link>
+            <link>https://clientsim.docs.vrchat.com/news/welcome</link>
             <guid>welcome</guid>
             <pubDate>Thu, 07 Apr 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[Just testing out the blog function]]></description>
