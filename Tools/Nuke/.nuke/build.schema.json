@@ -75,6 +75,7 @@
               "CopyImagesToDocusaurus",
               "DocFxMetadata",
               "DocusaurusBuild",
+              "InstallDocusaurus",
               "ReorderIntroPage",
               "TransformDocsForDocusaurus"
             ]
@@ -90,6 +91,7 @@
               "CopyImagesToDocusaurus",
               "DocFxMetadata",
               "DocusaurusBuild",
+              "InstallDocusaurus",
               "ReorderIntroPage",
               "TransformDocsForDocusaurus"
             ]
