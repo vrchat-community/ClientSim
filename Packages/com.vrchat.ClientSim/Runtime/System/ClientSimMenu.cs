@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using VRC.SDKBase;
 using VRC.Udon.Common;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace VRC.SDK3.ClientSim
 {
@@ -102,6 +105,7 @@ namespace VRC.SDK3.ClientSim
 
             _menuCanvas = menu.GetComponent<Canvas>();
             _playerHeightOriginalMaxvalue = playerHeightSlider.maxValue;
+
         }
 
         public void Initialize(
@@ -126,8 +130,11 @@ namespace VRC.SDK3.ClientSim
             playerIdText.text = "";
             isMasterToggle.isOn = false;
             isInstanceOwnerToggle.isOn = settings.isInstanceOwner;
-            
+
             UpdateValuesFromSettings();
+#if UNITY_EDITOR
+            SceneVisibilityManager.instance.Hide(gameObject, true);
+#endif
         }
 
         public ClientSimDisplayedPage GetDisplayedPage()
@@ -311,7 +318,7 @@ namespace VRC.SDK3.ClientSim
             menu.transform.SetPositionAndRotation(position, camTransform.rotation);
         }
 
-        #region ClientSim Input
+#region ClientSim Input
         
         private void HandleInputMenuToggle(bool value, HandType hand)
         {
@@ -345,9 +352,9 @@ namespace VRC.SDK3.ClientSim
             ToggleMenu(!_menuIsActive);
         }
 
-        #endregion
+#endregion
 
-        #region ClientSim Events
+#region ClientSim Events
 
         private void OnReady(ClientSimReadyEvent readyEvent)
         {
@@ -388,9 +395,9 @@ namespace VRC.SDK3.ClientSim
             UpdateCanvasLocation();
         }
 
-        #endregion
+#endregion
 
-        #region UI Hooks
+#region UI Hooks
 
         [PublicAPI]
         public void WarningAccepted()
@@ -501,6 +508,6 @@ namespace VRC.SDK3.ClientSim
             SaveSettings();
         }
 
-        #endregion
+#endregion
     }
 }
