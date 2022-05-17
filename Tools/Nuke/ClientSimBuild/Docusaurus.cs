@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using Markdig;
 using Markdig.Extensions.Yaml;
-using Markdig.Helpers;
 using Markdig.Syntax;
 using Nuke.Common;
 using Nuke.Common.IO;
@@ -31,6 +30,8 @@ namespace VRC.ClientSim.Build
         AbsolutePath DocusaurusPath = RootDirectory.Parent / "Docusaurus";
         AbsolutePath DocusaurusDocsPath => DocusaurusPath / "docs";
         AbsolutePath DocusaurusImagesPath => DocusaurusPath / "static" / "images";
+
+        [PathExecutable] private readonly Tool msiexec;
 
         const string FrontMatterDivider = "---"; // Can we pull this from one of our libraries?
         Target CleanDocusaurusGenerated => _ => _
@@ -131,20 +132,37 @@ namespace VRC.ClientSim.Build
         Target InstallDocusaurus => _ => _
             .Executes(() =>
             {
-                if (IsServerBuild)
+                try
                 {
-                    NpmTasks.NpmCi(s => s.SetProcessWorkingDirectory(DocusaurusPath));
+                    NpmTasks.Npm("-v");
                 }
+                catch (Exception)
+                {
+                    Serilog.Log.Information($"Node does not appear to be installed, installing it now");
+                    msiexec("/i https://nodejs.org/dist/v16.15.0/node-v16.15.0-x64.msi /quiet");
+                    Serilog.Log.Information($"Installed Node and NPM - please run this command again to Install Docusaurus");
+                    return;
+                }
+
+                // Install Docusaurus
+                InstallDocusaurusCommand();
             });
+
+        private void InstallDocusaurusCommand()
+        {
+            NpmTasks.NpmCi(s => s.SetProcessWorkingDirectory(DocusaurusPath));
+        }
 
         Target DocusaurusBuild => _ => _
             .DependsOn(CleanDocusaurusGenerated)
             .DependsOn(TransformDocsForDocusaurus)
             .DependsOn(CopyImagesToDocusaurus)
-            .DependsOn(InstallDocusaurus)
             .Executes(() =>
             {
-                
+                if (IsServerBuild)
+                {
+                    InstallDocusaurusCommand();
+                }
                 NpmTasks.NpmRun(s => s.SetProcessWorkingDirectory(DocusaurusPath).SetCommand("build"));
             });
     }
