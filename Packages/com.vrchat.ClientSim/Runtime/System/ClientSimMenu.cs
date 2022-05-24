@@ -5,9 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using VRC.SDKBase;
 using VRC.Udon.Common;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 namespace VRC.SDK3.ClientSim
 {
@@ -133,7 +130,7 @@ namespace VRC.SDK3.ClientSim
 
             UpdateValuesFromSettings();
 #if UNITY_EDITOR
-            SceneVisibilityManager.instance.Hide(gameObject, true);
+            UnityEditor.SceneVisibilityManager.instance.Hide(gameObject, true);
 #endif
         }
 
