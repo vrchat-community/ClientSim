@@ -85,7 +85,10 @@ Docs/Published
 
 # Copied Images
 Tools/Docusaurus/static/images/
-ClientSim_UnityProject/Library
-ClientSim_UnityProject/Packages/com.vrchat.ClientSim/Editor
 Tools/Docusaurus/docs
-.github/.nuke/temp
+
+# Unity Project Files
+Assets/Samples
+Assets/SerializedUdonPrograms
+Assets/SerializedUdonPrograms.meta
+Assets/Samples.meta
