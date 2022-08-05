@@ -4,7 +4,7 @@
         <title>ClientSim Blog</title>
         <link>https://clientsim.docs.vrchat.com/news</link>
         <description>ClientSim Blog</description>
-        <lastBuildDate>Tue, 14 Jun 2022 19:26:06 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 05 Aug 2022 21:48:02 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -12,7 +12,7 @@
             <title><![CDATA[Release 1.1.4]]></title>
             <link>https://clientsim.docs.vrchat.com/news/release-1.1.4</link>
             <guid>release-1.1.4</guid>
-            <pubDate>Tue, 14 Jun 2022 19:26:06 GMT</pubDate>
+            <pubDate>Fri, 05 Aug 2022 21:48:02 GMT</pubDate>
             <description><![CDATA[Summary]]></description>
             <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_mojV" id="summary">Summary<a class="hash-link" href="#summary" title="Direct link to heading">​</a></h2><p>Small cleanup release, mostly around World Tests</p><h3 class="anchor anchorWithStickyNavbar_mojV" id="changes">Changes<a class="hash-link" href="#changes" title="Direct link to heading">​</a></h3><ul><li>Hides Menu in Scene View <a href="https://github.com/vrchat-community/ClientSim/pull/27" target="_blank" rel="noopener noreferrer">thanks to Arne-van-der-Lei</a></li><li>Compresses Textures and Images <a href="https://github.com/vrchat-community/ClientSim/pull/32" target="_blank" rel="noopener noreferrer">thanks to Metamaniac</a></li><li>Renames ClientSimIssue3RespawnTest Sample to ClientSimSelfTests</li><li>Makes Respawn test just a <em>part</em> of SelfTests instead of the whole thing</li><li>Updates package version to 1.1.4</li><li>Updates Test Sample description and location</li><li>Removes #vcc tag from VRC SDK dependencies</li></ul>]]></content:encoded>
             <category>release</category>
