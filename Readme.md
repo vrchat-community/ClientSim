@@ -16,17 +16,15 @@ The VRChat Client Simulator, or ClientSim for short, is a tool that enables you 
 
 ### Requirements
 
-- Unity 2019.4.29-31
-- Package versions of [VRChat Base](https://github.com/vrchat/packages/tree/main/packages/com.vrchat.base) and [Worlds](https://github.com/vrchat/packages/tree/main/packages/com.vrchat.worlds) SDKs
+- Unity 2019.4.31
+- VRChat Creator Companion
 
 ### Installing
 
-> Note: this will be much easier soon with the Open Beta release of the VRChat Creator Companion, Coming Soon™
-> 
-- In your project, open the Unity Package Manager, click the + button and choose 'Add package from git URL...'.
-  - Put in `https://github.com/vrchat/packages.git?path=/packages/com.vrchat.base#vcc`. Then wait as the package imports or press Ctrl+R to refresh if you have auto-refresh turned off.
-  - Click the + button again and add this git url: `https://github.com/vrchat/packages.git?path=/packages/com.vrchat.worlds#vcc`
-  - Press the + button one last time and add this url: `https://github.com/vrchat-community/ClientSim.git?path=/Packages/com.vrchat.ClientSim#vcc`
+Download and install the [Creator Companion](https://vrchat.com/home/download) if you do not have it yet.
+Then you can create a new project from either the "World" or "UdonSharp" Templates, and ClientSim will be included and ready to go.
+
+If you want to add ClientSim to an existing project, you can [migrate it](https://vcc.docs.vrchat.com/vpm/migrating#the-process) using the VCC, then find ClientSim in the Package Listing and press 'Add'. If you migrate a project which has CyanEmu in it, that will automatically be swapped out for the latest ClientSim version as part of Migration.
 
 ### Getting started
 
@@ -62,7 +60,7 @@ The VRChat Client Simulator, or ClientSim for short, is a tool that enables you 
 
 ## Copyright
 
-Copyright (c) 2021 VRChat
+Copyright (c) 2022 VRChat
 See License.md for full usage information
 
 ## Credits
