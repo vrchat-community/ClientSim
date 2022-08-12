@@ -83,10 +83,6 @@ Packages/com.vrchat.ClientSim/Editor/obj.meta
 Tools/DocFx/obj/
 Docs/Published
 
-# Copied Images
-Tools/Docusaurus/static/images/
-Tools/Docusaurus/docs
-
 # Unity Project Files
 Assets/Samples
 Assets/SerializedUdonPrograms
