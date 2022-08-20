@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://clientsim.docs.vrchat.com/news</id>
     <title>ClientSim Blog</title>
-    <updated>2022-08-18T22:47:25.394Z</updated>
+    <updated>2022-08-20T01:18:16.041Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://clientsim.docs.vrchat.com/news"/>
     <subtitle>ClientSim Blog</subtitle>
@@ -11,9 +11,22 @@
         <title type="html"><![CDATA[Release 1.1.4]]></title>
         <id>release-1.1.4</id>
         <link href="https://clientsim.docs.vrchat.com/news/release-1.1.4"/>
-        <updated>2022-08-18T22:47:25.394Z</updated>
+        <updated>2022-08-20T01:18:16.041Z</updated>
         <summary type="html"><![CDATA[Summary]]></summary>
         <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_mojV" id="summary">Summary<a class="hash-link" href="#summary" title="Direct link to heading">​</a></h2><p>Small cleanup release, mostly around World Tests</p><h3 class="anchor anchorWithStickyNavbar_mojV" id="changes">Changes<a class="hash-link" href="#changes" title="Direct link to heading">​</a></h3><ul><li>Hides Menu in Scene View <a href="https://github.com/vrchat-community/ClientSim/pull/27" target="_blank" rel="noopener noreferrer">thanks to Arne-van-der-Lei</a></li><li>Compresses Textures and Images <a href="https://github.com/vrchat-community/ClientSim/pull/32" target="_blank" rel="noopener noreferrer">thanks to Metamaniac</a></li><li>Renames ClientSimIssue3RespawnTest Sample to ClientSimSelfTests</li><li>Makes Respawn test just a <em>part</em> of SelfTests instead of the whole thing</li><li>Updates package version to 1.1.4</li><li>Updates Test Sample description and location</li><li>Removes #vcc tag from VRC SDK dependencies</li></ul>]]></content>
+        <author>
+            <name>Momo the Monster</name>
+            <uri>https://github.com/momo-the-monster</uri>
+        </author>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Release 1.2.2]]></title>
+        <id>release-1.2.2</id>
+        <link href="https://clientsim.docs.vrchat.com/news/release-1.2.2"/>
+        <updated>2022-08-19T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Summary]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_mojV" id="summary">Summary<a class="hash-link" href="#summary" title="Direct link to heading">​</a></h2><p>Some Quality-of-Life Fixes</p><h3 class="anchor anchorWithStickyNavbar_mojV" id="changes">Changes<a class="hash-link" href="#changes" title="Direct link to heading">​</a></h3><ul><li>Sets Event Camera on any World-Space UI canvases that need them, fixing <a href="https://github.com/vrchat-community/ClientSim/issues/30" target="_blank" rel="noopener noreferrer">ClientSim Issue 30: UI is not interactable when moved into Canvas that has no VRCUIShape script</a></li><li>Fixed <!-- -->[Issue with Controller Drift]<!-- --> (<a href="https://github.com/vrchat-community/ClientSim/issues/1" target="_blank" rel="noopener noreferrer">https://github.com/vrchat-community/ClientSim/issues/1</a>)</li></ul>]]></content>
         <author>
             <name>Momo the Monster</name>
             <uri>https://github.com/momo-the-monster</uri>

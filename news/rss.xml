@@ -4,7 +4,7 @@
         <title>ClientSim Blog</title>
         <link>https://clientsim.docs.vrchat.com/news</link>
         <description>ClientSim Blog</description>
-        <lastBuildDate>Thu, 18 Aug 2022 22:47:25 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 20 Aug 2022 01:18:16 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -12,9 +12,18 @@
             <title><![CDATA[Release 1.1.4]]></title>
             <link>https://clientsim.docs.vrchat.com/news/release-1.1.4</link>
             <guid>release-1.1.4</guid>
-            <pubDate>Thu, 18 Aug 2022 22:47:25 GMT</pubDate>
+            <pubDate>Sat, 20 Aug 2022 01:18:16 GMT</pubDate>
             <description><![CDATA[Summary]]></description>
             <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_mojV" id="summary">Summary<a class="hash-link" href="#summary" title="Direct link to heading">​</a></h2><p>Small cleanup release, mostly around World Tests</p><h3 class="anchor anchorWithStickyNavbar_mojV" id="changes">Changes<a class="hash-link" href="#changes" title="Direct link to heading">​</a></h3><ul><li>Hides Menu in Scene View <a href="https://github.com/vrchat-community/ClientSim/pull/27" target="_blank" rel="noopener noreferrer">thanks to Arne-van-der-Lei</a></li><li>Compresses Textures and Images <a href="https://github.com/vrchat-community/ClientSim/pull/32" target="_blank" rel="noopener noreferrer">thanks to Metamaniac</a></li><li>Renames ClientSimIssue3RespawnTest Sample to ClientSimSelfTests</li><li>Makes Respawn test just a <em>part</em> of SelfTests instead of the whole thing</li><li>Updates package version to 1.1.4</li><li>Updates Test Sample description and location</li><li>Removes #vcc tag from VRC SDK dependencies</li></ul>]]></content:encoded>
+            <category>release</category>
+        </item>
+        <item>
+            <title><![CDATA[Release 1.2.2]]></title>
+            <link>https://clientsim.docs.vrchat.com/news/release-1.2.2</link>
+            <guid>release-1.2.2</guid>
+            <pubDate>Fri, 19 Aug 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Summary]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_mojV" id="summary">Summary<a class="hash-link" href="#summary" title="Direct link to heading">​</a></h2><p>Some Quality-of-Life Fixes</p><h3 class="anchor anchorWithStickyNavbar_mojV" id="changes">Changes<a class="hash-link" href="#changes" title="Direct link to heading">​</a></h3><ul><li>Sets Event Camera on any World-Space UI canvases that need them, fixing <a href="https://github.com/vrchat-community/ClientSim/issues/30" target="_blank" rel="noopener noreferrer">ClientSim Issue 30: UI is not interactable when moved into Canvas that has no VRCUIShape script</a></li><li>Fixed <!-- -->[Issue with Controller Drift]<!-- --> (<a href="https://github.com/vrchat-community/ClientSim/issues/1" target="_blank" rel="noopener noreferrer">https://github.com/vrchat-community/ClientSim/issues/1</a>)</li></ul>]]></content:encoded>
             <category>release</category>
         </item>
     </channel>
