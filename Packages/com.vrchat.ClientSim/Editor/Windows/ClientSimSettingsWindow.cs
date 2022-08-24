@@ -97,7 +97,7 @@ namespace VRC.SDK3.ClientSim.Editor
             EditorGUIUtility.labelWidth = 175;
             
             _boxStyle = new GUIStyle(EditorStyles.helpBox);
-            _multilineLabel = EditorStyles.label;
+            _multilineLabel = new GUIStyle(EditorStyles.label);
             _multilineLabel.wordWrap = true;
             
             _scrollPosition = EditorGUILayout.BeginScrollView(_scrollPosition);
