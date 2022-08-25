@@ -69,6 +69,13 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "2.0.2",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.unity.postprocessing": {
       "version": "3.1.1",
       "depth": 1,
@@ -134,14 +141,14 @@
       "url": "https://packages.unity.com"
     },
     "com.vrchat.base": {
-      "version": "https://github.com/vrchat/packages.git?path=/packages/com.vrchat.base",
+      "version": "file:com.vrchat.base",
       "depth": 0,
-      "source": "git",
+      "source": "embedded",
       "dependencies": {
         "com.unity.burst": "1.4.11",
-        "com.unity.mathematics": "1.2.5"
-      },
-      "hash": "75ebae6abe72ea4c38f3479ac87d9217a8f451e7"
+        "com.unity.mathematics": "1.2.5",
+        "com.unity.nuget.newtonsoft-json": "2.0.2"
+      }
     },
     "com.vrchat.clientsim": {
       "version": "file:com.vrchat.ClientSim",
@@ -152,16 +159,23 @@
         "com.unity.inputsystem": "1.0.2"
       }
     },
-    "com.vrchat.worlds": {
-      "version": "https://github.com/vrchat/packages.git?path=/packages/com.vrchat.worlds",
+    "com.vrchat.core.vpm-resolver": {
+      "version": "file:com.vrchat.core.vpm-resolver",
       "depth": 0,
-      "source": "git",
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "2.0.2"
+      }
+    },
+    "com.vrchat.worlds": {
+      "version": "file:com.vrchat.worlds",
+      "depth": 0,
+      "source": "embedded",
       "dependencies": {
         "com.unity.cinemachine": "2.8.0",
         "com.unity.postprocessing": "3.1.1",
         "com.unity.textmeshpro": "2.1.6"
-      },
-      "hash": "75ebae6abe72ea4c38f3479ac87d9217a8f451e7"
+      }
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
