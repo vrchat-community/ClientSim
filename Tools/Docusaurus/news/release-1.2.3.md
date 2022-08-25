@@ -12,4 +12,4 @@ TBD
 
 ### Changes
 
-* TBD
+* Creates a custom GUIStyle for the ClientSim Settings Window, fixing [ClientSim issue 28: Viewing ClientSim Settings Window adds wordwrap to the Editor Label Gui Style](https://github.com/vrchat-community/ClientSim/issues/28)
