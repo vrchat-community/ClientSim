@@ -1,7 +1,7 @@
 ﻿# Getting Started
 
 ## WIP
-Press Play!
+Press Plizzay!
 
 Topics to cover:
 * Installation (VCC / Manual)
