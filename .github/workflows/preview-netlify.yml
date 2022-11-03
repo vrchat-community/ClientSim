@@ -3,7 +3,7 @@ on:
   workflow_dispatch: {}
   pull_request:
     paths:
-      - 'Docs/**/**.*'
+      - 'Tools/Docusaurus/**/**.*'
 
 jobs:
   publish:
@@ -25,7 +25,7 @@ jobs:
         uses: ./action
         id: build-docs
         with:
-          inputDir: 'Docs/Docusaurus'
+          inputDir: 'Tools/Docusaurus'
           outputDir: 'Docs/Published'
 
       - name: Deploy to Netlify
