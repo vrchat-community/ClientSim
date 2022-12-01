@@ -17,6 +17,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Delete Tests
+        run: |
+          rm -rf "Packages/${{env.packageName}}/Tests"
+          rm -rf "Packages/${{env.packageName}}/Tests.meta"
+
       - name: get version
         id: version
         uses: notiz-dev/github-action-json-property@7c8cf5cc36eb85d8d287a8086a39dac59628eb31
@@ -45,7 +50,6 @@ jobs:
         with:
           package-path: ${{ env.unityPackage }}
           include-files: metaList
-
 
       - name: Make Release
         uses: softprops/action-gh-release@1e07f4398721186383de40550babbdf2b84acfc5
