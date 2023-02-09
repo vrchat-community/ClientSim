@@ -35,7 +35,9 @@ namespace VRC.SDK3.ClientSim
 
         public bool setTargetFrameRate = true;
         public int targetFrameRate = 90;
-        
+
+        public bool stopOnScriptChanges = true;
+
         public bool isInstanceOwner = true;
         public bool localPlayerIsMaster = true;
         public float initializationDelay = 0.0f;
