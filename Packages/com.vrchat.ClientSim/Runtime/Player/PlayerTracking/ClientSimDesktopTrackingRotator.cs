@@ -4,8 +4,8 @@ namespace VRC.SDK3.ClientSim.PlayerTracking
 {
     public class ClientSimDesktopTrackingRotator
     {
-        private const float MINIMUM_X_ANGLE = -80f;
-        private const float MAXIMUM_X_ANGLE = 70f;
+        private const float MINIMUM_X_ANGLE = -90f;
+        private const float MAXIMUM_X_ANGLE = 90f;
         private const float MINIMUM_Y_ANGLE = -90F;
         private const float MAXIMUM_Y_ANGLE = 90F;
         
