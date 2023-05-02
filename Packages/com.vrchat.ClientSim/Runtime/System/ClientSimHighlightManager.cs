@@ -76,6 +76,10 @@ namespace VRC.SDK3.ClientSim
 
         private List<Renderer> GatherRenderers(GameObject obj, bool findDisabled)
         {
+            if(obj == null)
+            {
+                return new List<Renderer>();
+            }
             List<Renderer> results = new List<Renderer>();
             foreach (var rend in obj.GetComponentsInChildren<Renderer>(findDisabled))
             {
