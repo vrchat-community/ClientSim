@@ -5,6 +5,9 @@
     },
     "com.vrchat.base": {
       "version": "3.1.x"
+    },
+    "com.vrchat.core.vpm-resolver": {
+      "version": "0.1.18"
     }
   },
   "locked": {
