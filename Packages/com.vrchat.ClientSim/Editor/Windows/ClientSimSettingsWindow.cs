@@ -16,7 +16,8 @@ namespace VRC.SDK3.ClientSim.Editor
         private readonly GUIContent _displayLogsToggleGuiContent = new GUIContent("Enable Console Logging", "Enabling logging will print messages to the console when certain events happen. Examples include trigger execution, pickup grabbed, station entered, etc.");
         private readonly GUIContent _deleteEditorOnlyToggleGuiContent = new GUIContent("Remove \"EditorOnly\"", "Enabling this setting will ensure that all objects with the tag \"EditorOnly\" are deleted when in playmode. This can be helpful in finding objects that will not be uploaded with your world. Enable console logging to see which objects are deleted.");
         private readonly GUIContent _startupDelayGuiContent = new GUIContent("Startup Delay", "The duration that the Client Sim will wait to simulate the VRChat client loading before spawning the player and initializing Udon. This is useful to test when Unity components behave differently at startup compared to VRChat.");
-        
+        private readonly GUIContent _stopOnScriptChangesToggleGuiContent = new GUIContent("Stop On Script Changes", "If enabled, the editor will stop if script changes are detected while in play mode. This will override the Unity Editor setting 'Preferences > General > Script Changes While Playing'.");
+
         private readonly GUIContent _setTargetFrameRateGuiContent = new GUIContent("Set Target FrameRate", "Should ClientSim set the target framerate on startup? This will automatically set the physics delta time to match expected framerate. Disabling this setting is useful when profiling.");
         private readonly GUIContent _targetFrameRateGuiContent = new GUIContent("Target FrameRate", "The target framerate unity should aim for. Default is 90 fps.");
         
@@ -336,7 +337,9 @@ namespace VRC.SDK3.ClientSim.Editor
 
                 _settings.displayLogs = EditorGUILayout.Toggle(_displayLogsToggleGuiContent, _settings.displayLogs);
 
-                
+                _settings.stopOnScriptChanges = EditorGUILayout.Toggle(_stopOnScriptChangesToggleGuiContent, _settings.stopOnScriptChanges);
+
+
                 // Settings that cannot be changed at runtime
                 EditorGUI.BeginDisabledGroup(Application.isPlaying);
                 
