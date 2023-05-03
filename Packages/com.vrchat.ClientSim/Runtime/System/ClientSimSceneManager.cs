@@ -80,6 +80,11 @@ namespace VRC.SDK3.ClientSim
             return _descriptor.ObjectBehaviourAtRespawnHeight == VRC_SceneDescriptor.RespawnHeightBehaviour.Destroy;
         }
 
+        public void ResetSpawnOrder()
+        {
+            _spawnOrder = 0;
+        }
+        
         public Transform GetSpawnPoint(bool remote = false)
         {
             if (!HasSceneDescriptor())
