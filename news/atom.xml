@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://clientsim.docs.vrchat.com/news</id>
     <title>ClientSim Blog</title>
-    <updated>2023-04-14T18:56:13.342Z</updated>
+    <updated>2023-05-04T21:06:29.675Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://clientsim.docs.vrchat.com/news"/>
     <subtitle>ClientSim Blog</subtitle>
@@ -11,7 +11,7 @@
         <title type="html"><![CDATA[Release 1.1.4]]></title>
         <id>https://clientsim.docs.vrchat.com/news/release-1.1.4</id>
         <link href="https://clientsim.docs.vrchat.com/news/release-1.1.4"/>
-        <updated>2023-04-14T18:56:13.342Z</updated>
+        <updated>2023-05-04T21:06:29.675Z</updated>
         <summary type="html"><![CDATA[Summary]]></summary>
         <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="summary">Summary<a href="#summary" class="hash-link" aria-label="Direct link to Summary" title="Direct link to Summary">​</a></h2><p>Small cleanup release, mostly around World Tests</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="changes">Changes<a href="#changes" class="hash-link" aria-label="Direct link to Changes" title="Direct link to Changes">​</a></h3><ul><li>Hides Menu in Scene View <a href="https://github.com/vrchat-community/ClientSim/pull/27" target="_blank" rel="noopener noreferrer">thanks to Arne-van-der-Lei</a></li><li>Compresses Textures and Images <a href="https://github.com/vrchat-community/ClientSim/pull/32" target="_blank" rel="noopener noreferrer">thanks to Metamaniac</a></li><li>Renames ClientSimIssue3RespawnTest Sample to ClientSimSelfTests</li><li>Makes Respawn test just a <em>part</em> of SelfTests instead of the whole thing</li><li>Updates package version to 1.1.4</li><li>Updates Test Sample description and location</li><li>Removes #vcc tag from VRC SDK dependencies</li></ul>]]></content>
         <author>
