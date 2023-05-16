@@ -2,9 +2,6 @@ name: Build Release
 
 on:
   workflow_dispatch:
-  push:
-    branches: main
-    paths: Packages/com.vrchat.ClientSim/**
 
 env:
   packageName: "com.vrchat.ClientSim"
@@ -16,6 +13,9 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          lfs: 'true'
+
 
       - name: Delete Tests
         run: |
