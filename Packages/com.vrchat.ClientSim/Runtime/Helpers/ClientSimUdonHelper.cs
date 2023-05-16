@@ -102,6 +102,14 @@ namespace VRC.SDK3.ClientSim
         {
             // VRChatBug: Tooltips always ignore the tooltipPlacement transform and instead place the tooltip at the top
             // of the first collider on the object.
+            
+            //check if this object has already been destroyed, we can't just do a null check because that still throws a destroyed object error in unity
+            if (!Utilities.IsValid(this))
+            {
+                return Vector3.zero;
+            }
+
+
             return ClientSimTooltip.GetToolTipPosition(gameObject);
         }
 
