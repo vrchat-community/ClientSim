@@ -1,4 +1,6 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+
+using UnityEditor;
 
 namespace VRC.SDK3.ClientSim
 {
@@ -35,3 +37,5 @@ namespace VRC.SDK3.ClientSim
     }
 
 }
+
+#endif
