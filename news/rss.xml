@@ -4,10 +4,19 @@
         <title>ClientSim Blog</title>
         <link>https://clientsim.docs.vrchat.com/news</link>
         <description>ClientSim Blog</description>
-        <lastBuildDate>Thu, 04 May 2023 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 25 May 2023 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Release 1.2.5]]></title>
+            <link>https://clientsim.docs.vrchat.com/news/release-1.2.5</link>
+            <guid>https://clientsim.docs.vrchat.com/news/release-1.2.5</guid>
+            <pubDate>Thu, 25 May 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Summary]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="summary">Summary<a href="#summary" class="hash-link" aria-label="Direct link to Summary" title="Direct link to Summary">​</a></h2><p>Fixed a handful of ClientSim issues</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="changes">Changes<a href="#changes" class="hash-link" aria-label="Direct link to Changes" title="Direct link to Changes">​</a></h3><ul><li>Force added package resolver, which was previously git-ignored</li><li>Fixed Destroying focused object breaks ClientSim <a href="https://github.com/vrchat-community/ClientSim/issues/59" target="_blank" rel="noopener noreferrer">Issue 59</a></li><li>Fixed LineRenderer.BakeMesh() throws errors <a href="https://github.com/vrchat-community/ClientSim/issues/49" target="_blank" rel="noopener noreferrer">Issue 49</a></li><li>Fixed Sequential Spawn Order is broken <a href="https://github.com/vrchat-community/ClientSim/issues/36" target="_blank" rel="noopener noreferrer">Issue 36</a></li><li>Fixed Error about missing scene descriptor erroneously says "world descriptor" <a href="https://github.com/vrchat-community/ClientSim/issues/66" target="_blank" rel="noopener noreferrer">Issue 66</a></li><li>Removed simulation of bug that prevents movement when exiting stations (bugfix will be in the next client release) <a href="https://github.com/vrchat-community/ClientSim/pull/73" target="_blank" rel="noopener noreferrer">PR 73</a></li></ul>]]></content:encoded>
+            <category>release</category>
+        </item>
         <item>
             <title><![CDATA[Release 1.2.3]]></title>
             <link>https://clientsim.docs.vrchat.com/news/release-1.2.3</link>
