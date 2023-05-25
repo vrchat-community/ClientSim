@@ -43,8 +43,7 @@ This tool enables you to test your VRChat SDK3 Worlds directly in Unity! You can
 
 ### Installing
 
-- Use the VRChat Creator Companion (COMING SOON) to add the package to your project from the 'Curated Packages' section
-- OR open the Unity Package Manager, click the + button and choose 'Add package rom git URL...'. Put in `https://github.com/vrchat-community/ClientSim.git` to stay up-to-date or add a version number on the end to stay locked to that version, like `https://github.com/vrchat-community/ClientSim.git#1.1.0`
+- Use the [VRChat Creator Companion](https://vcc.docs.vrchat.com) to add the package to your project from the 'Curated Packages' section
 
 ### Getting started
 
@@ -54,7 +53,7 @@ This tool enables you to test your VRChat SDK3 Worlds directly in Unity! You can
 
 ## Copyright
 
-Copyright (c) 2021 VRChat
+Copyright (c) 2023 VRChat
 See License.md for full usage information
 
 ## Credits
