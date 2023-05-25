@@ -153,13 +153,7 @@ namespace VRC.SDK3.ClientSim
 
             VRCPlayerApi player = _playerApiProvider.Player;
             
-            // If the station is set to seated, unset immobilize, allowing the player to move again.
-            // VRChatBug: Note that players are set immobile based on if the station is mobile and seated, but setting
-            // the player mobilized again is only if the station is not seated.
-            if (station.IsSeated())
-            {
-                player.Immobilize(false);
-            }
+            player.Immobilize(false);
             
             station.ExitStation(player);
             

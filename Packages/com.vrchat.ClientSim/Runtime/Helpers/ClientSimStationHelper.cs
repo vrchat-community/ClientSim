@@ -118,11 +118,6 @@ namespace VRC.SDK3.ClientSim
                 _station.stationExitPlayerLocation = transform;
             }
             
-            // Warn about unusual setup.
-            if (!_station.seated && _station.PlayerMobility != VRCStation.Mobility.Mobile)
-            {
-                this.LogWarning($"Station has seated unchecked but is not mobile! This will immobilize the player, causing them to not be able to move on exit. Use VRCPlayerApi.Immobilize(false) to allow them to move again. {Tools.GetGameObjectPath(gameObject)}");
-            }
         }
 
         private void OnDestroy()

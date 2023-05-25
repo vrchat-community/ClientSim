@@ -440,6 +440,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestkopTrackingData
       objectReference: {fileID: 0}
+    - target: {fileID: 6277239502600238692, guid: 6be65459cc2282a4094483092bc0dfe2,
+        type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6be65459cc2282a4094483092bc0dfe2, type: 3}
 --- !u!4 &5997934662479437569 stripped

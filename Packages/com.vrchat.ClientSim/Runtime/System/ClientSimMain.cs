@@ -186,7 +186,7 @@ namespace VRC.SDK3.ClientSim
             {
                 _instance = null;
                 Destroy(gameObject);
-                throw new ClientSimException("Cannot start ClientSim if there is no world descriptor!");
+                throw new ClientSimException("Cannot start ClientSim if there is no scene descriptor!");
             }
             
             _settings = settings;
@@ -285,6 +285,7 @@ namespace VRC.SDK3.ClientSim
                 if (_player)
                 {
                     _player.isInstanceOwner = _settings.isInstanceOwner;
+                    _sceneManager.ResetSpawnOrder(); // Avoids any spawn offsets from pre-initialization of players
                     _player.EnablePlayer(_sceneManager.GetSpawnPoint(false));
                 }
             }
