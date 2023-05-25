@@ -11,6 +11,7 @@ draft: false
 Fixed a handful of ClientSim issues
 
 ### Changes
+- Force added package resolver, which was previously git-ignored
 - Fixed Destroying focused object breaks ClientSim [Issue 59](https://github.com/vrchat-community/ClientSim/issues/59)
 - Fixed LineRenderer.BakeMesh() throws errors [Issue 49](https://github.com/vrchat-community/ClientSim/issues/49)
 - Fixed Sequential Spawn Order is broken [Issue 36](https://github.com/vrchat-community/ClientSim/issues/36)
