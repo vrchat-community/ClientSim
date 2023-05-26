@@ -186,7 +186,8 @@ namespace VRC.SDK3.ClientSim
             {
                 _instance = null;
                 Destroy(gameObject);
-                throw new ClientSimException("Cannot start ClientSim if there is no scene descriptor!");
+                Debug.LogWarning("Cannot start ClientSim if there is no scene descriptor!");
+                return;
             }
             
             _settings = settings;
