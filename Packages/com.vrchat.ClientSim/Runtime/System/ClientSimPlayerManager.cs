@@ -673,6 +673,16 @@ namespace VRC.SDK3.ClientSim
         {
             player.GetClientSimPlayer().audioData.SetVoiceGain(value);
         }
+        
+        public static string GetCurrentLanguage()
+        {
+            return "English";
+        }
+        
+        public static string[] GetAvailableLanguages()
+        {
+            return new []{ "English", "Spanish", "German", "Klingon" };
+        }
 
         #endregion
     }
