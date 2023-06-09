@@ -676,12 +676,12 @@ namespace VRC.SDK3.ClientSim
         
         public static string GetCurrentLanguage()
         {
-            return "English";
+            return ClientSimSettings.Instance.currentLanguage;
         }
         
         public static string[] GetAvailableLanguages()
         {
-            return new []{ "English", "Spanish", "German", "Klingon" };
+            return ClientSimSettings.Instance.availableLanguages;
         }
 
         #endregion
