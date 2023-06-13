@@ -96,6 +96,11 @@ namespace VRC.SDK3.ClientSim
 
         private Canvas _menuCanvas;
 
+        public void SetCanvasCamera(Camera cam)
+        {
+            _menuCanvas.worldCamera = cam;
+        }
+        
         protected override void Awake()
         {
             base.Awake();
