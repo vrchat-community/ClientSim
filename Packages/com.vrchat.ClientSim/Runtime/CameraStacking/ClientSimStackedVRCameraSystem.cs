@@ -45,17 +45,6 @@ namespace VRC.SDK3.ClientSim
             }
         }
      
-        /*void OnEnable()
-        {
-            #if !UNITY_ANDROID
-            if (MainSceneCamera != null)
-            {
-                if (!IsCameraStackingEnabled)
-                    CreateCameraStack();
-            }
-            #endif
-        }
-*/
         void OnDisable()
         {
             #if !UNITY_ANDROID
@@ -75,7 +64,6 @@ namespace VRC.SDK3.ClientSim
             {
                 CreateCameraStack();
                 IsInitialized = true;
-                FormattedLog("Camera Stack has been initialized.");
             }
             #else
             gameObject.SetActive(false);
@@ -121,8 +109,7 @@ namespace VRC.SDK3.ClientSim
 
             //Remove this cameras layers from the base camera
             MainSceneCamera.cullingMask = MainSceneCamera.cullingMask ^ CameraStack[index].RenderLayer;
-            FormattedLog($"Created Stacked Camera : {CameraStack[index].CameraName}");
-            
+
             // Set the ClientSim UI canvas to use this camera
             clientSimMenu.SetCanvasCamera(cam);
         }
@@ -135,15 +122,6 @@ namespace VRC.SDK3.ClientSim
             //Restore Layers from this camera to the main camera
             MainSceneCamera.cullingMask = MainSceneCamera.cullingMask | CameraStack[index].RenderLayer;
             Destroy(cam.gameObject);
-        }
-
-        private void FormattedLog(string s)
-        {
-#if UNITY_EDITOR
-            Debug.Log($"[<color=green>VRC Stacked Camera System</color>] {s}");
-#else
-            Debug.Log($"[VRC Stacked Camera System] {s}");
-#endif
         }
     }
 }
