@@ -47,27 +47,21 @@ namespace VRC.SDK3.ClientSim
      
         void OnDisable()
         {
-            #if !UNITY_ANDROID
             if (MainSceneCamera != null)
             {
                 if (IsCameraStackingEnabled)
                     DestroyCameraStack();
             }
-            #endif
         }
 
         public void InitializeStackedSystem()
         {
-            #if !UNITY_ANDROID
             Cameras = new List<Camera>();
             if (MainSceneCamera != null)
             {
                 CreateCameraStack();
                 IsInitialized = true;
             }
-            #else
-            gameObject.SetActive(false);
-            #endif
         }
 
         private void CreateCameraStack()
