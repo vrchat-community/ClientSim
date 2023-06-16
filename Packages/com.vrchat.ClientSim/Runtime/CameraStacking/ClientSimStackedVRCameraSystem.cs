@@ -31,13 +31,6 @@ namespace VRC.SDK3.ClientSim
         {
             if(!_isReady) return;
             if (!_isInitialized) { InitializeStackedSystem(); }
-            else
-            {
-                if (!_cameras[0].enabled)
-                {
-                    Debug.LogError("Stacked Cameras are not enabled.");
-                }
-            }
         }
      
         void OnDisable()
