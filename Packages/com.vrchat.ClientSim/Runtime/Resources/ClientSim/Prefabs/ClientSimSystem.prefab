@@ -106,11 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1704c94808cb3c6479f3dc63042a956a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clientSimPlayer: {fileID: 0}
-  MainSceneCamera: {fileID: 0}
-  CameraStack:
+  cameraStack:
   - {fileID: 11400000, guid: d6ef66aee2eba604da699a98a28bba17, type: 2}
-  IsCameraStackingEnabled: 0
 --- !u!1001 &1202083094369775472
 PrefabInstance:
   m_ObjectHideFlags: 0

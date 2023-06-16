@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 namespace VRC.SDK3.ClientSim
 {
     public class ClientSimStackedCamera : ScriptableObject
     {
-        public string CameraName = "Generic Stacked Camera";
-        public LayerMask RenderLayer;
-        public bool UseOcclusionCulling = true;
+        [SerializeField] private string cameraName = "Generic Stacked Camera";
+        [SerializeField] private LayerMask renderLayer;
+        [SerializeField] private bool useOcclusionCulling = true;
+        public string CameraName => cameraName;
+        public LayerMask RenderLayer => renderLayer;
+        public bool UseOcclusionCulling => useOcclusionCulling;
     }
 }

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8474ec07ef88d52458e79ca0f5240d96, type: 3}
   m_Name: Cam_UIMenu
   m_EditorClassIdentifier: 
-  CameraName: Cam_UIMenu
-  RenderLayer:
+  cameraName: Cam_UIMenu
+  renderLayer:
     serializedVersion: 2
     m_Bits: 4096
-  UseOcclusionCulling: 0
+  useOcclusionCulling: 0

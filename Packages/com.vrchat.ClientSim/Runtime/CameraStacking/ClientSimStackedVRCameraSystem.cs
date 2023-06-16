@@ -1,44 +1,39 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.XR;
-using VRC.Core;
-using VRC.SDK3.ClientSim;
 
 namespace VRC.SDK3.ClientSim
 {
     public class ClientSimStackedVRCameraSystem : MonoBehaviour
     {
-        public ClientSimStackedCamera[] CameraStack;
-        [HideInInspector] public bool IsCameraStackingEnabled = false;
+        [SerializeField]
+        private ClientSimStackedCamera[] cameraStack;
         
-        private Camera MainSceneCamera;
-        private bool IsInitialized = false;
-        private bool IsReady = false;
-        private List<Camera> Cameras;
-        
-        private ClientSimMenu clientSimMenu;
+        private bool _isCameraStackingEnabled;
+        private Camera _mainSceneCamera;
+        private bool _isInitialized;
+        private bool _isReady;
+        private List<Camera> _cameras;
+        private ClientSimMenu _clientSimMenu;
 
         public void Initialize(Camera playerCamera, ClientSimMenu menu)
         {
-            MainSceneCamera = playerCamera;
-            clientSimMenu = menu;
+            _mainSceneCamera = playerCamera;
+            _clientSimMenu = menu;
         }
 
         public void Ready()
         {
-            IsReady = true;
+            _isReady = true;
         }
         
         void Update()
         {
-            if(!IsReady) return;
-            if (!IsInitialized) { InitializeStackedSystem(); }
+            if(!_isReady) return;
+            if (!_isInitialized) { InitializeStackedSystem(); }
             else
             {
-                if (!Cameras[0].enabled)
+                if (!_cameras[0].enabled)
                 {
                     Debug.LogError("Stacked Cameras are not enabled.");
                 }
@@ -47,74 +42,74 @@ namespace VRC.SDK3.ClientSim
      
         void OnDisable()
         {
-            if (MainSceneCamera != null)
+            if (_mainSceneCamera != null)
             {
-                if (IsCameraStackingEnabled)
+                if (_isCameraStackingEnabled)
                     DestroyCameraStack();
             }
         }
 
-        public void InitializeStackedSystem()
+        private void InitializeStackedSystem()
         {
-            Cameras = new List<Camera>();
-            if (MainSceneCamera != null)
+            _cameras = new List<Camera>();
+            if (_mainSceneCamera != null)
             {
                 CreateCameraStack();
-                IsInitialized = true;
+                _isInitialized = true;
             }
         }
 
         private void CreateCameraStack()
         {
-            for (int i = 0; i < CameraStack.Length; i++)
+            for (int i = 0; i < cameraStack.Length; i++)
             {
                 AddCamera(i);
             }
-            IsCameraStackingEnabled = true;
+            _isCameraStackingEnabled = true;
         }
 
         private void DestroyCameraStack()
         {
-            for (int i = 0; i < Cameras.Count; i++)
+            for (int i = 0; i < _cameras.Count; i++)
             {
                 DestroyCamera(i);
             }
-            IsCameraStackingEnabled = false;
+            _isCameraStackingEnabled = false;
         }
 
         private void AddCamera(int index)
         {
-            GameObject cameraObj = Instantiate(new GameObject(), MainSceneCamera.transform);
+            GameObject cameraObj = Instantiate(new GameObject(), _mainSceneCamera.transform);
             Camera cam = cameraObj.AddComponent<Camera>();
             XRDevice.DisableAutoXRCameraTracking(cam, true);
 
-            cam.CopyFrom(MainSceneCamera); // Start by copying all the settings from the main camera
-            #if VRC_VR_STEAM // We only want this on SteamVR.
+            cam.CopyFrom(_mainSceneCamera); // Start by copying all the settings from the main camera
+#if VRC_VR_STEAM // We only want this on SteamVR.
             cameraObj.AddComponent<SteamVRCantedProjectionCullingFix>();
-            #endif
-            Cameras.Add(cam);
+#endif
+            _cameras.Add(cam);
 
             cameraObj.tag = "Untagged";
-            cameraObj.name = $"StackedCamera : {CameraStack[index].CameraName}";
+            cameraObj.name = $"StackedCamera : {cameraStack[index].CameraName}";
             cam.clearFlags = CameraClearFlags.Depth;
             cam.depth = 100 - index;
-            cam.cullingMask = CameraStack[index].RenderLayer;
-            cam.useOcclusionCulling = CameraStack[index].UseOcclusionCulling;
+            cam.cullingMask = cameraStack[index].RenderLayer;
+            cam.useOcclusionCulling = cameraStack[index].UseOcclusionCulling;
 
             //Remove this cameras layers from the base camera
-            MainSceneCamera.cullingMask = MainSceneCamera.cullingMask ^ CameraStack[index].RenderLayer;
+            _mainSceneCamera.cullingMask = _mainSceneCamera.cullingMask ^ cameraStack[index].RenderLayer;
 
             // Set the ClientSim UI canvas to use this camera
-            clientSimMenu.SetCanvasCamera(cam);
+            _clientSimMenu.SetCanvasCamera(cam);
         }
 
         private void DestroyCamera(int index)
         {
-            Camera cam = Cameras[index];
-            Cameras.RemoveAt(index);
+            Camera cam = _cameras[index];
+            _cameras.RemoveAt(index);
 
             //Restore Layers from this camera to the main camera
-            MainSceneCamera.cullingMask = MainSceneCamera.cullingMask | CameraStack[index].RenderLayer;
+            _mainSceneCamera.cullingMask = _mainSceneCamera.cullingMask | cameraStack[index].RenderLayer;
             Destroy(cam.gameObject);
         }
     }
