@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8474ec07ef88d52458e79ca0f5240d96, type: 3}
-  m_Name: Cam_UIMenu
+  m_Name: Cam_InternalUI
   m_EditorClassIdentifier: 
-  cameraName: Cam_UIMenu
+  cameraName: Cam_InternalUI
   renderLayer:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 524288
   useOcclusionCulling: 0
