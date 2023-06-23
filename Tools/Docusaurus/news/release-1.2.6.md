@@ -1,10 +1,10 @@
 ---
 slug: release-1.2.6
-date: 2023-05-25
+date: 2023-06-23
 title: Release 1.2.6
 authors: [cubed]
 tags: [release]
-draft: true
+draft: false
 ---
 ## Summary
 
