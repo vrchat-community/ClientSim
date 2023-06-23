@@ -8,7 +8,7 @@ draft: false
 ---
 ## Summary
 
-Fixed a handful of ClientSim issues
+Added Camera Stacking and made it easier to run a scene without a Scene Descriptor.
 
 ### Changes
 - Added Camera Stacking, in order to fix issues where ClientSim menu is rendered behind world UI [Issue 51](https://github.com/vrchat-community/ClientSim/issues/51) [Issue 58](https://github.com/vrchat-community/ClientSim/issues/58)
