@@ -39,6 +39,8 @@ namespace VRC.SDK3.ClientSim
         private ClientSimTooltipManager tooltipManager;
         [SerializeField]
         private ClientSimPlayerSpawner playerSpawner;
+        [SerializeField]
+        private ClientSimStackedVRCameraSystem stackedCameraSystem;
         
         [SerializeField]
         private GameObject proxyObjectPrefab;
@@ -186,7 +188,8 @@ namespace VRC.SDK3.ClientSim
             {
                 _instance = null;
                 Destroy(gameObject);
-                throw new ClientSimException("Cannot start ClientSim if there is no scene descriptor!");
+                Debug.LogWarning("Cannot start ClientSim if there is no scene descriptor!");
+                return;
             }
             
             _settings = settings;
@@ -244,7 +247,8 @@ namespace VRC.SDK3.ClientSim
             Camera playerCamera = _player.GetCameraProvider().GetCamera();
             tooltipManager.Initialize(_settings, _player.GetTrackingProvider());
             highlightManager.Initialize(playerCamera);
-
+            stackedCameraSystem.Initialize(playerCamera, menu);
+            
             // Initialize SDK links after everything has been created and initialized.
             SetupSDKLinks();
         }
@@ -289,7 +293,7 @@ namespace VRC.SDK3.ClientSim
                     _player.EnablePlayer(_sceneManager.GetSpawnPoint(false));
                 }
             }
-            
+
             // Notify UdonManager that ClientSim is ready. This will then notify all registered UdonBehaviours that
             // they can begin running. Udon will initialize in the next frame in the next Update call.
             yield return _udonManager.OnClientSimReady();
@@ -301,6 +305,9 @@ namespace VRC.SDK3.ClientSim
             
             // Send event indicating ClientSim is initialized and ready.
             _eventDispatcher.SendEvent(new ClientSimReadyEvent());
+            
+            stackedCameraSystem.Ready();
+            
             this.Log("ClientSim Initialized");
         }
 
