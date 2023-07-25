@@ -30,6 +30,8 @@ namespace VRC.SDK3.ClientSim.Editor
         private readonly GUIContent _showTooltipsGuiContent = new GUIContent("Show Tooltips", "If enabled, hovering over an interactable object or pickup will display a tooltip above the object.");
         private readonly GUIContent _invertMouseLookGuiContent = new GUIContent("Invert Mouse Look", "If enabled, moving the mouse up or down will invert the direction the player will look up and down.");
         private readonly GUIContent _playerHeightGuiContent = new GUIContent("Player Height", "How tall should the player be in meters. Default height is 1.9. Note that the player's collision capsule is 1.6 and never changes.");
+        private readonly GUIContent _currentLanguageGuiContent = new GUIContent("Current Language", "The language the player is currently using. Available languages include English, French, German, Italian, Japanese, Korean, and Spanish.");
+        private int selectedLanguageIndex;
         
         // Player settings
         private readonly GUIContent _playerButtonsFoldoutGuiContent = new GUIContent("Player Settings", "");
@@ -382,6 +384,8 @@ namespace VRC.SDK3.ClientSim.Editor
                 _settings.invertMouseLook = EditorGUILayout.Toggle(_invertMouseLookGuiContent, _settings.invertMouseLook);
                 _settings.playerHeight = EditorGUILayout.FloatField(_playerHeightGuiContent, _settings.playerHeight);
                 _settings.playerHeight = Mathf.Clamp(_settings.playerHeight, 0.2f, 80f); // TODO make consts for these.
+                selectedLanguageIndex = EditorGUILayout.Popup(_currentLanguageGuiContent, selectedLanguageIndex, _settings.availableLanguages);
+                _settings.currentLanguage = _settings.availableLanguages[selectedLanguageIndex];
 
                 EditorGUI.EndDisabledGroup();
 

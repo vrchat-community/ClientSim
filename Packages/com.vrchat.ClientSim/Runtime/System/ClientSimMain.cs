@@ -471,6 +471,9 @@ namespace VRC.SDK3.ClientSim
             VRCPlayerApi._SetVoiceDistanceFar += ClientSimPlayerManager.SetVoiceDistanceFar;
             VRCPlayerApi._SetVoiceDistanceNear += ClientSimPlayerManager.SetVoiceDistanceNear;
             VRCPlayerApi._SetVoiceGain += ClientSimPlayerManager.SetVoiceGain;
+
+            VRCPlayerApi._GetCurrentLanguage += ClientSimPlayerManager.GetCurrentLanguage;
+            VRCPlayerApi._GetAvailableLanguages += ClientSimPlayerManager.GetAvailableLanguages;
             
             VRC_SpatialAudioSource.Initialize += ClientSimSpatialAudioHelper.InitializeAudio;
 
