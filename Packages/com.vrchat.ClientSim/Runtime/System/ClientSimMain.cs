@@ -450,6 +450,15 @@ namespace VRC.SDK3.ClientSim
             VRCPlayerApi._Respawn += ClientSimPlayerManager.Respawn;
             VRCPlayerApi._RespawnWithIndex += ClientSimPlayerManager.RespawnWithIndex;
             
+            VRCPlayerApi._GetManualAvatarScalingAllowed += ClientSimPlayerManager.GetManualAvatarScalingAllowed;
+            VRCPlayerApi._SetManualAvatarScalingAllowed += ClientSimPlayerManager.SetManualAvatarScalingAllowed;
+            VRCPlayerApi._GetAvatarEyeHeightMinimumAsMeters += ClientSimPlayerManager.GetAvatarEyeHeightMinimumAsMeters;
+            VRCPlayerApi._GetAvatarEyeHeightMaximumAsMeters += ClientSimPlayerManager.GetAvatarEyeHeightMaximumAsMeters;
+            VRCPlayerApi._SetAvatarEyeHeightMinimumByMeters += ClientSimPlayerManager.SetAvatarEyeHeightMinimumByMeters;
+            VRCPlayerApi._SetAvatarEyeHeightMaximumByMeters += ClientSimPlayerManager.SetAvatarEyeHeightMaximumByMeters;
+            VRCPlayerApi._GetAvatarEyeHeightAsMeters += ClientSimPlayerManager.GetAvatarEyeHeightAsMeters;
+            VRCPlayerApi._SetAvatarEyeHeightByMeters += ClientSimPlayerManager.SetAvatarEyeHeightByMeters;
+            VRCPlayerApi._SetAvatarEyeHeightByMultiplier += ClientSimPlayerManager.SetAvatarEyeHeightByMultiplier;
 
             VRCPlayerApi._CombatSetup += ClientSimCombatSystemHelper.CombatSetup;
             VRCPlayerApi._CombatSetMaxHitpoints += ClientSimCombatSystemHelper.CombatSetMaxHitpoints;
@@ -570,6 +579,16 @@ namespace VRC.SDK3.ClientSim
             VRCPlayerApi._UseLegacyLocomotion -= ClientSimPlayerManager.UseLegacyLocomotion;
             VRCPlayerApi._Respawn -= ClientSimPlayerManager.Respawn;
             VRCPlayerApi._RespawnWithIndex -= ClientSimPlayerManager.RespawnWithIndex;
+            
+            VRCPlayerApi._GetManualAvatarScalingAllowed -= ClientSimPlayerManager.GetManualAvatarScalingAllowed;
+            VRCPlayerApi._SetManualAvatarScalingAllowed -= ClientSimPlayerManager.SetManualAvatarScalingAllowed;
+            VRCPlayerApi._GetAvatarEyeHeightMinimumAsMeters -= ClientSimPlayerManager.GetAvatarEyeHeightMinimumAsMeters;
+            VRCPlayerApi._GetAvatarEyeHeightMaximumAsMeters -= ClientSimPlayerManager.GetAvatarEyeHeightMaximumAsMeters;
+            VRCPlayerApi._SetAvatarEyeHeightMinimumByMeters -= ClientSimPlayerManager.SetAvatarEyeHeightMinimumByMeters;
+            VRCPlayerApi._SetAvatarEyeHeightMaximumByMeters -= ClientSimPlayerManager.SetAvatarEyeHeightMaximumByMeters;
+            VRCPlayerApi._GetAvatarEyeHeightAsMeters -= ClientSimPlayerManager.GetAvatarEyeHeightAsMeters;
+            VRCPlayerApi._SetAvatarEyeHeightByMeters -= ClientSimPlayerManager.SetAvatarEyeHeightByMeters;
+            VRCPlayerApi._SetAvatarEyeHeightByMultiplier -= ClientSimPlayerManager.SetAvatarEyeHeightByMultiplier;
 
             VRCPlayerApi._CombatSetup -= ClientSimCombatSystemHelper.CombatSetup;
             VRCPlayerApi._CombatSetMaxHitpoints -= ClientSimCombatSystemHelper.CombatSetMaxHitpoints;
