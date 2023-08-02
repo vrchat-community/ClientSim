@@ -1,7 +1,7 @@
 {
 	"name" : "com.vrchat.clientsim",
 	"displayName" : "VRChat Client Simulator",
-	"version" : "1.2.6",
+	"version" : "1.2.7",
 	"unity" : "2019.4",
 	"description" : "VRChat Client Simulator for testing SDK3 worlds in Unity.",
 	"author" : {
@@ -14,7 +14,7 @@
 		"com.unity.inputsystem" : "1.2.0"
 	},
 	"vpmDependencies" : {
-		"com.vrchat.worlds" : "^3.1.x"
+		"com.vrchat.worlds" : "^3.2.2"
 	},
 	"samples" : [
 		{
