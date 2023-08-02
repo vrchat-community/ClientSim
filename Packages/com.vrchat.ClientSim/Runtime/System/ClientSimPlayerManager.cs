@@ -707,8 +707,7 @@ namespace VRC.SDK3.ClientSim
         
         public static float GetAvatarEyeHeightAsMeters(VRCPlayerApi arg)
         {
-            Debug.Log($"[ClientSim VRCPlayerApi.GetAvatarEyeHeightAsMeters] Returning default value of {AVATAR_EYE_HEIGHT_DEFAULT}.");
-            return AVATAR_EYE_HEIGHT_DEFAULT;
+            return ClientSimSettings.Instance.playerHeight;
         }
 
         public static void SetAvatarEyeHeightMinimumByMeters(VRCPlayerApi player, float value)
