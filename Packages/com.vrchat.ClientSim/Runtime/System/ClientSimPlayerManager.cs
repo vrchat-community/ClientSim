@@ -680,7 +680,6 @@ namespace VRC.SDK3.ClientSim
         
         private const float AVATAR_MIN_EYE_HEIGHT_DEFAULT = 0.2f;
         private const float AVATAR_MAX_EYE_HEIGHT_DEFAULT = 5f;
-        private const float AVATAR_EYE_HEIGHT_DEFAULT = 1.6f;
         
         public static bool GetManualAvatarScalingAllowed(VRCPlayerApi player)
         {
