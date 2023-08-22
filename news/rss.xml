@@ -4,10 +4,19 @@
         <title>ClientSim Blog</title>
         <link>https://clientsim.docs.vrchat.com/news</link>
         <description>ClientSim Blog</description>
-        <lastBuildDate>Fri, 23 Jun 2023 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 22 Aug 2023 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Release 1.2.7]]></title>
+            <link>https://clientsim.docs.vrchat.com/news/release-1.2.7</link>
+            <guid>https://clientsim.docs.vrchat.com/news/release-1.2.7</guid>
+            <pubDate>Tue, 22 Aug 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Summary]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="summary">Summary<a href="#summary" class="hash-link" aria-label="Direct link to Summary" title="Direct link to Summary">​</a></h2><p>Adds stub methods for Avatar Scaling</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="changes">Changes<a href="#changes" class="hash-link" aria-label="Direct link to Changes" title="Direct link to Changes">​</a></h3><ul><li>Added methods to handle calls to Avatar Scaling from Udon, so they wouldn't log errors in the console or throw exceptions. Fixes <a href="https://github.com/vrchat-community/ClientSim/issues/98" target="_blank" rel="noopener noreferrer">#98</a> and <a href="https://github.com/vrchat-community/ClientSim/issues/101" target="_blank" rel="noopener noreferrer">#101</a>.</li></ul>]]></content:encoded>
+            <category>release</category>
+        </item>
         <item>
             <title><![CDATA[Release 1.2.6]]></title>
             <link>https://clientsim.docs.vrchat.com/news/release-1.2.6</link>
