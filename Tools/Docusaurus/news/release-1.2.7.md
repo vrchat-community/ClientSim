@@ -11,4 +11,4 @@ draft: false
 Adds stub methods for Avatar Scaling
 
 ### Changes
-- Added methods to handle calls to Avatar Scaling from Udon, so they wouldn't log errors in the console or throw exceptions. Fixes [#98](https://github.com/vrchat-community/ClientSim/issues/98) and [#101])(https://github.com/vrchat-community/ClientSim/issues/101).
+- Added methods to handle calls to Avatar Scaling from Udon, so they wouldn't log errors in the console or throw exceptions. Fixes [#98](https://github.com/vrchat-community/ClientSim/issues/98) and [#101](https://github.com/vrchat-community/ClientSim/issues/101).
