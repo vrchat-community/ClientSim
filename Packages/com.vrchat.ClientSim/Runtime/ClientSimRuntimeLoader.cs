@@ -15,9 +15,13 @@ namespace VRC.SDK3.ClientSim
         private static ClientSimEventDispatcher _testEventDispatcherOverride;
 
         #region ClientSim Initialization
-
+        
+        // Dummy method to get the static initializer to be called early on.
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-        private static void OnBeforeSceneLoad()
+        static void OnBeforeSceneLoad() { }
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+        private static void OnAfterSceneLoad()
         {
             StartClientSim(GetSettings(), GetEventDispatcher());
         }
