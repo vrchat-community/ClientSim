@@ -48,7 +48,7 @@ namespace VRC.SDK3.ClientSim
         public float playerHeight = ClientSimTrackingProviderBase.AVATAR_HEIGHT; // Default avatar height is 1.9 units tall
         public string currentLanguage = "English";
         public readonly string[] availableLanguages =
-            { "English", "French", "German", "Italian", "Japanese", "Korean", "Spanish" };
+            { "English", "French", "German", "Italian", "Japanese", "Korean", "Spanish", "Portuguese, Brazilian", "Hebrew", "Polish", "Toki Pona", "Indonesian", "Chinese Simplified", "Chinese Traditional", "Russian" };
 
 #if UNITY_EDITOR
         private static ClientSimSettings LoadSettings()
