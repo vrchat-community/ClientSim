@@ -8,7 +8,7 @@ namespace VRC.SDK3.ClientSim
     {
         [SerializeField]
         private ClientSimStackedCamera[] cameraStack;
-        
+
         private bool _isCameraStackingEnabled;
         private Camera _mainSceneCamera;
         private bool _isInitialized;
@@ -26,13 +26,13 @@ namespace VRC.SDK3.ClientSim
         {
             _isReady = true;
         }
-        
+
         void Update()
         {
-            if(!_isReady) return;
+            if (!_isReady) return;
             if (!_isInitialized) { InitializeStackedSystem(); }
         }
-     
+
         void OnDisable()
         {
             if (_mainSceneCamera != null)
@@ -72,7 +72,8 @@ namespace VRC.SDK3.ClientSim
 
         private void AddCamera(int index)
         {
-            GameObject cameraObj = Instantiate(new GameObject(), _mainSceneCamera.transform);
+            GameObject dummyObject = new GameObject();
+            GameObject cameraObj = Instantiate(dummyObject, _mainSceneCamera.transform);
             Camera cam = cameraObj.AddComponent<Camera>();
             XRDevice.DisableAutoXRCameraTracking(cam, true);
 
@@ -94,6 +95,9 @@ namespace VRC.SDK3.ClientSim
 
             // Set the ClientSim UI canvas to use this camera
             _clientSimMenu.SetCanvasCamera(cam);
+
+            //Cleanup dummy object
+            Destroy(dummyObject);
         }
 
         private void DestroyCamera(int index)
