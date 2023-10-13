@@ -72,8 +72,8 @@ namespace VRC.SDK3.ClientSim
 
         private void AddCamera(int index)
         {
-            GameObject dummyObject = new GameObject();
-            GameObject cameraObj = Instantiate(dummyObject, _mainSceneCamera.transform);
+            GameObject cameraObj = new GameObject();
+            cameraObj.transform.SetParent(_mainSceneCamera.transform);
             Camera cam = cameraObj.AddComponent<Camera>();
             XRDevice.DisableAutoXRCameraTracking(cam, true);
 
@@ -95,9 +95,6 @@ namespace VRC.SDK3.ClientSim
 
             // Set the ClientSim UI canvas to use this camera
             _clientSimMenu.SetCanvasCamera(cam);
-
-            //Cleanup dummy object
-            Destroy(dummyObject);
         }
 
         private void DestroyCamera(int index)
