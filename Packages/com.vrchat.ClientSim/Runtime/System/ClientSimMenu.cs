@@ -278,6 +278,8 @@ namespace VRC.SDK3.ClientSim
             _menuIsActive = isActive;
             menu.SetActive(isActive);
 
+            ToggleCameraStacking(isActive);
+
             _eventDispatcher.SendEvent(new ClientSimMenuStateChangedEvent { isMenuOpen = _menuIsActive });
 
             if (_menuIsActive)
@@ -293,6 +295,19 @@ namespace VRC.SDK3.ClientSim
             {
                 _eventDispatcher.Unsubscribe<ClientSimOnPlayerMovedEvent>(OnPlayerMoved);
             }
+
+
+        }
+
+        private void ToggleCameraStacking(bool isActive)
+        {
+            if (_menuCanvas.worldCamera == null)
+            {
+                return;
+            }
+
+            Camera cam = _menuCanvas.worldCamera;
+            cam.enabled = isActive;
         }
 
         // TODO update position based on tracking type. Desktop should always be in front of the camera and VR
