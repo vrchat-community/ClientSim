@@ -32,6 +32,7 @@ namespace VRC.SDK3.ClientSim.Editor
         private readonly GUIContent _playerHeightGuiContent = new GUIContent("Player Height", "How tall should the player be in meters. Default height is 1.9. Note that the player's collision capsule is 1.6 and never changes.");
         private readonly GUIContent _currentLanguageGuiContent = new GUIContent("Current Language", "The language the player is currently using. Available languages include English, French, German, Italian, Japanese, Korean, and Spanish.");
         private int selectedLanguageIndex;
+        private string[] _languageNames;
         
         // Player settings
         private readonly GUIContent _playerButtonsFoldoutGuiContent = new GUIContent("Player Settings", "");
@@ -80,6 +81,15 @@ namespace VRC.SDK3.ClientSim.Editor
                 _warningIcon = Resources.Load<Texture2D>("2FAIcons/SDK_Warning_Triangle_icon");
             }
             
+            if (_languageNames == null)
+            {
+                _languageNames = new string[_settings.availableLanguages.Length];
+                for (var i = 0; i < _settings.availableLanguages.Length; i++)
+                {
+                    _languageNames[i] = new CultureInfo(_settings.availableLanguages[i]).DisplayName;
+                }
+            }
+
             _version = ClientSimResourceLoader.GetVersion();
         }
 
@@ -384,7 +394,7 @@ namespace VRC.SDK3.ClientSim.Editor
                 _settings.invertMouseLook = EditorGUILayout.Toggle(_invertMouseLookGuiContent, _settings.invertMouseLook);
                 _settings.playerHeight = EditorGUILayout.FloatField(_playerHeightGuiContent, _settings.playerHeight);
                 _settings.playerHeight = Mathf.Clamp(_settings.playerHeight, 0.2f, 80f); // TODO make consts for these.
-                selectedLanguageIndex = EditorGUILayout.Popup(_currentLanguageGuiContent, selectedLanguageIndex, _settings.availableLanguages);
+                selectedLanguageIndex = EditorGUILayout.Popup(_currentLanguageGuiContent, selectedLanguageIndex, _languageNames);
                 _settings.currentLanguage = _settings.availableLanguages[selectedLanguageIndex];
 
                 EditorGUI.EndDisabledGroup();
