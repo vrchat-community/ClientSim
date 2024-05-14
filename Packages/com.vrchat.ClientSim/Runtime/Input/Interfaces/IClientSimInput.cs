@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using VRC.SDKBase;
 using VRC.Udon.Common;
 
 namespace VRC.SDK3.ClientSim
@@ -46,5 +47,8 @@ namespace VRC.SDK3.ClientSim
         
         void SubscribeReleaseMouse(Action<bool> handler);
         void UnsubscribeReleaseMouse(Action<bool> handler);
+
+        public void SubscribeInputChangedEvent(Action<VRCInputMethod> handler);
+        public void UnsubscribeInputChangedEvent(Action<VRCInputMethod> handler);
     }
 }

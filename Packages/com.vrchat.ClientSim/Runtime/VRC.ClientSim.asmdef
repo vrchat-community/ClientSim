@@ -1,11 +1,13 @@
 {
     "name": "VRC.ClientSim",
+    "rootNamespace": "",
     "references": [
         "Unity.Postprocessing.Runtime",
         "Unity.InputSystem",
         "VRC.Udon",
         "VRC.SDKBase",
-        "VRC.ClientSim.SelectionHighlight"
+        "VRC.ClientSim.SelectionHighlight",
+        "UniTask"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

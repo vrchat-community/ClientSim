@@ -42,6 +42,8 @@ namespace VRC.SDK3.ClientSim
     public class ClientSimOnPlayerHeightUpdateEvent : IClientSimEvent
     {
         public float playerHeight;
+        public bool exceedsManualScalingMaximum;
+        public bool exceedsManualScalingMinimum;
     }
     
     public class ClientSimOnTrackingScaleUpdateEvent : IClientSimEvent
@@ -53,5 +55,10 @@ namespace VRC.SDK3.ClientSim
     {
         public VRCPlayerApi oldMasterPlayer;
         public VRCPlayerApi newMasterPlayer;
+    }
+    
+    public class ClientSimOnToggleManualScalingEvent : IClientSimEvent
+    {
+        public bool manualScalingAllowed;
     }
 }

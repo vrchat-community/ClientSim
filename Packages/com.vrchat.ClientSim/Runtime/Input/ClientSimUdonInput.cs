@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using VRC.SDKBase;
 using VRC.Udon;
 using VRC.Udon.Common;
 
@@ -60,6 +61,7 @@ namespace VRC.SDK3.ClientSim
             _input?.SubscribeUse(UseInput);
             _input?.SubscribeGrab(GrabInput);
             _input?.SubscribeDrop(DropInput);
+            _input?.SubscribeInputChangedEvent(SendInputChangedEvent);
         }
 
         public void Dispose()
@@ -70,6 +72,7 @@ namespace VRC.SDK3.ClientSim
             _input?.UnsubscribeUse(UseInput);
             _input?.UnsubscribeGrab(GrabInput);
             _input?.UnsubscribeDrop(DropInput);
+            _input?.UnsubscribeInputChangedEvent(SendInputChangedEvent);
         }
 
         #region ClientSim Events
@@ -102,6 +105,14 @@ namespace VRC.SDK3.ClientSim
         private void DropInput(bool value, HandType hand)
         {
             QueueButtonInputEvent(value, hand, UdonManager.UDON_INPUT_DROP);
+        }
+        
+        private void SendInputChangedEvent(VRCInputMethod inputMethod)
+        {
+            _queuedEvents.Enqueue(() =>
+            {
+                UdonManager.Instance.RunEvent(UdonManager.UDON_EVENT_ONINPUTMETHODCHANGED, ("inputMethod", inputMethod));
+            });
         }
 
         #endregion

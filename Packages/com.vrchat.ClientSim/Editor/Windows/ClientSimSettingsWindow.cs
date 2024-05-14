@@ -29,7 +29,7 @@ namespace VRC.SDK3.ClientSim.Editor
         private readonly GUIContent _showDesktopReticleGuiContent = new GUIContent("Show Desktop Reticle", "Show or hide the center Desktop reticle image.");
         private readonly GUIContent _showTooltipsGuiContent = new GUIContent("Show Tooltips", "If enabled, hovering over an interactable object or pickup will display a tooltip above the object.");
         private readonly GUIContent _invertMouseLookGuiContent = new GUIContent("Invert Mouse Look", "If enabled, moving the mouse up or down will invert the direction the player will look up and down.");
-        private readonly GUIContent _playerHeightGuiContent = new GUIContent("Player Height", "How tall should the player be in meters. Default height is 1.9. Note that the player's collision capsule is 1.6 and never changes.");
+        private readonly GUIContent _playerHeightGuiContent = new GUIContent("Initial Player Height", "How tall should the player be in meters at app start. Default height is 1.9. Note that the player's collision capsule is 1.6 and never changes.");
         private readonly GUIContent _currentLanguageGuiContent = new GUIContent("Current Language", "The language the player is currently using. Available languages include English, French, German, Italian, Japanese, Korean, and Spanish.");
         private int selectedLanguageIndex;
         
@@ -44,6 +44,7 @@ namespace VRC.SDK3.ClientSim.Editor
         
         private static Texture2D _warningIcon;
         private static ClientSimSettings _settings;
+        private static IClientSimPlayerHeightManager _heightManager;
         
         private Vector2 _scrollPosition;
         private GUIStyle _boxStyle;
@@ -79,7 +80,7 @@ namespace VRC.SDK3.ClientSim.Editor
                 // Reuse VRChat's warning icon.
                 _warningIcon = Resources.Load<Texture2D>("2FAIcons/SDK_Warning_Triangle_icon");
             }
-            
+
             _version = ClientSimResourceLoader.GetVersion();
         }
 
@@ -382,10 +383,9 @@ namespace VRC.SDK3.ClientSim.Editor
                 _settings.showDesktopReticle = EditorGUILayout.Toggle(_showDesktopReticleGuiContent, _settings.showDesktopReticle);
                 _settings.showTooltips = EditorGUILayout.Toggle(_showTooltipsGuiContent, _settings.showTooltips);
                 _settings.invertMouseLook = EditorGUILayout.Toggle(_invertMouseLookGuiContent, _settings.invertMouseLook);
-                _settings.playerHeight = EditorGUILayout.FloatField(_playerHeightGuiContent, _settings.playerHeight);
-                _settings.playerHeight = Mathf.Clamp(_settings.playerHeight, 0.2f, 80f); // TODO make consts for these.
-                selectedLanguageIndex = EditorGUILayout.Popup(_currentLanguageGuiContent, selectedLanguageIndex, _settings.availableLanguages);
-                _settings.currentLanguage = _settings.availableLanguages[selectedLanguageIndex];
+                _settings.playerStartHeight = EditorGUILayout.FloatField(_playerHeightGuiContent, _settings.playerStartHeight);
+                selectedLanguageIndex = EditorGUILayout.Popup(_currentLanguageGuiContent, selectedLanguageIndex, _settings.GetAvailableDisplayLanguages());
+                _settings.currentLanguage = _settings.GetLanguage(selectedLanguageIndex);
 
                 EditorGUI.EndDisabledGroup();
 

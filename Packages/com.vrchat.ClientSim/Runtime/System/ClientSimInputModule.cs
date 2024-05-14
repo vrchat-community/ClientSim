@@ -17,8 +17,6 @@ namespace VRC.SDK3.ClientSim
         {
             base.Awake();
             this.PreventComponentFromSaving();
-
-            DisableOtherEventSystems();
         }
 
         private void DisableOtherEventSystems()
@@ -42,6 +40,8 @@ namespace VRC.SDK3.ClientSim
 
         protected override void Start()
         {
+            DisableOtherEventSystems();
+            
             // TODO check settings and disable self if player is not spawned to allow normal ui raycasting.
             m_InputOverride = _baseInput = GetComponent<ClientSimBaseInput>();
             

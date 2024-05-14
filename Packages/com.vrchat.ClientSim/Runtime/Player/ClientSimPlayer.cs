@@ -60,16 +60,16 @@ namespace VRC.SDK3.ClientSim
             IClientSimInteractiveLayerProvider interactiveLayerProvider,
             IClientSimMousePositionProvider mousePositionProvider,
             IClientSimSceneManager sceneManager,
-            IClientSimProxyObjectProvider proxyProvider)
+            IClientSimProxyObjectProvider proxyProvider,
+            IClientSimPlayerHeightManager heightManager)
         {
             _eventDispatcher = eventDispatcher;
             _settings = settings;
             _sceneManager = sceneManager;
             _proxyProvider = proxyProvider;
-            
-            
+
             // TODO take settings and spawn desktop vs vr tracking data
-            playerTrackingData.Initialize(eventDispatcher, input, settings);
+            playerTrackingData.Initialize(eventDispatcher, input, settings, heightManager);
             IsUserVR = playerTrackingData.IsVR();
             
             _interactManager = new ClientSimInteractManager(playerTrackingData, pickupData);

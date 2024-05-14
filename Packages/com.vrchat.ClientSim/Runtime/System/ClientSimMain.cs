@@ -1,8 +1,14 @@
-﻿using System.Collections;
+using System.Collections;
 using System.IO;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
+using VRC.Core;
+using VRC.Economy;
+using VRC.SDK3.Network;
+using VRC.SDK3.Platform;
 using VRC.SDK3.Video.Components.AVPro;
 using VRC.SDKBase;
+using VRC.SDKBase.Platform;
 using VRC.Udon;
 
 namespace VRC.SDK3.ClientSim
@@ -41,7 +47,9 @@ namespace VRC.SDK3.ClientSim
         private ClientSimPlayerSpawner playerSpawner;
         [SerializeField]
         private ClientSimStackedVRCameraSystem stackedCameraSystem;
-        
+        [SerializeField] 
+        private ClientSimStoreManager storeManager;
+
         [SerializeField]
         private GameObject proxyObjectPrefab;
 
@@ -55,6 +63,9 @@ namespace VRC.SDK3.ClientSim
         private ClientSimInteractiveLayerProvider _interactiveLayerProvider;
         private IClientSimSessionState _sessionState;
 
+        // public so that height can be adjusted via the settings window
+        public ClientSimPlayerHeightManager HeightManager { get; private set; }
+        
         private ClientSimSettings _settings;
         private ClientSimPlayer _player;
 
@@ -68,7 +79,11 @@ namespace VRC.SDK3.ClientSim
             {
                 throw new ClientSimException("Cannot create an instance of ClientSim while one already exists.");
             }
-            
+
+            // Configure Delegates for Allowlisted URL Validation
+            VRCUrl.DomainExplicitAllowlistDelegate = () => UrlAllowlistConfig.DomainExplicitAllowlist;
+            VRCUrl.DomainWildcardAllowlistDelegate = () => UrlAllowlistConfig.DomainWildcardAllowlist;
+
             GameObject systemPrefab = Resources.Load<GameObject>(_systemPrefabPath);
 
             if (systemPrefab == null)
@@ -102,6 +117,8 @@ namespace VRC.SDK3.ClientSim
                     Debug.LogError($"Play mode Stopped because: {e.Message}");
                     UnityEditor.EditorApplication.isPlaying = false;
                 }
+#else
+                Debug.LogError($"Tried to initialize ClientSim outside of the Unity Editor: {e.Message}");
 #endif
             }
         }
@@ -206,19 +223,19 @@ namespace VRC.SDK3.ClientSim
             inputManager.Initialize(_settings);
             IClientSimInput input = inputManager.GetInput();
             
+            ClientSimUdonManagerEventSender udonEventSender = new(UdonManager.Instance);
+            HeightManager = new ClientSimPlayerHeightManager(_eventDispatcher, udonEventSender);
+
             udonInput.Initialize(_eventDispatcher, input);
-            menu.Initialize(_eventDispatcher, input, _settings, _sessionState);
+            menu.Initialize(_eventDispatcher, input, _settings, _sessionState, HeightManager);
             baseInput.Initialize(_eventDispatcher, input, _settings);
             inputModule.Initialize(_interactiveLayerProvider);
             
-            _playerManager = new ClientSimPlayerManager(_eventDispatcher);
+            _playerManager = new ClientSimPlayerManager(_eventDispatcher, HeightManager);
             // ObjectManager must be initialized before UdonManager to ensure object ownership for leaving players
             // is handled first.
             syncedObjectManager.Initialize(_eventDispatcher, _sceneManager, _playerManager);
-            _udonManager = new ClientSimUdonManager(
-                _eventDispatcher,
-                syncedObjectManager, 
-                new ClientSimUdonManagerEventSender(UdonManager.Instance));
+            _udonManager = new ClientSimUdonManager(_eventDispatcher, syncedObjectManager, udonEventSender);
             playerSpawner.Initialize(_sceneManager, _playerManager, _blacklistManager, null);
             
             // Option to allow for spawning remote players first to prevent the local player from being master.
@@ -241,17 +258,61 @@ namespace VRC.SDK3.ClientSim
                 _interactiveLayerProvider,
                 baseInput,
                 _sceneManager,
-                _proxyObject);
-
+                _proxyObject, 
+                HeightManager);
 
             Camera playerCamera = _player.GetCameraProvider().GetCamera();
             tooltipManager.Initialize(_settings, _player.GetTrackingProvider());
             highlightManager.Initialize(playerCamera);
             stackedCameraSystem.Initialize(playerCamera, menu);
             
+            storeManager = new ClientSimStoreManager(_eventDispatcher, new ClientSimUdonManagerEventSender(UdonManager.Instance), _playerManager);
+
             // Initialize SDK links after everything has been created and initialized.
             SetupSDKLinks();
         }
+        
+        #region Platform Management
+
+        private Vector2 CurrentResolution;
+        private VRCOrientation CurrentOrientation;
+        private const int ScreenChangePollRate = 100;
+        
+        private async UniTaskVoid CheckForScreenChange()
+        {
+            while (_isReady)
+            {
+                if ((int)CurrentResolution.x != UnityEngine.Device.Screen.width || (int)CurrentResolution.y != UnityEngine.Device.Screen.height)
+                {
+                    CurrentResolution = new Vector2(UnityEngine.Device.Screen.width, UnityEngine.Device.Screen.height);
+                }
+                
+                var currentOrientation = DetermineOrientation();
+                if (currentOrientation != CurrentOrientation)
+                {
+                    CurrentOrientation = DetermineOrientation();
+                    // send ScreenUpdate event
+                    var screenUpdateEvent = new ClientSimScreenUpdateEvent()
+                    {
+                        data = new ScreenUpdateData()
+                        {
+                            type = ScreenUpdateType.OrientationChanged,
+                            orientation = CurrentOrientation,
+                            resolution = CurrentResolution
+                        }
+                    };
+                    _eventDispatcher.SendEvent(screenUpdateEvent);
+                }
+
+                await UniTask.Delay(ScreenChangePollRate);
+            }
+        }
+        
+        private VRCOrientation DetermineOrientation()
+        {
+            return Screen.width < Screen.height ? VRCOrientation.Portrait : VRCOrientation.Landscape;
+        }
+        #endregion
 
         private void Start()
         {
@@ -308,6 +369,8 @@ namespace VRC.SDK3.ClientSim
             
             stackedCameraSystem.Ready();
             
+            CheckForScreenChange().Forget();
+            
             this.Log("ClientSim Initialized");
         }
 
@@ -356,6 +419,11 @@ namespace VRC.SDK3.ClientSim
             return obj.GetInstanceID().ToString();
         }
 
+        private static void CallNetworkConfigure(VRCNetworkBehaviour behaviour)
+        {
+            behaviour.NetworkConfigure();
+        }
+
         #region VRChat SDK Links
 
         // If adding to this list, be sure to also remove the link in the RemoveSDKLinks method 
@@ -374,6 +442,8 @@ namespace VRC.SDK3.ClientSim
             Networking._IsNetworkSettled += IsNetworkReady;
             
             Networking._GetUniqueName += GetUniqueStringForObject;
+
+            VRCNetworkBehaviour.OnNetworkBehaviourAwake += CallNetworkConfigure;
             
             VRCStation.Initialize += ClientSimStationHelper.InitializeStations;
             VRCStation.useStationDelegate += ClientSimStationHelper.UseStation;
@@ -382,7 +452,7 @@ namespace VRC.SDK3.ClientSim
 
             if (_player != null)
             {
-                VRC_UiShape.GetEventCamera += _player.GetCameraProvider().GetCamera;
+                VRC_UiShape.GetEventCamera += _player.GetCameraProvider().GetCameraForObject;
             }
 
             VRC_Pickup.OnAwake += ClientSimPickupHelper.InitializePickup;
@@ -489,6 +559,15 @@ namespace VRC.SDK3.ClientSim
             VRCAVProVideoPlayer.Initialize += ClientSimAVProVideoStub.InitializePlayer;
 
             InputManager._EnableObjectHighlight += highlightManager.EnableObjectHighlight;
+            InputManager._GetLastUsedInputMethod += inputManager.GetLastUsedInputMethod;
+            
+            Store._sendProductEvent += ClientSimStoreManager.SendProductEvent;
+            Store._listPurchases += ClientSimStoreManager.ListPurchases;
+            Store._listAvailableProducts += ClientSimStoreManager.ListAvailableProducts;
+            Store._doesPlayerOwnProduct += ClientSimStoreManager.DoesPlayerOwnProduct;
+            Store._doesAnyPlayerOwnProduct += ClientSimStoreManager.DoesAnyPlayerOwnProduct;
+            Store._getPlayersWhoOwnProduct += ClientSimStoreManager.GetPlayersWhoOwnProduct;
+            Store._listProductOwners += ClientSimStoreManager.ListProductOwners;
         }
 
         private void RemoveSDKLinks()
@@ -506,7 +585,9 @@ namespace VRC.SDK3.ClientSim
             Networking._IsNetworkSettled -= IsNetworkReady;
             
             Networking._GetUniqueName -= GetUniqueStringForObject;
-            
+
+            VRCNetworkBehaviour.OnNetworkBehaviourAwake -= CallNetworkConfigure;
+
             VRCStation.Initialize -= ClientSimStationHelper.InitializeStations;
             VRCStation.useStationDelegate -= ClientSimStationHelper.UseStation;
             VRCStation.exitStationDelegate -= ClientSimStationHelper.ExitStation;
@@ -515,7 +596,7 @@ namespace VRC.SDK3.ClientSim
             // Player can be invalid if we weren't able to spawn
             if (_player)
             {
-                VRC_UiShape.GetEventCamera -= _player.GetCameraProvider().GetCamera;
+                VRC_UiShape.GetEventCamera -= _player.GetCameraProvider().GetCameraForObject;
             }
 
             VRC_Pickup.OnAwake -= ClientSimPickupHelper.InitializePickup;
@@ -619,6 +700,13 @@ namespace VRC.SDK3.ClientSim
             VRCAVProVideoPlayer.Initialize -= ClientSimAVProVideoStub.InitializePlayer;
 
             InputManager._EnableObjectHighlight -= highlightManager.EnableObjectHighlight;
+            
+            Store._sendProductEvent -= ClientSimStoreManager.SendProductEvent;
+            Store._listPurchases -= ClientSimStoreManager.ListPurchases;
+            Store._listAvailableProducts -= ClientSimStoreManager.ListAvailableProducts;
+            Store._doesPlayerOwnProduct -= ClientSimStoreManager.DoesPlayerOwnProduct;
+            Store._doesAnyPlayerOwnProduct -= ClientSimStoreManager.DoesAnyPlayerOwnProduct;
+            Store._getPlayersWhoOwnProduct -= ClientSimStoreManager.GetPlayersWhoOwnProduct;
         }
 
         #endregion
