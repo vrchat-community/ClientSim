@@ -50,6 +50,7 @@ namespace VRC.SDK3.ClientSim
             _eventDispatcher.Subscribe<ClientSimOnPlayerJoinedEvent>(OnPlayerJoined);
             _eventDispatcher.Subscribe<ClientSimOnPlayerLeftEvent>(OnPlayerLeft);
             _eventDispatcher.Subscribe<ClientSimOnPlayerRespawnEvent>(OnPlayerRespawn);
+            _eventDispatcher.Subscribe<ClientSimScreenUpdateEvent>(OnScreenUpdate);
         }
         
         public void Dispose()
@@ -57,6 +58,7 @@ namespace VRC.SDK3.ClientSim
             _eventDispatcher.Unsubscribe<ClientSimOnPlayerJoinedEvent>(OnPlayerJoined);
             _eventDispatcher.Unsubscribe<ClientSimOnPlayerLeftEvent>(OnPlayerLeft);
             _eventDispatcher.Unsubscribe<ClientSimOnPlayerRespawnEvent>(OnPlayerRespawn);
+            _eventDispatcher.Unsubscribe<ClientSimScreenUpdateEvent>(OnScreenUpdate);
         }
 
         public void InitUdon(UdonBehaviour behaviour, IUdonProgram program)
@@ -112,6 +114,11 @@ namespace VRC.SDK3.ClientSim
         private void OnPlayerRespawn(ClientSimOnPlayerRespawnEvent respawnEvent)
         {
             _udonEventSender.RunEvent("_onPlayerRespawn", ("player", respawnEvent.player));
+        }
+        
+        private void OnScreenUpdate(ClientSimScreenUpdateEvent screenUpdateEvent)
+        {
+            _udonEventSender.RunEvent(UdonManager.UDON_EVENT_ONSCREENUPDATE, ("data", screenUpdateEvent.data));
         }
 
         #endregion

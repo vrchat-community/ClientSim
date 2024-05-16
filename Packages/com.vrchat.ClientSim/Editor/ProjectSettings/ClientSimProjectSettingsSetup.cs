@@ -86,22 +86,17 @@ namespace VRC.SDK3.ClientSim.Editor
         public static bool IsUsingCorrectInputTypeSettings()
         {
             SerializedObject serializedObject = new SerializedObject(AssetDatabase.LoadAssetAtPath<Object>("ProjectSettings/ProjectSettings.asset"));
-            SerializedProperty newInputEnabledProp = serializedObject.FindProperty("enableNativePlatformBackendsForNewInputSystem");
-            SerializedProperty oldInputDisabledProp = serializedObject.FindProperty("disableOldInputManagerSupport");
+            SerializedProperty activeInputHandler = serializedObject.FindProperty("activeInputHandler");
 
-            return
-                newInputEnabledProp.boolValue
-                && !oldInputDisabledProp.boolValue;
+            return activeInputHandler.intValue != 1;
         }
 
         public static void SetInputTypeSettings()
         {
             SerializedObject serializedObject = new SerializedObject(AssetDatabase.LoadAssetAtPath<Object>("ProjectSettings/ProjectSettings.asset"));
-            SerializedProperty newInputEnabledProp = serializedObject.FindProperty("enableNativePlatformBackendsForNewInputSystem");
-            SerializedProperty oldInputDisabledProp = serializedObject.FindProperty("disableOldInputManagerSupport");
+            SerializedProperty activeInputHandler = serializedObject.FindProperty("activeInputHandler");
 
-            newInputEnabledProp.boolValue = true;
-            oldInputDisabledProp.boolValue = false;
+            activeInputHandler.intValue = 1;
             
             serializedObject.ApplyModifiedProperties();
         }

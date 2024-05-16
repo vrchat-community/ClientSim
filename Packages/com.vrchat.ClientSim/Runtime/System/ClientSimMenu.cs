@@ -88,6 +88,7 @@ namespace VRC.SDK3.ClientSim
         private IClientSimInput _input;
         private ClientSimSettings _settings;
         private IClientSimSessionState _sessionState;
+        private IClientSimPlayerHeightManager _heightManager;
 
         private ClientSimDisplayedPage _displayedPage = ClientSimDisplayedPage.WARNING_PAGE;
         private bool _menuIsActive;
@@ -114,20 +115,23 @@ namespace VRC.SDK3.ClientSim
             IClientSimEventDispatcher eventDispatcher, 
             IClientSimInput input, 
             ClientSimSettings settings,
-            IClientSimSessionState sessionState)
+            IClientSimSessionState sessionState,
+            IClientSimPlayerHeightManager heightManager)
         {
             _eventDispatcher = eventDispatcher;
             _input = input;
             _settings = settings;
             _sessionState = sessionState;
+            _heightManager = heightManager;
 
             // Input will be null with incorrect Unity input project settings.
             _input?.SubscribeToggleMenu(HandleInputMenuToggle);
             _eventDispatcher.Subscribe<ClientSimOnPlayerJoinedEvent>(OnPlayerJoined);
             _eventDispatcher.Subscribe<ClientSimOnNewMasterEvent>(OnMasterChange);
             _eventDispatcher.Subscribe<ClientSimReadyEvent>(OnReady);
+            _eventDispatcher.Subscribe<ClientSimOnPlayerHeightUpdateEvent>(OnPlayerHeightUpdate);
+            _eventDispatcher.Subscribe<ClientSimOnToggleManualScalingEvent>(OnManualScalingToggled);
 
-            
             playerNameText.text = "";
             playerIdText.text = "";
             isMasterToggle.isOn = false;
@@ -186,6 +190,7 @@ namespace VRC.SDK3.ClientSim
             _eventDispatcher?.Unsubscribe<ClientSimOnNewMasterEvent>(OnMasterChange);
             _eventDispatcher?.Unsubscribe<ClientSimReadyEvent>(OnReady);
             _eventDispatcher?.Unsubscribe<ClientSimOnPlayerMovedEvent>(OnPlayerMoved);
+            _eventDispatcher?.Unsubscribe<ClientSimOnToggleManualScalingEvent>(OnManualScalingToggled);
         }
 
         private void Update()
@@ -245,14 +250,12 @@ namespace VRC.SDK3.ClientSim
             reticleToggle.isOn = _settings.showDesktopReticle;
             invertMouseToggle.isOn = _settings.invertMouseLook;
             consoleLoggingToggle.isOn = _settings.displayLogs;
-            
-            float playerHeight = _settings.playerHeight;
+
+            float playerHeight = _heightManager.GetAvatarEyeHeightAsMetersClamped();
             if (!Mathf.Approximately(playerHeight, playerHeightSlider.value))
             {
-                // Allow overriding the max size if through the Unity ClientSim settings window.
-                ClampPlayerHeightSliderMaxValue();
-
-                playerHeight = Mathf.Clamp(playerHeight, playerHeightSlider.minValue, playerHeightSlider.maxValue);
+                // the player height slider obeys manual scale restrictions as if through the radial menu
+                ClampPlayerHeightSliderBounds();
                 
                 playerHeightSlider.value = playerHeight;
                 playerHeightText.text = playerHeight.ToString("F2");
@@ -261,9 +264,10 @@ namespace VRC.SDK3.ClientSim
             }
         }
 
-        private void ClampPlayerHeightSliderMaxValue()
+        private void ClampPlayerHeightSliderBounds()
         {
-            playerHeightSlider.maxValue = Mathf.Clamp(_settings.playerHeight, _playerHeightOriginalMaxvalue, 80);
+            playerHeightSlider.minValue = _heightManager.GetAvatarEyeHeightMinimumAsMeters();
+            playerHeightSlider.maxValue = _heightManager.GetAvatarEyeHeightMaximumAsMeters();
         }
         
         private void SaveSettings()
@@ -278,6 +282,10 @@ namespace VRC.SDK3.ClientSim
             _menuIsActive = isActive;
             menu.SetActive(isActive);
 
+            // toggle internal UI camera stack to improve menu performance
+            if (_menuCanvas.worldCamera != null)
+                _menuCanvas.worldCamera.enabled = isActive;
+            
             _eventDispatcher.SendEvent(new ClientSimMenuStateChangedEvent { isMenuOpen = _menuIsActive });
 
             if (_menuIsActive)
@@ -287,7 +295,7 @@ namespace VRC.SDK3.ClientSim
                 
                 // If the user sets the player height value too large through the Settings window,
                 // toggling the menu will clamp the max range to make it more usable again.
-                ClampPlayerHeightSliderMaxValue();
+                ClampPlayerHeightSliderBounds();
             }
             else
             {
@@ -397,6 +405,27 @@ namespace VRC.SDK3.ClientSim
             UpdateCanvasLocation();
         }
 
+        private void OnPlayerHeightUpdate(ClientSimOnPlayerHeightUpdateEvent heightEvent)
+        {
+            // if height was set programatically and exceeds a manual scaling limit, set slider to the exceeded limit 
+            if (heightEvent.exceedsManualScalingMinimum)
+                playerHeightSlider.SetValueWithoutNotify(_heightManager.GetAvatarEyeHeightMinimumAsMeters());
+            
+            else if (heightEvent.exceedsManualScalingMaximum)
+                playerHeightSlider.SetValueWithoutNotify(_heightManager.GetAvatarEyeHeightMaximumAsMeters());
+            
+            else
+                playerHeightSlider.SetValueWithoutNotify(heightEvent.playerHeight);
+            
+            playerHeightText.text = heightEvent.playerHeight.ToString("F2");
+            ClientSimSettings.Instance.SetInitialPlayerHeight(heightEvent.playerHeight);
+        }
+
+        private void OnManualScalingToggled(ClientSimOnToggleManualScalingEvent toggleEvent)
+        {
+            playerHeightSlider.interactable = toggleEvent.manualScalingAllowed;
+        }
+
 #endregion
 
 #region UI Hooks
@@ -451,14 +480,17 @@ namespace VRC.SDK3.ClientSim
         [PublicAPI]
         public void UpdatePlayerHeight(float playerHeight)
         {
-            if (Mathf.Approximately(_settings.playerHeight, playerHeight))
+            if (!_heightManager.GetManualAvatarScalingAllowed())
             {
                 return;
             }
             
-            _settings.playerHeight = playerHeight;
-            playerHeightText.text = playerHeight.ToString("F2");
-            _eventDispatcher.SendEvent(new ClientSimOnPlayerHeightUpdateEvent { playerHeight = playerHeight });
+            if (Mathf.Approximately(_heightManager.GetAvatarEyeHeightAsMetersClamped(), playerHeight))
+            {
+                return;
+            }
+
+            _heightManager.SetAvatarEyeHeightByMeters(playerHeight, true);
             SaveSettings();
         }
         

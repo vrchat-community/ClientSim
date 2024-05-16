@@ -14,6 +14,7 @@ namespace VRC.SDK3.ClientSim
         private bool _useAudioSourceCurve;
         private ONSPAudioSource _onsp;
         private bool _forceUpdate = true;
+        private bool _updateONSPParams;
 
         public static void InitializeAudio(VRC_SpatialAudioSource obj)
         {
@@ -62,6 +63,7 @@ namespace VRC.SDK3.ClientSim
         {
             // ONSP needs to reapply audio settings everytime the object is enabled.
             _forceUpdate = true;
+            _updateONSPParams = true;
         }
 
         // Late update to help with testing
@@ -92,6 +94,7 @@ namespace VRC.SDK3.ClientSim
                 _useAudioSourceCurve != _spatialAudioSource.UseAudioSourceVolumeCurve
             ) {
                 _forceUpdate = true;
+                _updateONSPParams = true;
             }
             
             _onsp.EnableSpatialization = _spatialAudioSource.EnableSpatialization;
@@ -100,8 +103,14 @@ namespace VRC.SDK3.ClientSim
             _onsp.Near = _spatialAudioSource.Near;
             _onsp.Far = _spatialAudioSource.Far;
             _onsp.VolumetricRadius = _spatialAudioSource.VolumetricRadius;
-            
-            _onsp.SetParameters(ref _audioSource);
+
+            // In unity 2022 - updating ONSP params every frame can cause a logspam
+            // This is a workaround to only update when needed
+            if (_updateONSPParams)
+            {
+                _onsp.SetParameters(ref _audioSource);
+                _updateONSPParams = false;
+            }
             
             if (!_onsp.EnableSpatialization)
             {

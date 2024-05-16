@@ -1,6 +1,9 @@
 ﻿
 #if ENABLE_INPUT_SYSTEM
+using System.Text.RegularExpressions;
+using UnityEngine;
 using UnityEngine.InputSystem;
+using VRC.SDKBase;
 #endif
 
 using VRC.Udon.Common;
@@ -54,8 +57,12 @@ namespace VRC.SDK3.ClientSim
 
         #endregion
 
+        private InputActionAsset InputActions;
+        
         public ClientSimInputActionBased(InputActionAsset actionAsset, ClientSimSettings settings)
         {
+            InputActions = actionAsset;
+            
             _settings = settings;
             
             _lookHorizontal = actionAsset["LookHorizontal"];
@@ -119,6 +126,62 @@ namespace VRC.SDK3.ClientSim
             _toggleProne.canceled += HandleToggleProne;
             _releaseMouse.performed += HandleReleaseMouse;
             _releaseMouse.canceled += HandleReleaseMouse;
+            
+            foreach (InputAction action in actionAsset)
+            {
+                action.performed += SetInputDevice;
+            }
+        }
+        
+        private VRCInputMethod _lastInputMethod = VRCInputMethod.Count;
+
+        public VRCInputMethod LastInputMethod
+        {
+            get => _lastInputMethod;
+            set
+            {
+                // Only send events for changes
+                if(_lastInputMethod == value) return;
+                
+                _lastInputMethod = value;
+                SendInputMethodChangedEvent(_lastInputMethod);
+            }
+        }
+
+        private const string MOUSE_LOOK_PATTERN = @"Player/Look.*Mouse/delta";
+        bool isTouchActive = false;
+        private void SetInputDevice(InputAction.CallbackContext ctx)
+        {
+            if(Regex.IsMatch(ctx.action.ToString(), MOUSE_LOOK_PATTERN)) return; // This is to avoid changing the tooltip icon when looking with a mouse
+            isTouchActive = (ctx.control.device.description.empty || Touchscreen.current != null && ctx.control.device.GetType().Equals(Touchscreen.current.GetType())); // On screen controls
+            if (!isTouchActive)
+            {
+                if (Keyboard.current != null && ctx.control.device.GetType().Equals(Keyboard.current.GetType()))
+                {
+#if VRC_MOBILE && UNITY_ANDROID
+                //This prevents the android back button from switching to keyboard and disabling touch UI
+                if (ctx.control.device.description.interfaceName == "Android")
+                    return;
+#endif
+                    LastInputMethod = VRCInputMethod.Keyboard;
+                    return;
+                }
+                if (Mouse.current != null && ctx.control.device.GetType().Equals(Mouse.current.GetType()))
+                {
+                    LastInputMethod = VRCInputMethod.Mouse;
+                    return;
+                }
+
+                if (Gamepad.current != null && ctx.control.device.GetType().Equals(Gamepad.current.GetType()))
+                {
+                    LastInputMethod = VRCInputMethod.Controller;
+                    return;
+                }
+            }
+            else
+            {
+                LastInputMethod = VRCInputMethod.Touch;
+            }
         }
 
         public override void Dispose()

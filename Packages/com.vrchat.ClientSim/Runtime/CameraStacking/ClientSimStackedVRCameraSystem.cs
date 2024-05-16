@@ -72,7 +72,8 @@ namespace VRC.SDK3.ClientSim
 
         private void AddCamera(int index)
         {
-            GameObject cameraObj = Instantiate(new GameObject(), _mainSceneCamera.transform);
+            var cameraObj = new GameObject();
+            cameraObj.transform.parent = _mainSceneCamera.transform;
             Camera cam = cameraObj.AddComponent<Camera>();
             XRDevice.DisableAutoXRCameraTracking(cam, true);
 

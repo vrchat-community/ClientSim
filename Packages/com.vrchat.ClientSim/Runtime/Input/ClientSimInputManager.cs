@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using VRC.SDKBase;
 
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -42,6 +43,15 @@ namespace VRC.SDK3.ClientSim
             return _input;
 #else
             return null;
+#endif
+        }
+
+        public VRCInputMethod GetLastUsedInputMethod()
+        {
+#if ENABLE_INPUT_SYSTEM
+            return _input.LastInputMethod;
+#else
+            return VRCInputMethod.Generic;
 #endif
         }
     }

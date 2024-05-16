@@ -30,10 +30,12 @@ namespace VRC.SDK3.ClientSim
         private VRCPlayerApi _localPlayer;
 
         private IClientSimEventDispatcher _eventDispatcher;
+        private static IClientSimPlayerHeightManager _heightManager;
 
-        public ClientSimPlayerManager(IClientSimEventDispatcher eventDispatcher)
+        public ClientSimPlayerManager(IClientSimEventDispatcher eventDispatcher, IClientSimPlayerHeightManager heightManager)
         {
             _eventDispatcher = eventDispatcher;
+            _heightManager = heightManager;
             
             // Ensure no other players have been added to the list. 
             VRCPlayerApi.AllPlayers.Clear();
@@ -55,6 +57,8 @@ namespace VRC.SDK3.ClientSim
             {
                 RemovePlayer(player);
             }
+            
+            _heightManager?.Dispose();
         }
 
         private int GetNextPlayerId()
@@ -688,56 +692,15 @@ namespace VRC.SDK3.ClientSim
         
         #region Player Scaling
         
-        private const float AVATAR_MIN_EYE_HEIGHT_DEFAULT = 0.2f;
-        private const float AVATAR_MAX_EYE_HEIGHT_DEFAULT = 5f;
-        
-        public static bool GetManualAvatarScalingAllowed(VRCPlayerApi player)
-        {
-            Debug.Log($"[ClientSim VRCPlayerApi.GetManualAvatarScalingAllowed] Returning default value of true.");
-            return true;
-        }
-
-        public static void SetManualAvatarScalingAllowed(VRCPlayerApi player, bool value)
-        {
-            Debug.Log($"[ClientSim VRCPlayerApi.SetManualAvatarScalingAllowed] called with value {value}, doesn't do anything in ClientSim yet.");
-        }
-        
-        public static float GetAvatarEyeHeightMinimumAsMeters(VRCPlayerApi arg)
-        {
-            Debug.Log($"[ClientSim VRCPlayerApi.GetAvatarEyeHeightMinimumAsMeters] Returning default value of {AVATAR_MIN_EYE_HEIGHT_DEFAULT}.");
-            return AVATAR_MIN_EYE_HEIGHT_DEFAULT;
-        }
-
-        public static float GetAvatarEyeHeightMaximumAsMeters(VRCPlayerApi arg)
-        {
-            Debug.Log($"[ClientSim VRCPlayerApi.GetAvatarEyeHeightMaximumAsMeters] Returning default value of {AVATAR_MAX_EYE_HEIGHT_DEFAULT}.");
-            return AVATAR_MAX_EYE_HEIGHT_DEFAULT;
-        }
-        
-        public static float GetAvatarEyeHeightAsMeters(VRCPlayerApi arg)
-        {
-            return ClientSimSettings.Instance.playerHeight;
-        }
-
-        public static void SetAvatarEyeHeightMinimumByMeters(VRCPlayerApi player, float value)
-        {
-            Debug.Log($"[ClientSim VRCPlayerApi.SetAvatarEyeHeightMinimumByMeters] called with value {value}, doesn't do anything in ClientSim yet.");
-        }
-
-        public static void SetAvatarEyeHeightMaximumByMeters(VRCPlayerApi player, float value)
-        {
-            Debug.Log($"[ClientSim VRCPlayerApi.SetAvatarEyeHeightMaximumByMeters] called with value {value}, doesn't do anything in ClientSim yet.");
-        }
-
-        public static void SetAvatarEyeHeightByMeters(VRCPlayerApi player, float value)
-        {
-            Debug.Log($"[ClientSim VRCPlayerApi.SetAvatarEyeHeightByMeters] called with value {value}, doesn't do anything in ClientSim yet.");
-        }
-
-        public static void SetAvatarEyeHeightByMultiplier(VRCPlayerApi player, float value)
-        {
-            Debug.Log($"[ClientSim VRCPlayerApi.SetAvatarEyeHeightByMultiplier] called with value {value}, doesn't do anything in ClientSim yet.");
-        }
+        public static bool GetManualAvatarScalingAllowed(VRCPlayerApi _) => _heightManager.GetManualAvatarScalingAllowed();
+        public static void SetManualAvatarScalingAllowed(VRCPlayerApi _, bool value) => _heightManager.SetManualAvatarScalingAllowed(value);
+        public static float GetAvatarEyeHeightMinimumAsMeters(VRCPlayerApi _) => _heightManager.GetAvatarEyeHeightMinimumAsMeters();
+        public static float GetAvatarEyeHeightMaximumAsMeters(VRCPlayerApi _) => _heightManager.GetAvatarEyeHeightMaximumAsMeters();
+        public static float GetAvatarEyeHeightAsMeters(VRCPlayerApi _) => _heightManager.GetAvatarEyeHeightAsMeters();
+        public static void SetAvatarEyeHeightMinimumByMeters(VRCPlayerApi _, float value) => _heightManager.SetAvatarEyeHeightMinimumByMeters(value);
+        public static void SetAvatarEyeHeightMaximumByMeters(VRCPlayerApi _, float value) => _heightManager.SetAvatarEyeHeightMaximumByMeters(value);
+        public static void SetAvatarEyeHeightByMeters(VRCPlayerApi _, float value) => _heightManager.SetAvatarEyeHeightByMeters(value);
+        public static void SetAvatarEyeHeightByMultiplier(VRCPlayerApi _, float value) => _heightManager.SetAvatarEyeHeightByMultiplier(value);
         
         #endregion
     }

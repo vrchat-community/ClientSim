@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using JetBrains.Annotations;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VRC.Core;
 
 namespace VRC.SDK3.ClientSim
 {
@@ -20,6 +22,13 @@ namespace VRC.SDK3.ClientSim
         private static void OnBeforeSceneLoad()
         {
             StartClientSim(GetSettings(), GetEventDispatcher());
+        }
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+        private static void OnAfterSceneLoad()
+        {
+            // Delete all editor only objects before creating ClientSim.
+            DestroyEditorOnly(GetSettings());
         }
 
         #endregion
@@ -70,7 +79,6 @@ namespace VRC.SDK3.ClientSim
         {
             return 
                 settings.enableClientSim &&
-                Object.FindObjectOfType<PipelineSaver>() == null && 
                 Application.isPlaying;
         }
 
@@ -87,14 +95,32 @@ namespace VRC.SDK3.ClientSim
             
             // Delete all editor only objects before creating ClientSim.
             DestroyEditorOnly(settings);
-            
-            // Create ClientSim Instance
+
             ClientSimMain.CreateInstance(settings, eventDispatcher);
+
+            // TODO: Below is disabled for now because the rest of the ClientSim initialization code doesn't work if it's called with a delay.
+            // Currently, not loading RemoteConfig will not cause any issues, but it may in the future, so this is left in as a reminder.
+
+            // Create ClientSim Instance later
+            /*void CreateClientSimInstance() => ClientSimMain.CreateInstance(settings, eventDispatcher);
+
+            // If the Remote Config is not initialized, attempt init before starting ClientSim
+            // Start ClientSim after attempt, regardless of success or failure
+            if (!ConfigManager.RemoteConfig.IsInitialized())
+            {
+                API.SetOnlineMode(true);
+                ConfigManager.RemoteConfig.Init(CreateClientSimInstance, CreateClientSimInstance);
+            }
+            // Otherwise, start ClientSim immediately
+            else
+            {
+                CreateClientSimInstance();
+            }*/
         }
 
         private static void DestroyEditorOnly(ClientSimSettings settings)
         {
-            if (!settings.deleteEditorOnly)
+            if (!settings.enableClientSim || !settings.deleteEditorOnly)
             {
                 return;
             }

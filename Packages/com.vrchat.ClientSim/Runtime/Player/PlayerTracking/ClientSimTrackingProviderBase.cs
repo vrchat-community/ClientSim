@@ -47,6 +47,7 @@ namespace VRC.SDK3.ClientSim
         protected IClientSimEventDispatcher eventDispatcher;
         protected IClientSimInput input;
         protected ClientSimSettings settings;
+        protected IClientSimPlayerHeightManager heightManager;
         
         private float _trackingScale = 1;
         
@@ -63,11 +64,13 @@ namespace VRC.SDK3.ClientSim
         public virtual void Initialize(
             IClientSimEventDispatcher eventDispatcher,
             IClientSimInput input,
-            ClientSimSettings settings)
+            ClientSimSettings settings,
+            IClientSimPlayerHeightManager heightManager)
         {
             this.eventDispatcher = eventDispatcher;
             this.input = input;
             this.settings = settings;
+            this.heightManager = heightManager;
 
             SubscribeEvents();
             
@@ -81,7 +84,10 @@ namespace VRC.SDK3.ClientSim
         protected virtual void Start()
         {
             // Send event for this to ensure everything that uses the player height is properly updated. 
-            eventDispatcher.SendEvent(new ClientSimOnPlayerHeightUpdateEvent { playerHeight = settings.playerHeight });
+            eventDispatcher.SendEvent(new ClientSimOnPlayerHeightUpdateEvent
+            {
+                playerHeight = heightManager.GetAvatarEyeHeightAsMeters()
+            });
             
             
             // Only disable audio listeners and cameras if the player is spawned.
@@ -226,6 +232,12 @@ namespace VRC.SDK3.ClientSim
         
         public Camera GetCamera()
         {
+            return playerCamera;
+        }
+
+        public Camera GetCameraForObject(GameObject obj)
+        {
+            // TODO: Make this interact with camera stacking
             return playerCamera;
         }
         

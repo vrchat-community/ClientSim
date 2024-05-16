@@ -27,9 +27,10 @@ namespace VRC.SDK3.ClientSim
         public override void Initialize(
             IClientSimEventDispatcher eventDispatcher, 
             IClientSimInput input, 
-            ClientSimSettings settings)
+            ClientSimSettings settings,
+            IClientSimPlayerHeightManager heightManager)
         {
-            base.Initialize(eventDispatcher, input, settings);
+            base.Initialize(eventDispatcher, input, settings, heightManager);
 
             SetTrackingItemPositions();
             

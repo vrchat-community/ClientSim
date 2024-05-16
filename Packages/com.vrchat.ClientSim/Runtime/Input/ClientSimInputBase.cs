@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using VRC.SDKBase;
 using VRC.Udon.Common;
 
 namespace VRC.SDK3.ClientSim
@@ -20,6 +21,8 @@ namespace VRC.SDK3.ClientSim
         private Action<bool> _toggleCrouchEvent;
         private Action<bool> _toggleProneEvent;
         private Action<bool> _releaseMouseEvent;
+        
+        private Action<VRCInputMethod> _inputMethodChangedEvent;
 
         public virtual void Dispose()
         {
@@ -29,6 +32,7 @@ namespace VRC.SDK3.ClientSim
             _grabEvent = null;
             _dropEvent = null;
             _toggleMenuEvent = null;
+            _inputMethodChangedEvent = null;
             
             _runEvent = null;
             _toggleCrouchEvent = null;
@@ -135,6 +139,16 @@ namespace VRC.SDK3.ClientSim
         {
             _releaseMouseEvent -= handler;
         }
+
+        public void SubscribeInputChangedEvent(Action<VRCInputMethod> handler)
+        {
+            _inputMethodChangedEvent += handler;
+        }
+        
+        public void UnsubscribeInputChangedEvent(Action<VRCInputMethod> handler)
+        {
+            _inputMethodChangedEvent -= handler;
+        }
         
         #endregion
 
@@ -218,6 +232,11 @@ namespace VRC.SDK3.ClientSim
         public void SendReleaseMouseEvent(bool value)
         {
             _releaseMouseEvent?.Invoke(value);
+        }
+        
+        public void SendInputMethodChangedEvent(VRCInputMethod value)
+        {
+            _inputMethodChangedEvent?.Invoke(value);
         }
     }
 }
