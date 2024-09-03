@@ -16,6 +16,7 @@ namespace VRC.SDK3.ClientSim
         private const int UI_LAYER = 5;
         private const int UI_MENU_LAYER = 12;
         private const int INTERNAL_UI_LAYER = 19;
+        private const int PLAYER_LOCAL_LAYER = 10;
         private const int MIRROR_REFLECTION_LAYER = 18;
         private const int FIRST_USER_LAYER = 22;
         
@@ -30,8 +31,8 @@ namespace VRC.SDK3.ClientSim
         {
             // Only the UI and UIMenu layers are interactable when the UI is open.
             _interactiveLayersUI = (1 << UI_LAYER) | (1 << UI_MENU_LAYER) | (1 << INTERNAL_UI_LAYER);
-            // When the menu is not open, all layers but UI, UIMenu, and MirrorReflection layers are interactable.
-            _interactiveLayersDefault = ~(1 << MIRROR_REFLECTION_LAYER) & ~_interactiveLayersUI;
+            // When the menu is not open, all layers but UI, UIMenu, PlayerLocal, and MirrorReflection layers are interactable.
+            _interactiveLayersDefault = ~(1 << UI_LAYER) & ~(1 << UI_MENU_LAYER) & ~(1 << PLAYER_LOCAL_LAYER) & ~(1 << MIRROR_REFLECTION_LAYER);
             // If Interaction Passthrough is set, these User Layers will also be ignored.
             _interactiveLayersDefault &= ~(VRC_SceneDescriptor.Instance.interactThruLayers << FIRST_USER_LAYER);
             
