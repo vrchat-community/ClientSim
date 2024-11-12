@@ -99,6 +99,7 @@ namespace VRC.SDK3.ClientSim
         // TODO move settings to be per project instead of global to all
         public bool enableClientSim = true;
         public bool displayLogs = true;
+        public bool hideMenuOnLaunch = false;
         public bool deleteEditorOnly = true;
         public bool spawnPlayer = true;
 
