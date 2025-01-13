@@ -13,7 +13,7 @@ This tool enables you to test your VRChat SDK3 Worlds directly in Unity! You can
 
 ### New Features in ClientSim
 - Pickup manipulation through I, J, K, L, U, O, mouse scrolling and gamepad.
-- Input based on keyboard layout isntead of specific keys.
+- Input based on keyboard layout instead of specific keys.
 - Local and Remote player now have humanoid avatars, avatar bones supported (but not full Avatar systems).
 - View and set player data directly - Locomotion values, voice and avatar audio settings, combat health.
 - Unlock mouse by holding tab - you can highlight off-center objects this way.

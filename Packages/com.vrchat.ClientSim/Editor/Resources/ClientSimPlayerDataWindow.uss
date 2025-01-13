@@ -1,0 +1,304 @@
+.content {
+    margin: 5px;
+}
+
+.menu-buttons {
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-self: auto;
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 150px;
+    height: 40px;
+    padding-left: 0;
+    padding-top: 0;
+    margin-bottom: 2.5px;
+    margin-left: 0;
+}
+
+.menu-button {
+    height: 34px;
+    width: 50px;
+    margin: 0;
+}
+
+.menu-button-open {
+    background-image: resource('Icons/FolderOpen');
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0);
+    scale: 0.75 0.75;
+    width: auto;
+    height: 30px;
+}
+
+.menu-button-refresh {
+    background-image: resource('Icons/Refresh');
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0);
+    scale: 0.75 0.75;
+    width: auto;
+    height: 30px;
+    align-items: auto;
+    flex-direction: column;
+    display: flex;
+}
+
+.menu-button-clear {
+    background-image: resource('Icons/Trash');
+    padding: 0;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    scale: 0.5 0.5;
+    background-color: rgba(0, 0, 0, 0);
+    height: 30px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.menu-button-left {
+    border-radius: 7px 0 0 7px;
+}
+
+.menu-button-right {
+    border-radius: 0 7px 7px 0;
+}
+
+.menu-button-center {
+    border-radius: 0 0 0 0;
+}
+
+.dropdown {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: auto;
+    justify-content: flex-start;
+}
+
+.dropdown-player {
+    align-items: auto;
+    align-self: auto;
+    justify-content: flex-start;
+    width: 150px;
+    flex-direction: column;
+    margin-right: 0;
+    min-height: auto;
+    min-width: auto;
+    display: flex;
+    visibility: visible;
+    overflow: visible;
+    opacity: 1;
+    flex-wrap: nowrap;
+    margin-left: 0;
+    position: relative;
+    top: auto;
+    left: auto;
+    background-color: rgba(255, 255, 255, 0);
+    margin-top: 0;
+    height: 20px;
+}
+
+.dropdown-sort {
+    align-items: flex-start;
+    align-self: auto;
+    justify-content: flex-start;
+    width: 150px;
+    flex-direction: row;
+    margin-right: 0;
+    min-height: auto;
+    min-width: auto;
+    display: none;
+    visibility: visible;
+    overflow: visible;
+    opacity: 1;
+    flex-wrap: nowrap;
+    margin-left: 0;
+    position: relative;
+    top: auto;
+    left: auto;
+    background-color: rgba(255, 255, 255, 0);
+    margin-top: 0;
+    height: 30px;
+    padding-top: 10px;
+}
+
+.data-header {
+    flex-direction: row;
+    margin-right: 0;
+}
+
+.randomize-button {
+    margin: 0;
+    padding: 0;
+    width: 150px;
+    height: 30px;
+    display: none;
+}
+
+.info-text {
+    align-items: auto;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0);
+    -unity-background-image-tint-color: rgb(0, 0, 0);
+    -unity-background-scale-mode: stretch-to-fill;
+    margin-left: 0;
+    padding-left: 0;
+    color: rgb(173, 173, 173);
+    font-size: 12px;
+    margin-top: 0;
+    justify-content: flex-start;
+    align-self: auto;
+    flex-direction: column;
+    left: -8px;
+    top: 1px;
+}
+
+.info-icon {
+    flex-grow: 1;
+    width: 50px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: auto;
+    justify-content: flex-start;
+    align-self: auto;
+    max-width: 50px;
+    -unity-background-scale-mode: scale-to-fit;
+    background-image: resource('Icons/Log');
+    scale: 0.8 0.8;
+}
+
+.info {
+    flex-grow: 1;
+    flex-direction: row;
+    height: 50px;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    align-self: auto;
+    width: 320px;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-radius: 5px;
+    padding-top: 0;
+    margin-top: 5px;
+    background-color: rgb(64, 64, 64);
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.unity-label {
+    padding-left: 100px;
+    margin-left: -100px;
+}
+
+.unity-base-field {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 4px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-left: 0;
+    padding-top: 0;
+    height: auto;
+}
+
+.unity-base-field .unity-base-field {
+    padding-bottom: 0;
+}
+
+.unity-composite-field {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: auto;
+    justify-content: flex-start;
+    align-self: stretch;
+}
+
+.unity-composite-field__field-spacer {
+    display: none;
+}
+
+.scroll-view {
+    height: auto;
+    justify-content: flex-start;
+    min-height: auto;
+    margin: 0;
+    padding: 10px;
+}
+
+.scroll-view .unity-label {
+    -unity-background-scale-mode: stretch-to-fill;
+    left: auto;
+    position: relative;
+    width: 250px;
+}
+
+.paging {
+    flex-grow: 1;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    align-self: auto;
+    border-right-width: 0;
+    border-left-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    margin-right: 0;
+}
+
+.paging .unity-label {
+    width: auto;
+    height: auto;
+    align-items: auto;
+    justify-content: flex-start;
+    align-self: auto;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin: 0;
+    padding: 0;
+}
+
+.paging-next {
+    background-image: resource('Icons/Arrow');
+    background-color: rgb(88, 88, 88);
+    rotate: -90deg;
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    width: 40px;
+    height: 30px;
+    scale: 0.5 0.75;
+}
+
+.paging-previous {
+    background-color: rgb(88, 88, 88);
+    background-image: resource('Icons/Arrow');
+    -unity-background-scale-mode: scale-to-fit;
+    rotate: 90deg;
+    width: 40px;
+    height: 30px;
+    scale: 0.5 0.75;
+    padding: 0;
+    margin: 0;
+}
+
+.unity-composite-field__field .unity-label {
+    width: 20px;
+    min-width: 20px;
+    max-width: 20px;
+    -unity-text-align: middle-center;
+    margin: 0;
+    padding: 0;
+}
+
+

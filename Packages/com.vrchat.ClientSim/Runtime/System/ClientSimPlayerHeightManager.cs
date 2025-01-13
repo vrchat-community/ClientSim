@@ -15,6 +15,7 @@ namespace VRC.SDK3.ClientSim
 
         // Default avatar height is 1.9 units tall
         private float playerHeight = ClientSimSettings.Instance.playerStartHeight;
+        private float playerSpawnHeight = ClientSimSettings.Instance.playerStartHeight;
         private bool manualScalingAllowed = true;
         private IClientSimEventDispatcher eventDispatcher;
         private IClientSimUdonEventSender udonEventSender;
@@ -34,7 +35,7 @@ namespace VRC.SDK3.ClientSim
         
         public void Dispose()
         {
-            eventDispatcher.Unsubscribe<ClientSimOnPlayerJoinedEvent>(OnPlayerJoined);
+            eventDispatcher?.Unsubscribe<ClientSimOnPlayerJoinedEvent>(OnPlayerJoined);
 
             eventDispatcher = null;
             udonEventSender = null;
@@ -45,7 +46,7 @@ namespace VRC.SDK3.ClientSim
             udonEventSender.RunEvent("_onAvatarChanged", ("player", joinEvent.player));
             udonEventSender.RunEvent("_onAvatarEyeHeightChanged",
                 ("player", joinEvent.player),
-                ("prevEyeHeightAsMeters", 0));
+                ("prevEyeHeightAsMeters", 0f));
         }
         
         public bool GetManualAvatarScalingAllowed() => manualScalingAllowed;
@@ -84,7 +85,7 @@ namespace VRC.SDK3.ClientSim
         }
         public float GetAvatarEyeHeightAsMeters() => playerHeight;
         public float GetAvatarEyeHeightAsMetersClamped() => Mathf.Clamp(playerHeight, userEyeHeightMin, userEyeHeightMax);
-        public void SetAvatarEyeHeightByMultiplier(float multiplier) => SetAvatarEyeHeightByMeters(playerHeight * multiplier);
+        public void SetAvatarEyeHeightByMultiplier(float multiplier) => SetAvatarEyeHeightByMeters(playerSpawnHeight * multiplier);
         public void SetAvatarEyeHeightByMeters(float newHeight, bool isManual = false)
         {
             float previousHeight = playerHeight;

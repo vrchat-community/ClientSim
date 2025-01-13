@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRC.SDKBase;
 using VRC.Udon;
 using VRC.Udon.Common.Interfaces;
 
@@ -51,6 +52,7 @@ namespace VRC.SDK3.ClientSim
             _eventDispatcher.Subscribe<ClientSimOnPlayerLeftEvent>(OnPlayerLeft);
             _eventDispatcher.Subscribe<ClientSimOnPlayerRespawnEvent>(OnPlayerRespawn);
             _eventDispatcher.Subscribe<ClientSimScreenUpdateEvent>(OnScreenUpdate);
+            _eventDispatcher.Subscribe<ClientSimOnVRCPlusMassGift>(OnVRCPlusMassGift);
         }
         
         public void Dispose()
@@ -59,12 +61,36 @@ namespace VRC.SDK3.ClientSim
             _eventDispatcher.Unsubscribe<ClientSimOnPlayerLeftEvent>(OnPlayerLeft);
             _eventDispatcher.Unsubscribe<ClientSimOnPlayerRespawnEvent>(OnPlayerRespawn);
             _eventDispatcher.Unsubscribe<ClientSimScreenUpdateEvent>(OnScreenUpdate);
+            _eventDispatcher.Unsubscribe<ClientSimOnVRCPlusMassGift>(OnVRCPlusMassGift);
         }
 
         public void InitUdon(UdonBehaviour behaviour, IUdonProgram program)
         {
-            ClientSimUdonHelper helper = behaviour.gameObject.AddComponent<ClientSimUdonHelper>();
-            helper.Initialize(behaviour, this, _syncedObjectManager, _isReady);
+            ClientSimUdonHelper[] helpers = behaviour.gameObject.GetComponents<ClientSimUdonHelper>();
+
+            foreach (ClientSimUdonHelper helper in helpers)
+            {
+                if(helper.GetUdonBehaviour() == behaviour)
+                {
+                    return;
+                }
+            }
+            
+            if (helpers.Length == 0)
+            {
+                ClientSimUdonHelper helper = behaviour.gameObject.AddComponent<ClientSimUdonHelper>();
+                helper.Initialize(behaviour, this, _syncedObjectManager, _isReady);
+                return;
+            }
+            
+            foreach (ClientSimUdonHelper helper in helpers)
+            {
+                if(helper.GetUdonBehaviour() == null)
+                {
+                    helper.Initialize(behaviour, this, _syncedObjectManager, _isReady);
+                    return;
+                }
+            }
         }
 
         public IEnumerator OnClientSimReady()
@@ -103,6 +129,8 @@ namespace VRC.SDK3.ClientSim
 
         private void OnPlayerJoined(ClientSimOnPlayerJoinedEvent joinEvent)
         {
+            _udonEventSender.RunEvent(UdonManager.UDON_EVENT_ONINPUTMETHODCHANGED, ("inputMethod", VRCInputMethod.Keyboard));
+            _udonEventSender.RunEvent(UdonManager.UDON_EVENT_ONLANGUAGECHANGED, ("language", ClientSimSettings.Instance.currentLanguage));
             _udonEventSender.RunEvent("_onPlayerJoined", ("player", joinEvent.player));
         }
 
@@ -119,6 +147,13 @@ namespace VRC.SDK3.ClientSim
         private void OnScreenUpdate(ClientSimScreenUpdateEvent screenUpdateEvent)
         {
             _udonEventSender.RunEvent(UdonManager.UDON_EVENT_ONSCREENUPDATE, ("data", screenUpdateEvent.data));
+        }
+
+        private void OnVRCPlusMassGift(ClientSimOnVRCPlusMassGift giftEvent)
+        {
+            _udonEventSender.RunEvent(UdonManager.UDON_EVENT_ONVRCPLUSMASSGIFT, 
+                ("gifter", giftEvent.gifter),
+                ("numGifts", giftEvent.numGifts));
         }
 
         #endregion

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using VRC.SDKBase;
 
 namespace VRC.SDK3.ClientSim
 {
@@ -17,17 +18,20 @@ namespace VRC.SDK3.ClientSim
         private IClientSimSceneManager _sceneManager;
         private IClientSimPlayerManager _playerManager;
         private IClientSimBlacklistManager _blacklistManager;
+        private IClientSimEventDispatcher _eventDispatcher;
         private Transform _parent;
 
         public void Initialize(
             IClientSimSceneManager sceneManager,
             IClientSimPlayerManager playerManager,
             IClientSimBlacklistManager blacklistManager,
+            IClientSimEventDispatcher eventDispatcher,
             Transform parent)
         {
             _sceneManager = sceneManager;
             _playerManager = playerManager;
             _blacklistManager = blacklistManager;
+            _eventDispatcher = eventDispatcher;
             _parent = parent;
         }
 
@@ -64,13 +68,18 @@ namespace VRC.SDK3.ClientSim
             // PlayerManager will automatically handle sending player join event
             _playerManager.CreateNewPlayer(isLocal, player, playerName);
 
+            
             if (isLocal)
             {
                 // Disable player controller until ClientSim is initialized, which is when the player should be able to gain control.
                 playerInstance.SetActive(false);
             }
+
+            player.SetEventDispatcher(_eventDispatcher);
             
             return player;
         }
+        
+        
     }
 }

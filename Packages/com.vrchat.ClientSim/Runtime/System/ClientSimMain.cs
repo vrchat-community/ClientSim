@@ -1,7 +1,10 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using Cysharp.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using VRC.Core;
 using VRC.Economy;
 using VRC.SDK3.Network;
@@ -10,6 +13,17 @@ using VRC.SDK3.Video.Components.AVPro;
 using VRC.SDKBase;
 using VRC.SDKBase.Platform;
 using VRC.Udon;
+using VRC.Economy;
+using VRC.SDKBase.Network;
+using VRC.Economy;
+using VRCNetworkBehaviour = VRC.SDK3.Network.VRCNetworkBehaviour;
+using System;
+using VRC.SDK3.Components;
+using VRCStation = VRC.SDKBase.VRCStation;
+#if VRC_ENABLE_PLAYER_PERSISTENCE
+using VRC.SDK3.ClientSim.Persistence;
+using System.Linq;
+#endif
 
 namespace VRC.SDK3.ClientSim
 {
@@ -62,6 +76,7 @@ namespace VRC.SDK3.ClientSim
         private ClientSimBlacklistManager _blacklistManager;
         private ClientSimInteractiveLayerProvider _interactiveLayerProvider;
         private IClientSimSessionState _sessionState;
+        private IClientSimUdonEventSender _udonEventSender;
 
         // public so that height can be adjusted via the settings window
         public ClientSimPlayerHeightManager HeightManager { get; private set; }
@@ -79,7 +94,7 @@ namespace VRC.SDK3.ClientSim
             {
                 throw new ClientSimException("Cannot create an instance of ClientSim while one already exists.");
             }
-
+            
             // Configure Delegates for Allowlisted URL Validation
             VRCUrl.DomainExplicitAllowlistDelegate = () => UrlAllowlistConfig.DomainExplicitAllowlist;
             VRCUrl.DomainWildcardAllowlistDelegate = () => UrlAllowlistConfig.DomainWildcardAllowlist;
@@ -157,8 +172,6 @@ namespace VRC.SDK3.ClientSim
                 DestroyImmediate(_instance.gameObject);
             }
         }
-        
-        
 
         protected override void Awake()
         {
@@ -209,6 +222,8 @@ namespace VRC.SDK3.ClientSim
                 return;
             }
             
+            ClientSimNetworkingUtilities.ConfigureNetworkOnScene(VRC_SceneDescriptor.Instance);
+
             _settings = settings;
 
             // Event Dispatcher is provided during tests to listen and send events before everything has been initialized.
@@ -223,8 +238,8 @@ namespace VRC.SDK3.ClientSim
             inputManager.Initialize(_settings);
             IClientSimInput input = inputManager.GetInput();
             
-            ClientSimUdonManagerEventSender udonEventSender = new(UdonManager.Instance);
-            HeightManager = new ClientSimPlayerHeightManager(_eventDispatcher, udonEventSender);
+            _udonEventSender = new ClientSimUdonManagerEventSender(UdonManager.Instance);
+            HeightManager = new ClientSimPlayerHeightManager(_eventDispatcher, _udonEventSender);
 
             udonInput.Initialize(_eventDispatcher, input);
             menu.Initialize(_eventDispatcher, input, _settings, _sessionState, HeightManager);
@@ -235,8 +250,8 @@ namespace VRC.SDK3.ClientSim
             // ObjectManager must be initialized before UdonManager to ensure object ownership for leaving players
             // is handled first.
             syncedObjectManager.Initialize(_eventDispatcher, _sceneManager, _playerManager);
-            _udonManager = new ClientSimUdonManager(_eventDispatcher, syncedObjectManager, udonEventSender);
-            playerSpawner.Initialize(_sceneManager, _playerManager, _blacklistManager, null);
+            _udonManager = new ClientSimUdonManager(_eventDispatcher, syncedObjectManager, _udonEventSender);
+            playerSpawner.Initialize(_sceneManager, _playerManager, _blacklistManager, _eventDispatcher, null);
             
             // Option to allow for spawning remote players first to prevent the local player from being master.
             // TODO replace this with networking test system to save previous player count in the instance.
@@ -258,7 +273,12 @@ namespace VRC.SDK3.ClientSim
                 _interactiveLayerProvider,
                 baseInput,
                 _sceneManager,
-                _proxyObject, 
+                _proxyObject,
+                _udonEventSender,
+                _blacklistManager,
+                _udonManager,
+                syncedObjectManager,
+                _playerManager,
                 HeightManager);
 
             Camera playerCamera = _player.GetCameraProvider().GetCamera();
@@ -419,6 +439,77 @@ namespace VRC.SDK3.ClientSim
             return obj.GetInstanceID().ToString();
         }
 
+#if VRC_ENABLE_PLAYER_PERSISTENCE
+        private GameObject[] GetPlayerPersistence(VRCPlayerApi playerApi)
+        {
+            ClientSimPlayer player = playerApi.GetClientSimPlayer();
+            if (player == null || player.PlayerPersistenceRootObjects == null)
+                return System.Array.Empty<GameObject>();
+
+            return player.PlayerPersistenceRootObjects;
+        }
+        
+        private Component FindComponentInPlayerObjects(VRCPlayerApi target, Component referenceComponent)
+        {
+            if (referenceComponent == null)
+                throw new ArgumentNullException(nameof(referenceComponent));
+            
+            VRCPlayerObject sourceObject = referenceComponent.GetComponentInParent<VRC.SDK3.Components.VRCPlayerObject>(true);
+            if (sourceObject == null)
+                throw new ArgumentException($"{nameof(referenceComponent)} must be on a player object.");
+            
+            GameObject networkGameObject = ((Component)referenceComponent.gameObject.GetComponentInParent<INetworkID>(true)).gameObject;
+            VRCSceneDescriptor sdk3Descriptor = (VRCSceneDescriptor)VRC_SceneDescriptor.Instance;
+            int idx = sdk3Descriptor.NetworkIDCollection.FindIndex((x) => x.gameObject == networkGameObject);
+            if (idx < 0)
+                throw new ArgumentException($"{nameof(referenceComponent)} must be on a player object in the NetworkIDCollection.");
+            
+            VRC.SDKBase.Network.NetworkIDPair networkIdPair = sdk3Descriptor.NetworkIDCollection[idx];
+            // See ClientSimPlayer.SetupPlayerPersistence for how the ID is calculated
+            int desiredID = ClientSimNetworkingUtilities.FirstPlayerPersistenceID
+                            + networkIdPair.ID;
+
+            GameObject[] objs = GetPlayerPersistence(target);
+            if (objs == null)
+            {
+                Debug.LogError("Player persistence is missing for " + target.displayName);
+                return null;
+            }
+
+            var possibleMatches = VRC.Tools.FindComponentInPossibleClones(sourceObject.gameObject, referenceComponent, objs);
+            
+            Debug.Log($"Found {possibleMatches.Count()} possible matches for {referenceComponent.name} in player objects for {target.displayName}");;
+
+            foreach (Component possibleMatch in possibleMatches)
+            {
+                if (!possibleMatch) continue;
+                ClientSimNetworkIdHolder networkIdHolder = possibleMatch.GetComponentInParent<ClientSimNetworkIdHolder>(true);
+                if (!networkIdHolder)
+                    continue;
+                
+                int thisID = networkIdHolder.GetNetworkView()?.GetNetworkId() ?? 0;
+                if (thisID <= 0)
+                {
+                    Debug.LogError($"Network ID is invalid for {possibleMatch.name}");
+                    continue;
+                }
+                
+                int matchID = ClientSimNetworkingUtilities.FlattenPlayerViewId(thisID);
+                if (matchID == desiredID) return possibleMatch;
+                Debug.LogError($"Network ID {matchID} for {possibleMatch.name} does not match desired ID {desiredID}");
+            }
+
+            Debug.LogError($"Failed to find component {referenceComponent.GetType().Name} in player objects for {target.displayName}");
+            
+            return null;
+        }
+        
+        public void EnablePlayerObjects()
+        {
+            _player.EnablePlayerObjects();
+        }
+#endif
+
         private static void CallNetworkConfigure(VRCNetworkBehaviour behaviour)
         {
             behaviour.NetworkConfigure();
@@ -436,13 +527,21 @@ namespace VRC.SDK3.ClientSim
             Networking._GetOwner += _playerManager.GetOwner;
             Networking._IsOwner += _playerManager.IsOwner;
             Networking._SetOwner += ClientSimPlayerManager.SetOwner;
+            Networking._GetMaster += _playerManager.GetMaster;
+            Networking._GetInstanceOwner += _playerManager.GetInstanceOwner;
             
             Networking._IsInstanceOwner += _playerManager.IsInstanceOwner;
             Networking._IsObjectReady += IsObjectReady;
             Networking._IsNetworkSettled += IsNetworkReady;
             
             Networking._GetUniqueName += GetUniqueStringForObject;
-
+            
+#if VRC_ENABLE_PLAYER_PERSISTENCE
+            ClientSimPlayerDataWrapper.ConfigureSDK();
+            Networking._GetPlayerPersistence += GetPlayerPersistence;
+            Networking._FindComponentInPlayerObjects += FindComponentInPlayerObjects;
+#endif
+            
             VRCNetworkBehaviour.OnNetworkBehaviourAwake += CallNetworkConfigure;
             
             VRCStation.Initialize += ClientSimStationHelper.InitializeStations;
@@ -476,6 +575,7 @@ namespace VRC.SDK3.ClientSim
             VRCPlayerApi._GetPlayerId += _playerManager.GetPlayerID;
             VRCPlayerApi._GetPlayerById += _playerManager.GetPlayerByID;
             VRCPlayerApi._isMasterDelegate += _playerManager.IsMaster;
+            VRCPlayerApi._isSuspendedDelegate += _playerManager.IsSuspended;
             VRCPlayerApi._TakeOwnership += ClientSimPlayerManager.SetOwner;
             VRCPlayerApi._IsOwner += _playerManager.IsOwner;
             VRCPlayerApi._isInstanceOwnerDelegate += _playerManager.IsInstanceOwner;
@@ -545,11 +645,17 @@ namespace VRC.SDK3.ClientSim
             VRCPlayerApi._SetAvatarAudioForceSpatial += ClientSimPlayerManager.SetAvatarAudioForceSpatial;
             VRCPlayerApi._SetAvatarAudioCustomCurve += ClientSimPlayerManager.SetAvatarAudioCustomCurve;
             
-            VRCPlayerApi._SetVoiceLowpass += ClientSimPlayerManager.SetVoiceLowpass;
-            VRCPlayerApi._SetVoiceVolumetricRadius += ClientSimPlayerManager.SetVoiceVolumetricRadius;
-            VRCPlayerApi._SetVoiceDistanceFar += ClientSimPlayerManager.SetVoiceDistanceFar;
-            VRCPlayerApi._SetVoiceDistanceNear += ClientSimPlayerManager.SetVoiceDistanceNear;
             VRCPlayerApi._SetVoiceGain += ClientSimPlayerManager.SetVoiceGain;
+            VRCPlayerApi._SetVoiceDistanceNear += ClientSimPlayerManager.SetVoiceDistanceNear;
+            VRCPlayerApi._SetVoiceDistanceFar += ClientSimPlayerManager.SetVoiceDistanceFar;
+            VRCPlayerApi._SetVoiceVolumetricRadius += ClientSimPlayerManager.SetVoiceVolumetricRadius;
+            VRCPlayerApi._SetVoiceLowpass += ClientSimPlayerManager.SetVoiceLowpass;
+
+            VRCPlayerApi._GetVoiceGain += ClientSimPlayerManager.GetVoiceGain;
+            VRCPlayerApi._GetVoiceDistanceNear += ClientSimPlayerManager.GetVoiceDistanceNear;
+            VRCPlayerApi._GetVoiceDistanceFar += ClientSimPlayerManager.GetVoiceDistanceFar;
+            VRCPlayerApi._GetVoiceVolumetricRadius += ClientSimPlayerManager.GetVoiceVolumetricRadius;
+            VRCPlayerApi._GetVoiceLowpass += ClientSimPlayerManager.GetVoiceLowpass;
 
             VRCPlayerApi._GetCurrentLanguage += ClientSimPlayerManager.GetCurrentLanguage;
             VRCPlayerApi._GetAvailableLanguages += ClientSimPlayerManager.GetAvailableLanguages;
@@ -568,6 +674,7 @@ namespace VRC.SDK3.ClientSim
             Store._doesAnyPlayerOwnProduct += ClientSimStoreManager.DoesAnyPlayerOwnProduct;
             Store._getPlayersWhoOwnProduct += ClientSimStoreManager.GetPlayersWhoOwnProduct;
             Store._listProductOwners += ClientSimStoreManager.ListProductOwners;
+            
         }
 
         private void RemoveSDKLinks()
@@ -583,9 +690,14 @@ namespace VRC.SDK3.ClientSim
             Networking._IsInstanceOwner -= _playerManager.IsInstanceOwner;
             Networking._IsObjectReady -= IsObjectReady;
             Networking._IsNetworkSettled -= IsNetworkReady;
-            
+
             Networking._GetUniqueName -= GetUniqueStringForObject;
 
+#if VRC_ENABLE_PLAYER_PERSISTENCE
+            Networking._GetPlayerPersistence -= GetPlayerPersistence;
+            Networking._FindComponentInPlayerObjects -= FindComponentInPlayerObjects;
+#endif
+            
             VRCNetworkBehaviour.OnNetworkBehaviourAwake -= CallNetworkConfigure;
 
             VRCStation.Initialize -= ClientSimStationHelper.InitializeStations;
@@ -721,6 +833,36 @@ namespace VRC.SDK3.ClientSim
         internal ClientSimMenu GetMenu()
         {
             return menu;
+        }
+
+        internal IClientSimEventDispatcher GetEventDispatcher()
+        {
+            return _eventDispatcher;
+        }
+        
+        internal IClientSimUdonEventSender GetUdonEventSender()
+        {
+            return _udonEventSender;
+        }
+        
+        internal IClientSimBlacklistManager GetBlacklistManager()
+        {
+            return _blacklistManager;
+        }
+        
+        internal IClientSimUdonManager GetUdonManager()
+        {
+            return _udonManager;
+        }
+
+        internal IClientSimSyncedObjectManager GetSyncedObjectManager()
+        {
+            return syncedObjectManager;
+        }
+        
+        internal IClientSimPlayerManager GetPlayerManager()
+        {
+            return _playerManager;
         }
 
         #endregion

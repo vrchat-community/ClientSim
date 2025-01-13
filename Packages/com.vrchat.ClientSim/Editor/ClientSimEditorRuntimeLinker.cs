@@ -1,5 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using VRC.SDKBase;
 
 namespace VRC.SDK3.ClientSim.Editor
 {
@@ -12,25 +13,38 @@ namespace VRC.SDK3.ClientSim.Editor
     {
         private static void ModeStateChanged(PlayModeStateChange state)
         {
+            
+            if(state == PlayModeStateChange.EnteredPlayMode)
+            {
+                ClientSimMenu.openSettingsHook += ClientSimSettingsWindow.Init;
+                ClientSimMenu.checkValidSettingsHook += ClientSimProjectSettingsSetup.IsUsingCorrectSettings;
+            }
+            
             // On exiting playmode, remove the Editor method hooks.
             if (state == PlayModeStateChange.ExitingPlayMode)
             {
                 ClientSimMenu.openSettingsHook -= ClientSimSettingsWindow.Init;
                 ClientSimMenu.checkValidSettingsHook -= ClientSimProjectSettingsSetup.IsUsingCorrectSettings;
-                
-                EditorApplication.playModeStateChanged -= ModeStateChanged;
+            }
+
+            if (state == PlayModeStateChange.ExitingEditMode)
+            {
+                InitializeScene();
             }
         }
 
         // When entering playmode, set Editor method hooks.
         // Using this runtime initialized method due to timing issues with with Domain Reloading on and off.
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-        private static void OnPlaymodeStart()
+        [InitializeOnLoadMethod]
+        private static void OnProjectLoadedInEditor()
         {
-            ClientSimMenu.openSettingsHook += ClientSimSettingsWindow.Init;
-            ClientSimMenu.checkValidSettingsHook += ClientSimProjectSettingsSetup.IsUsingCorrectSettings;
-            
             EditorApplication.playModeStateChanged += ModeStateChanged;
+        }
+        
+        
+        private static void InitializeScene()
+        {
+            ClientSimNetworkingUtilities.DoSceneSetup();
         }
     }
 }

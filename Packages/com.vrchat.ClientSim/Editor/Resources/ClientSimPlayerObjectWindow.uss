@@ -1,0 +1,84 @@
+.header {
+    position: relative;
+    visibility: visible;
+    display: flex;
+    overflow: visible;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-left: 5px;
+    flex-shrink: 0;
+}
+
+.searchAndSort {
+    width: 100%;
+    flex-direction: row;
+}
+
+.search {
+    flex-grow: 1;
+    min-width: 100px;
+}
+
+.sort {
+    flex-grow: 1;
+    min-width: auto;
+}
+
+.scroll-view {
+    margin: 0;
+    padding: 10px;
+    flex-grow: 1;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.helptext {
+    align-items: stretch;
+    -unity-text-align: middle-center;
+    font-size: 15px;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    white-space: normal;
+}
+
+.helpTextbox {
+    height: auto;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    flex-grow: 0;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    background-color: rgb(81, 81, 81);
+    flex-wrap: wrap;
+    min-height: 40px;
+}
+
+.paging {
+    justify-content: center;
+    flex-shrink: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+ClientSimNetworkHolderInstanceElement Button {
+    padding-left: 6px;
+    padding-bottom: 2px;
+    width: 16px;
+    height: 16px;
+}
