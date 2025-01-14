@@ -161,6 +161,10 @@ namespace VRC.SDK3.ClientSim
                 OpenSettings();
                 SetDisplayedPage(ClientSimDisplayedPage.INVALID_SETTINGS_PAGE);
             }
+            else if (_settings.hideMenuOnLaunch)
+            {
+                shouldShowMenu = false;
+            }
             else if (_settings.initializationDelay > 0)
             {
                 SetDisplayedPage(ClientSimDisplayedPage.DELAYED_START_PAGE);

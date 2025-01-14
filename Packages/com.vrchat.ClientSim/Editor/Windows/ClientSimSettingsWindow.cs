@@ -14,6 +14,7 @@ namespace VRC.SDK3.ClientSim.Editor
         private readonly GUIContent _generalFoldoutGuiContent = new GUIContent("General Settings", "");
         private readonly GUIContent _enableToggleGuiContent = new GUIContent("Enable ClientSim", "If enabled, all triggers will function similarly to VRChat. Note that behavior may be different than the actual game!");
         private readonly GUIContent _displayLogsToggleGuiContent = new GUIContent("Enable Console Logging", "Enabling logging will print messages to the console when certain events happen. Examples include trigger execution, pickup grabbed, station entered, etc.");
+        private readonly GUIContent _hideMenuOnLaunchToggleGuiContent = new GUIContent("Hide Menu On Launch", "Enabling this setting will prevent the ClientSim menu from being displayed when initially entering play mode.");
         private readonly GUIContent _deleteEditorOnlyToggleGuiContent = new GUIContent("Remove \"EditorOnly\"", "Enabling this setting will ensure that all objects with the tag \"EditorOnly\" are deleted when in playmode. This can be helpful in finding objects that will not be uploaded with your world. Enable console logging to see which objects are deleted.");
         private readonly GUIContent _startupDelayGuiContent = new GUIContent("Startup Delay", "The duration that the Client Sim will wait to simulate the VRChat client loading before spawning the player and initializing Udon. This is useful to test when Unity components behave differently at startup compared to VRChat.");
         private readonly GUIContent _stopOnScriptChangesToggleGuiContent = new GUIContent("Stop On Script Changes", "If enabled, the editor will stop if script changes are detected while in play mode. This will override the Unity Editor setting 'Preferences > General > Script Changes While Playing'.");
@@ -345,6 +346,8 @@ namespace VRC.SDK3.ClientSim.Editor
 
                 // Settings that cannot be changed at runtime
                 EditorGUI.BeginDisabledGroup(Application.isPlaying);
+
+                _settings.hideMenuOnLaunch = EditorGUILayout.Toggle(_hideMenuOnLaunchToggleGuiContent, _settings.hideMenuOnLaunch);
                 
                 _settings.deleteEditorOnly = EditorGUILayout.Toggle(_deleteEditorOnlyToggleGuiContent, _settings.deleteEditorOnly);
                 
