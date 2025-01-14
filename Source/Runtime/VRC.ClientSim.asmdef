@@ -1,0 +1,23 @@
+{
+    "name": "VRC.ClientSim",
+    "rootNamespace": "",
+    "references": [
+        "Unity.Postprocessing.Runtime",
+        "Unity.InputSystem",
+        "VRC.Udon",
+        "VRC.SDKBase",
+        "VRC.ClientSim.SelectionHighlight",
+        "UniTask",
+        "UdonSharp.Runtime",
+        "VRC.Udon.Editor"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
