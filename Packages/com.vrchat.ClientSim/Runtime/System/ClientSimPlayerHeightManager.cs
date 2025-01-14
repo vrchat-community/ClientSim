@@ -45,7 +45,7 @@ namespace VRC.SDK3.ClientSim
             udonEventSender.RunEvent("_onAvatarChanged", ("player", joinEvent.player));
             udonEventSender.RunEvent("_onAvatarEyeHeightChanged",
                 ("player", joinEvent.player),
-                ("prevEyeHeightAsMeters", 0));
+                ("prevEyeHeightAsMeters", 0f));
         }
         
         public bool GetManualAvatarScalingAllowed() => manualScalingAllowed;
