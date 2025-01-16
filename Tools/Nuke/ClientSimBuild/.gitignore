@@ -1,6 +1,0 @@
-﻿/**/bin/
-/**/obj/
-/**/*.DotSettings
-/**/*.Build.props
-/**/*.Build.targets
-.editorconfig
