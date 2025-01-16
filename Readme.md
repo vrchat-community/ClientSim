@@ -1,6 +1,6 @@
 # ClientSim
 
-![ClientSim in Unity Editor](Tools/Docusaurus/static/images/editor-screenshot.png)
+![ClientSim in Unity Editor](clientsim.png)
 
 The VRChat Client Simulator, or ClientSim for short, is a tool that enables you to test your VRChat SDK3 Worlds directly in Unity! You can look at the state of all objects to verify things directly.
 
@@ -19,7 +19,7 @@ This change includes:
 * Changing the repo from being a standalone Unity project with ClientSim as a package to simply storing the ClientSim source in the `Source` folder. The Unity Project-and-Embedded Package approach no longer works since we merged ClientSim into the VRChat SDK, so we've removed all the unusable bits.
 * Removing the Tests folder from the source. This is unfortunate, but they're not currently working - we've got tasks to fix them up but we've got much higher-priority items in delivering and supporting new features, so this reflects the current state of the package.
 
-We've retained the previous state of the repo in the [legacy](/tree/legacy) branch so all the olds docs, tools and tests are available for review there.
+We've retained the previous state of the repo in the [legacy](https://github.com/vrchat-community/ClientSim/tree/legacy) branch so all the olds docs, tools and tests are available for review there.
 
 ## Copyright
 
