@@ -29,6 +29,10 @@ namespace VRC.SDK3.ClientSim
         {
             // Delete all editor only objects before creating ClientSim.
             DestroyEditorOnly(GetSettings());
+            
+#if VRC_ENABLE_PLAYER_PERSISTENCE
+            ClientSimMain.GetInstance().EnablePlayerObjects();
+#endif
         }
 
         #endregion

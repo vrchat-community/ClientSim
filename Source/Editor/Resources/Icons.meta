@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:SdkStaging-VPM/Packages/com.vrchat.worlds/Integrations/ClientSim/Editor/Resources/Icons.meta
+guid: d4fe049ca08e18642b9c4e99d726517e
+|||||||| 59c708fea2b:Assets/Features/BifrostUI/Icons.meta
+guid: ac4616caad22f914b90dae1156f28e29
+========
+guid: 0db01d374bad60844ae3ac004610a0a4
+>>>>>>>> ca19f46b5b6d897fe23e0f1c411a64c4a706eb7f:Assets/Editor/ScriptMigration.meta
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

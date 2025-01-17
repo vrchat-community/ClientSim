@@ -24,6 +24,10 @@ namespace VRC.SDK3.ClientSim
         // Collection of all position synced objects initialized in the scene. 
         private readonly ClientSimObjectCollection<IClientSimPositionSyncable> _positionSyncedObjects =
             new ClientSimObjectCollection<IClientSimPositionSyncable>();
+        
+        // Collection of all synced playerObjects initialized in the scene.
+        private readonly ClientSimObjectCollection<IClientSimSyncable> _playerObjects =
+            new ClientSimObjectCollection<IClientSimSyncable>();
 
         // TODO add generic system for saving synced data and restoring it to simulate late joining into a world.
         // TODO add system to manage udon synced data
@@ -57,15 +61,17 @@ namespace VRC.SDK3.ClientSim
         public void InitializeObjectSync(VRCObjectSync sync)
         {
             // Only allow one sync helper per object.
-            var helper = sync.GetComponent<ClientSimObjectSyncHelper>();
-            if (helper)
+            if (sync.TryGetComponent(out ClientSimPositionSyncedHelperBase Synchelper))
             {
-                helper.LogWarning($"Destroying duplicate ObjectSync Helper. Object: {Tools.GetGameObjectPath(helper.gameObject)}");
-                DestroyImmediate(helper);
+                if(Synchelper is ClientSimObjectSyncHelper)
+                    ((ClientSimObjectSyncHelper)Synchelper).Initialize(sync,this);
+                // else other object sync helper types initialize object sync
             }
-
-            helper = sync.gameObject.AddComponent<ClientSimObjectSyncHelper>();
-            helper.Initialize(sync, this);
+            else
+            {
+                ClientSimObjectSyncHelper helper = sync.gameObject.AddComponent<ClientSimObjectSyncHelper>();
+                helper.Initialize(sync,this);
+            }
         }
         
         public void InitializeObjectPool(VRCObjectPool objectPool)
@@ -146,6 +152,8 @@ namespace VRC.SDK3.ClientSim
 
                 if (sync is Component syncComp)
                 {
+                    if(syncComp == null) continue;
+                    
                     GameObject syncObj = syncComp.gameObject;
                     if (Networking.GetOwner(syncObj)?.playerId == leftPlayerId)
                     {
@@ -176,6 +184,12 @@ namespace VRC.SDK3.ClientSim
                 _positionSyncedObjects.AddObject(posSync);
                 _positionSyncedObjects.ProcessAddedAndRemovedObjects();
             }
+            
+            if((sync as MonoBehaviour).GetComponentInParent<VRCPlayerObject>() != null)
+            {
+                _playerObjects.AddObject(sync);
+                _playerObjects.ProcessAddedAndRemovedObjects();
+            }
         }
 
         public void RemoveSyncedObject(IClientSimSyncable sync)
@@ -187,6 +201,12 @@ namespace VRC.SDK3.ClientSim
             {
                 _positionSyncedObjects.RemoveObject(posSync);
                 _positionSyncedObjects.ProcessAddedAndRemovedObjects();
+            }
+            
+            if((sync as MonoBehaviour).GetComponentInParent<VRCPlayerObject>() != null)
+            {
+                _playerObjects.RemoveObject(sync);
+                _playerObjects.ProcessAddedAndRemovedObjects();
             }
         }
 

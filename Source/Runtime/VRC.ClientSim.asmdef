@@ -7,7 +7,9 @@
         "VRC.Udon",
         "VRC.SDKBase",
         "VRC.ClientSim.SelectionHighlight",
-        "UniTask"
+        "UniTask",
+        "UdonSharp.Runtime",
+        "VRC.Udon.Editor"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
