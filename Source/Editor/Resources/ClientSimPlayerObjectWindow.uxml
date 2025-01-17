@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Packages/com.vrchat.worlds/Integrations/ClientSim/Editor/Resources/ClientSimPlayerObjectWindow.uss?fileID=7433441132597879392&amp;guid=7f2b1e23097f00540a7705261726f8e9&amp;type=3#ClientSimPlayerObjectWindow" />
+    <ui:VisualElement name="Header" class="header">
+        <ui:VisualElement name="SearchAndSort" class="searchAndSort">
+            <ui:TextField picking-mode="Ignore" name="Search" keyboard-type="Search" class="search" />
+            <ui:DropdownField label="Sort by" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="Sort" class="sort" />
+        </ui:VisualElement>
+        <ui:DropdownField name="PlayerDropdown" class="dropdown" />
+    </ui:VisualElement>
+    <ui:ScrollView name="PlayerObjectList" mode="Vertical" class="scroll-view" style="overflow: hidden; display: flex; visibility: visible;" />
+    <ui:VisualElement name="HelpTextBox" class="helpTextbox">
+        <ui:Label tabindex="-1" text="Enter Play Mode to view PlayerObjects" parse-escape-sequences="true" display-tooltip-when-elided="true" name="HelpTextBoxLabel" class="helptext" />
+    </ui:VisualElement>
+    <ui:VisualElement name="Paging" class="paging" style="flex-direction: row;">
+        <ui:Button text="&lt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Left" />
+        <ui:Label tabindex="-1" text="0/5" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PagingLabel" />
+        <ui:Button text="&gt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Right" />
+    </ui:VisualElement>
+</ui:UXML>

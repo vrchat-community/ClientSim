@@ -11,7 +11,6 @@ namespace VRC.SDK3.ClientSim
         IClientSimRespawnHandler
     {
         private int _ownerID = 1;
-
         private Vector3 _originalPosition;
         private Quaternion _originalRotation;
 

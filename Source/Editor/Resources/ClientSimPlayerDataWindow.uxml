@@ -1,0 +1,31 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Packages/com.vrchat.worlds/Integrations/ClientSim/Editor/Resources/ClientSimPlayerDataWindow.uss?fileID=7433441132597879392&amp;guid=dd10e9a97cf7d424bb40e1f5898c19c6&amp;type=3#ClientSimPlayerDataWindow" />
+    <ui:VisualElement name="Content" class="content">
+        <ui:VisualElement name="MenuButtons" class="menu-buttons">
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="OpenDataFolderButton" tooltip="Open folder containing the ClientSim PlayerData" class="menu-button menu-button-left">
+                <ui:VisualElement name="OpenFolderIcon" class="menu-button-open" />
+            </ui:Button>
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="RefreshDataButton" tooltip="Refresh data - Use this after you&apos;ve edited a PlayerData JSON file" class="menu-button menu-button-center">
+                <ui:VisualElement name="RefreshIcon" class="menu-button-refresh" />
+            </ui:Button>
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="ClearDataButton" tooltip="Delete all ClientSim PlayerData" usage-hints="None" class="menu-button menu-button-right">
+                <ui:VisualElement name="ClearIcon" class="menu-button-clear" />
+            </ui:Button>
+        </ui:VisualElement>
+        <ui:DropdownField index="0" choices="[1] Local Player" name="PlayerDropdown" tooltip="In Edit Mode, the local player is the only option. In Play Mode, entries for any remote players that have been spawned will appear here." class="dropdown-player dropdown" />
+        <ui:VisualElement name="NoDataInfo" class="info">
+            <ui:VisualElement name="InfoIcon" class="info-icon" />
+            <ui:Label tabindex="-1" text="PlayerData for the selected player is empty." parse-escape-sequences="true" display-tooltip-when-elided="true" name="InfoText" class="info-text" />
+        </ui:VisualElement>
+        <ui:VisualElement name="DataHeader" class="data-header">
+            <ui:DropdownField index="0" choices="Alphabetically,Last Updated,First Added" name="SortDropdown" label="Sort by" tooltip="Sort ClientSim PlayerData" class="dropdown-sort" />
+            <ui:VisualElement name="Paging" class="paging">
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="PreviousPageButton" class="paging-previous" />
+                <ui:Label tabindex="-1" text="1 / 1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PageLabel" />
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="NextPageButton" class="paging-next" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Button text="Randomize Data" parse-escape-sequences="true" display-tooltip-when-elided="true" name="RandomizeButton" tooltip="Generate random PlayerData for the selected remote player based on the local player&apos;s PlayerData schema" class="randomize-button" />
+        <ui:ScrollView name="PlayerDataList" mode="Vertical" class="scroll-view" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -5,7 +5,8 @@ using VRC.SDKBase;
 namespace VRC.SDK3.ClientSim
 {
     /// <summary>
-    /// System that provides what layers the player can interact with at a given time. Interactive layers will change depending on if the Menu is open or not.
+    /// System that provides what layers the player can interact with at a given time.
+    /// Interactive layers will change depending on if the Menu is open or not.
     /// </summary>
     /// <remarks>
     /// Listens to Events:
@@ -14,12 +15,12 @@ namespace VRC.SDK3.ClientSim
     public class ClientSimInteractiveLayerProvider : IClientSimInteractiveLayerProvider, IDisposable
     {
         private const int UI_LAYER = 5;
-        private const int UI_MENU_LAYER = 12;
-        private const int INTERNAL_UI_LAYER = 19;
         private const int PLAYER_LOCAL_LAYER = 10;
+        private const int UI_MENU_LAYER = 12;
         private const int MIRROR_REFLECTION_LAYER = 18;
+        private const int INTERNAL_UI_LAYER = 19;
         private const int FIRST_USER_LAYER = 22;
-        
+
         private readonly int _interactiveLayersDefault;
         private readonly int _interactiveLayersUI;
 

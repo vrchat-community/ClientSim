@@ -229,12 +229,16 @@ namespace VRC.SDK3.ClientSim
             floorRotation = Quaternion.Euler(0, floorRotation.eulerAngles.y, 0);
             if (fromPlaySpace)
             {
-                var playspaceData = _trackingProvider.GetTrackingData(VRCPlayerApi.TrackingDataType.Origin);
-                floorRotation = Quaternion.Inverse(playspaceData.rotation) * floorRotation;
-                position = position + floorRotation * -playspaceData.position;
+                VRCPlayerApi.TrackingData playspaceData = _trackingProvider.GetTrackingData(VRCPlayerApi.TrackingDataType.Origin);
+                Vector3 playspacePos = playspaceData.position - transform.position;
+                Quaternion playspaceRot = playspaceData.rotation * Quaternion.Inverse(transform.rotation);
+                floorRotation = floorRotation * Quaternion.Inverse(playspaceRot);
+                position += floorRotation * -playspacePos;
             }
 
-            this.Log($"Moving player to {position.ToString("F3")} and rotation {floorRotation.eulerAngles.ToString("F3")}");
+            this.Log($"Moving player to {position.ToString("F3")} " +
+                     $"and rotation {floorRotation.eulerAngles.ToString("F3")} " +
+                     $"(fromPlaySpace={fromPlaySpace})");
 
             transform.rotation = floorRotation;
             transform.position = position;
