@@ -29,13 +29,13 @@ namespace VRC.SDK3.ClientSim.Editor
         private readonly GUIContent _showDesktopReticleGuiContent = new GUIContent("Show Desktop Reticle", "Show or hide the center Desktop reticle image.");
         private readonly GUIContent _showTooltipsGuiContent = new GUIContent("Show Tooltips", "If enabled, hovering over an interactable object or pickup will display a tooltip above the object.");
         private readonly GUIContent _invertMouseLookGuiContent = new GUIContent("Invert Mouse Look", "If enabled, moving the mouse up or down will invert the direction the player will look up and down.");
-        private readonly GUIContent _playerHeightGuiContent = new GUIContent("Initial Player Height", "How tall should the player be in meters at app start. Default height is 1.9. Note that the player's collision capsule is 1.6 and never changes.");
-        private readonly GUIContent _currentLanguageGuiContent = new GUIContent("Current Language", "The language the player is currently using. Available languages include English, French, German, Italian, Japanese, Korean, and Spanish.");
         private int selectedLanguageIndex;
         
         // Player settings
         private readonly GUIContent _playerButtonsFoldoutGuiContent = new GUIContent("Player Settings", "");
         private readonly GUIContent _localPlayerCustomNameGuiContent = new GUIContent("Local Player Name", "Set a custom name for the local player. Useful for testing udon script name detection");
+        private readonly GUIContent _playerHeightGuiContent = new GUIContent("Initial Player Height", "How tall should the player be in meters at app start. Default height is 1.9. Note that the player's collision capsule is 1.6 and never changes.");
+        private readonly GUIContent _currentLanguageGuiContent = new GUIContent("Current Language", "The language the player is currently using.");
         private readonly GUIContent _isMasterGuiContent = new GUIContent("Local Player Is Master", "Set whether the local player starts off as the master of the instance. Setting this to false and starting Client Sim will spawn a remote player before the local player.");
         private readonly GUIContent _isInstanceOwnerGuiContent = new GUIContent("Is Instance Owner", "Set whether the local player is considered the instance owner");
         private readonly GUIContent _remotePlayerCustomNameGuiContent = new GUIContent("Remote Player Name", "Set a custom name for the next spawned remote player. Useful for testing udon script name detection");
@@ -61,7 +61,7 @@ namespace VRC.SDK3.ClientSim.Editor
         private bool _needsAudioSetup = false;
         private bool _needsLayerSetup = false;
 
-        [MenuItem("VRChat SDK/Utilities/ClientSim")]
+        [MenuItem("VRChat SDK/ClientSim", false, 1500)]
         public static void Init()
         {
             ClientSimSettingsWindow window = GetWindow<ClientSimSettingsWindow>(false, "ClientSim Settings");
@@ -383,9 +383,6 @@ namespace VRC.SDK3.ClientSim.Editor
                 _settings.showDesktopReticle = EditorGUILayout.Toggle(_showDesktopReticleGuiContent, _settings.showDesktopReticle);
                 _settings.showTooltips = EditorGUILayout.Toggle(_showTooltipsGuiContent, _settings.showTooltips);
                 _settings.invertMouseLook = EditorGUILayout.Toggle(_invertMouseLookGuiContent, _settings.invertMouseLook);
-                _settings.playerStartHeight = EditorGUILayout.FloatField(_playerHeightGuiContent, _settings.playerStartHeight);
-                selectedLanguageIndex = EditorGUILayout.Popup(_currentLanguageGuiContent, selectedLanguageIndex, _settings.GetAvailableDisplayLanguages());
-                _settings.currentLanguage = _settings.GetLanguage(selectedLanguageIndex);
 
                 EditorGUI.EndDisabledGroup();
 
@@ -410,6 +407,9 @@ namespace VRC.SDK3.ClientSim.Editor
                 EditorGUI.BeginDisabledGroup(hasInstance || Application.isPlaying);
                 
                 _settings.customLocalPlayerName = EditorGUILayout.TextField(_localPlayerCustomNameGuiContent, _settings.customLocalPlayerName);
+                _settings.playerStartHeight = EditorGUILayout.FloatField(_playerHeightGuiContent, _settings.playerStartHeight);
+                selectedLanguageIndex = EditorGUILayout.Popup(_currentLanguageGuiContent, selectedLanguageIndex, _settings.GetAvailableDisplayLanguages());
+                _settings.currentLanguage = _settings.GetLanguage(selectedLanguageIndex);
                 _settings.localPlayerIsMaster = EditorGUILayout.Toggle(_isMasterGuiContent, _settings.localPlayerIsMaster);
                 _settings.isInstanceOwner = EditorGUILayout.Toggle(_isInstanceOwnerGuiContent, _settings.isInstanceOwner);
                 
@@ -442,6 +442,14 @@ namespace VRC.SDK3.ClientSim.Editor
                         if (GUILayout.Button("Remove Player"))
                         {
                             playersToRemove.Add(player);
+                        }
+                        
+                        EditorGUI.EndDisabledGroup();
+                        EditorGUI.BeginDisabledGroup(VRCPlayerApi.AllPlayers.Count == 1);
+
+                        if (GUILayout.Button("Simulate VRC+ Gift"))
+                        {
+                            player.GetClientSimPlayer().SimulateVRCPlusGift();
                         }
 
                         EditorGUI.EndDisabledGroup();

@@ -1,4 +1,10 @@
-﻿using VRC.SDKBase;
+﻿using System.Collections.Generic;
+using VRC.SDKBase;
+
+#if VRC_ENABLE_PLAYER_PERSISTENCE
+using VRC.SDK3.ClientSim.Interfaces;
+using VRC.SDK3.ClientSim.Persistence;
+#endif
 
 namespace VRC.SDK3.ClientSim
 {
@@ -57,8 +63,51 @@ namespace VRC.SDK3.ClientSim
         public VRCPlayerApi newMasterPlayer;
     }
     
+#if VRC_ENABLE_PLAYER_PERSISTENCE
+    public class ClientSimOnPlayerDataDecodedEvent : IClientSimEvent
+    {
+        public VRCPlayerApi player;
+    }
+    
+    public class ClientSimOnPlayerObjectsDecodedEvent : IClientSimEvent
+    {
+        public VRCPlayerApi player;
+    }
+    
+    public class ClientSimOnPlayerRestoredEvent : IClientSimEvent
+    {
+        public VRCPlayerApi player;
+    }
+    
+    public class ClientSimOnPlayerDataUpdatedEvent : IClientSimEvent
+    {
+        public VRCPlayerApi player;
+        public Dictionary<string, ClientSimPlayerDataPair> playerData;
+    }
+    
+    public class ClientSimOnPlayerDataClearedEvent : IClientSimEvent
+    {
+        public VRCPlayerApi player;
+    }
+    
+    public class ClientSimOnPlayerObjectUpdatedEvent : IClientSimEvent
+    {
+        public IClientSimNetworkSerializer Data;
+    }
+    
+    public class ClientSimOnPlayerObjectUpdateEndedEvent : IClientSimEvent
+    {
+    }
+#endif
+
     public class ClientSimOnToggleManualScalingEvent : IClientSimEvent
     {
         public bool manualScalingAllowed;
+    }
+
+    public class ClientSimOnVRCPlusMassGift : IClientSimEvent
+    {
+        public VRCPlayerApi gifter;
+        public int numGifts;
     }
 }

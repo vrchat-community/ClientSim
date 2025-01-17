@@ -18,11 +18,17 @@ namespace VRC.SDK3.ClientSim
         public bool IsReady { get; }
         public bool UseLowLatency { get; }
 
+        public int VideoWidth { get; private set; }
+
+        public int VideoHeight { get; private set; }
+
         public ClientSimAVProVideoStub(VRCAVProVideoPlayer videoPlayer)
         {
             IsPlaying = false;
             IsReady = false;
             UseLowLatency = videoPlayer.UseLowLatency;
+            VideoWidth = videoPlayer.VideoWidth;
+            VideoHeight = videoPlayer.VideoHeight;
         }
         
         public float GetTime()
