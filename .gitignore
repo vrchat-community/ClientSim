@@ -69,22 +69,3 @@ crashlytics-build.properties
 
 **/.idea/
 Editor/obj/
-
-# Nuke Artifacts
-Tools/Nuke/ClientSimBuild/obj/
-Tools/Nuke/ClientSimBuild/bin/
-Tools/Nuke/.nuke/temp/
-
-
-# DocFx artifacts
-Packages/com.vrchat.ClientSim/Editor/obj/
-Packages/com.vrchat.ClientSim/Editor/obj.meta
-
-Tools/DocFx/obj/
-Docs/Published
-
-# Unity Project Files
-Assets/Samples
-Assets/SerializedUdonPrograms
-Assets/SerializedUdonPrograms.meta
-Assets/Samples.meta
