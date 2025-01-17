@@ -20,33 +20,19 @@ namespace VRC.SDK3.ClientSim
 
         #region Player Audio
 
-        public void SetVoiceLowpass(bool value)
-        {
-            voiceLowpass = value;
-        }
+        public void SetVoiceGain(float value) => voiceGain = value;
+        public void SetVoiceDistanceNear(float value) => voiceDistanceNear = value;
+        public void SetVoiceDistanceFar(float value) => voiceDistanceFar = value;
+        public void SetVoiceVolumetricRadius(float value) => voiceVolumetricRadius = value;
+        public void SetVoiceLowpass(bool value) => voiceLowpass = value;
 
-        public void SetVoiceVolumetricRadius(float value)
-        {
-            voiceVolumetricRadius = value;
-        }
-
-        public void SetVoiceDistanceNear(float value)
-        {
-            voiceDistanceNear = value;
-        }
-
-        public void SetVoiceDistanceFar(float value)
-        {
-            voiceDistanceFar = value;
-        }
-
-        public void SetVoiceGain(float value)
-        {
-            voiceGain = value;
-        }
-
+        public float GetVoiceGain() => voiceGain;
+        public float GetVoiceDistanceNear() => voiceDistanceNear;
+        public float GetVoiceDistanceFar() => voiceDistanceFar;
+        public float GetVoiceVolumetricRadius() => voiceVolumetricRadius;
+        public bool GetVoiceLowpass() => voiceLowpass;
         #endregion
-        
+
         #region Avatar Audio
 
         public void SetAvatarAudioVolumetricRadius(float value)

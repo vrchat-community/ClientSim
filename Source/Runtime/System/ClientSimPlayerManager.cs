@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using VRC.SDK3.Components;
 using VRC.SDKBase;
+using VRC.Udon;
 using Object = UnityEngine.Object;
 
 namespace VRC.SDK3.ClientSim
@@ -26,6 +28,8 @@ namespace VRC.SDK3.ClientSim
         // List of players that have joined before ClientSim has finished initializing.
         private readonly List<VRCPlayerApi> _waitingPlayers = new List<VRCPlayerApi>();
         private bool _networkReady = false;
+        
+        private VRCPlayerObject[] _playerObjectList;
         
         private VRCPlayerApi _localPlayer;
 
@@ -68,7 +72,7 @@ namespace VRC.SDK3.ClientSim
             return id;
         }
         
-        private void InitializePlayer(VRCPlayerApi player, int playerId)
+        private void InitializePlayer(ClientSimPlayer clientSimPlayer, VRCPlayerApi player, int playerId)
         {
             if (_players.ContainsKey(playerId))
             {
@@ -95,6 +99,17 @@ namespace VRC.SDK3.ClientSim
                 });
             }
 
+#if VRC_ENABLE_PLAYER_PERSISTENCE 
+            clientSimPlayer.SetupPlayerPersistence(
+                ClientSimMain.GetInstance().GetEventDispatcher(),
+                ClientSimMain.GetInstance().GetUdonEventSender(), 
+                ClientSimMain.GetInstance().GetBlacklistManager(),
+                ClientSimMain.GetInstance().GetUdonManager(),
+                ClientSimMain.GetInstance().GetSyncedObjectManager(),
+                ClientSimMain.GetInstance().GetPlayerManager()
+            );
+#endif
+            
             if (_networkReady)
             {
                 DispatchPlayerJoinedEvent(player);
@@ -134,8 +149,8 @@ namespace VRC.SDK3.ClientSim
             };
 
             player.SetPlayer(playerApi);
-
-            InitializePlayer(playerApi, playerID);
+            
+            InitializePlayer(player, playerApi, playerID);
 
             if (local)
             {
@@ -146,7 +161,7 @@ namespace VRC.SDK3.ClientSim
 
             return playerApi;
         }
-        
+
         public void RemovePlayer(VRCPlayerApi player)
         {
             // Master is leaving, pick a new master.
@@ -171,7 +186,7 @@ namespace VRC.SDK3.ClientSim
             }
         
             _eventDispatcher?.SendEvent(new ClientSimOnPlayerLeftEvent { player = player });
-
+            
             _playerIDs.Remove(player);
             _players.Remove(player.playerId);
             player.RemoveFromList();
@@ -184,7 +199,7 @@ namespace VRC.SDK3.ClientSim
             
             Object.Destroy(player.gameObject);
         }
-
+        
         public int GetMasterID()
         {
             return _masterID;
@@ -193,6 +208,18 @@ namespace VRC.SDK3.ClientSim
         public VRCPlayerApi GetMaster()
         {
             return GetPlayerByID(_masterID);
+        }
+
+        public VRCPlayerApi GetInstanceOwner()
+        {
+            foreach (var player in _players.Values)
+            {
+                if (player.GetClientSimPlayer().isInstanceOwner)
+                {
+                    return player;
+                }
+            }
+            return null;
         }
 
         public VRCPlayerApi LocalPlayer()
@@ -237,13 +264,18 @@ namespace VRC.SDK3.ClientSim
             return _localPlayerID == _masterID;
         }
         
+        public bool IsSuspended(VRCPlayerApi player)
+        {
+            return player.GetClientSimPlayer().isSuspended;
+        }
+        
         public VRCPlayerApi GetOwner(GameObject obj)
         {
             // TODO consider SyncMode.None
             IClientSimSyncable sync = obj.GetComponent<IClientSimSyncable>();
 
             int playerID = sync != null ? sync.GetOwner() : _masterID;
-
+            
             if (!_players.TryGetValue(playerID, out VRCPlayerApi player))
             {
                 return null;
@@ -319,14 +351,13 @@ namespace VRC.SDK3.ClientSim
 
         public static void TeleportToOrientation(VRCPlayerApi player, Vector3 position, Quaternion rotation, VRC_SceneDescriptor.SpawnOrientation orientation)
         {
-            TeleportToOrientationLerp(player, position, rotation, VRC_SceneDescriptor.SpawnOrientation.Default, false);
+            TeleportToOrientationLerp(player, position, rotation, orientation, false);
         }
 
         public static void TeleportTo(VRCPlayerApi player, Vector3 position, Quaternion rotation)
         {
-            TeleportToOrientationLerp(player, position, rotation, VRC_SceneDescriptor.SpawnOrientation.Default, false);
+            TeleportToOrientation(player, position, rotation, VRC_SceneDescriptor.SpawnOrientation.Default);
         }
-        
         
         public static void Respawn(VRCPlayerApi playerApi)
         {
@@ -653,30 +684,35 @@ namespace VRC.SDK3.ClientSim
             player.GetClientSimPlayer().audioData.SetAvatarAudioCustomCurve(value);
         }
 
-        public static void SetVoiceLowpass(VRCPlayerApi player, bool value)
-        {
-            player.GetClientSimPlayer().audioData.SetVoiceLowpass(value);
-        }
-
-        public static void SetVoiceVolumetricRadius(VRCPlayerApi player, float value)
-        {
-            player.GetClientSimPlayer().audioData.SetVoiceVolumetricRadius(value);
-        }
-
-        public static void SetVoiceDistanceFar(VRCPlayerApi player, float value)
-        {
-            player.GetClientSimPlayer().audioData.SetVoiceDistanceFar(value);
-        }
-
-        public static void SetVoiceDistanceNear(VRCPlayerApi player, float value)
-        {
-            player.GetClientSimPlayer().audioData.SetVoiceDistanceNear(value);
-        }
-
-        public static void SetVoiceGain(VRCPlayerApi player, float value)
-        {
+        public static void SetVoiceGain(VRCPlayerApi player, float value) =>
             player.GetClientSimPlayer().audioData.SetVoiceGain(value);
-        }
+
+        public static void SetVoiceDistanceNear(VRCPlayerApi player, float value) =>
+            player.GetClientSimPlayer().audioData.SetVoiceDistanceNear(value);
+
+        public static void SetVoiceDistanceFar(VRCPlayerApi player, float value) =>
+            player.GetClientSimPlayer().audioData.SetVoiceDistanceFar(value);
+
+        public static void SetVoiceVolumetricRadius(VRCPlayerApi player, float value) =>
+            player.GetClientSimPlayer().audioData.SetVoiceVolumetricRadius(value);
+
+        public static void SetVoiceLowpass(VRCPlayerApi player, bool value) =>
+            player.GetClientSimPlayer().audioData.SetVoiceLowpass(value);
+
+        public static float GetVoiceGain(VRCPlayerApi player) =>
+            player.GetClientSimPlayer().audioData.GetVoiceGain();
+
+        public static float GetVoiceDistanceNear(VRCPlayerApi player) => 
+            player.GetClientSimPlayer().audioData.GetVoiceDistanceNear();
+
+        public static float GetVoiceDistanceFar(VRCPlayerApi player) =>
+            player.GetClientSimPlayer().audioData.GetVoiceDistanceFar();
+
+        public static float GetVoiceVolumetricRadius(VRCPlayerApi player) =>
+            player.GetClientSimPlayer().audioData.GetVoiceVolumetricRadius();
+
+        public static bool GetVoiceLowpass(VRCPlayerApi player) =>
+            player.GetClientSimPlayer().audioData.GetVoiceLowpass();
         
         public static string GetCurrentLanguage()
         {
@@ -703,6 +739,7 @@ namespace VRC.SDK3.ClientSim
         public static void SetAvatarEyeHeightByMultiplier(VRCPlayerApi _, float value) => _heightManager.SetAvatarEyeHeightByMultiplier(value);
         
         #endregion
+
     }
 }
  
