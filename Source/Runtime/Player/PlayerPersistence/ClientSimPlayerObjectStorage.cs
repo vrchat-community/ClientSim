@@ -148,6 +148,7 @@ namespace VRC.SDK3.ClientSim.Persistence
             ClientSimPlayer player = _player.GetClientSimPlayer();
             foreach (GameObject persistantObject in player.PlayerPersistenceObjects)
             {
+                if (!persistantObject) continue;
                 IClientSimNetworkId networkId = persistantObject.GetComponent<IClientSimNetworkId>();
                 if (networkId == null) continue;
                 int id = networkId.GetNetworkId();
