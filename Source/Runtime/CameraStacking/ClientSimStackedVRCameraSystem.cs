@@ -63,7 +63,7 @@ namespace VRC.SDK3.ClientSim
 
         private void DestroyCameraStack()
         {
-            for (int i = 0; i < _cameras.Count; i++)
+            for (int i = _cameras.Count - 1; i >= 0; i--)
             {
                 DestroyCamera(i);
             }
