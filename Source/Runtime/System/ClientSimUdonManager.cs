@@ -130,7 +130,7 @@ namespace VRC.SDK3.ClientSim
         private void OnPlayerJoined(ClientSimOnPlayerJoinedEvent joinEvent)
         {
             _udonEventSender.RunEvent(UdonManager.UDON_EVENT_ONINPUTMETHODCHANGED, ("inputMethod", VRCInputMethod.Keyboard));
-            _udonEventSender.RunEvent(UdonManager.UDON_EVENT_ONLANGUAGECHANGED, ("language", ClientSimSettings.Instance.currentLanguage));
+            _udonEventSender.RunEvent("_onLanguageChanged", ("language", ClientSimSettings.Instance.currentLanguage));
             _udonEventSender.RunEvent("_onPlayerJoined", ("player", joinEvent.player));
         }
 
@@ -151,7 +151,7 @@ namespace VRC.SDK3.ClientSim
 
         private void OnVRCPlusMassGift(ClientSimOnVRCPlusMassGift giftEvent)
         {
-            _udonEventSender.RunEvent(UdonManager.UDON_EVENT_ONVRCPLUSMASSGIFT, 
+            _udonEventSender.RunEvent("_onVRCPlusMassGift", 
                 ("gifter", giftEvent.gifter),
                 ("numGifts", giftEvent.numGifts));
         }

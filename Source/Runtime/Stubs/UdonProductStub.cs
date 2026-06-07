@@ -41,6 +41,17 @@ namespace VRC.SDK3.ClientSim
             int quantity = -1,
             Action onPurchaseSuccess = null,
             Action<string> onPurchaseError = null,
+            bool localInstance = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IProduct[]> Purchase(
+            string variantID = null, 
+            int totalPrice = 0, 
+            int quantity = -1,
+            Action onPurchaseSuccess = null,
+            Action<string> onPurchaseError = null,
             string analyticsLocationType = null,
             string analyticsStoreId = null,
             string analyticsWorldId = null,
