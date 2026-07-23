@@ -82,7 +82,7 @@ namespace VRC.SDK3.ClientSim
             this.Log($"Respawning Object {Tools.GetGameObjectPath(gameObject)}");
             TeleportTo(_originalPosition, _originalRotation);
             
-            if (_rigidbody != null)
+            if (_rigidbody != null && !_rigidbody.isKinematic)
             {
                 _rigidbody.velocity = Vector3.zero;
             }
