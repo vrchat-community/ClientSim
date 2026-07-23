@@ -14,13 +14,26 @@ namespace VRC.SDK3.ClientSim
         private VRC_Pickup.PickupHand _heldHand;
         private Action<IClientSimPickupable> _forceDropHandler;
 
+        private static ClientSimSettings _settings;
+
+        private void OnEnable()
+        {
+            if (_settings == null)
+            {
+                _settings = ClientSimSettings.Instance;
+            }
+        }
+        
         public static void InitializePickup(VRC_Pickup pickup)
         {
             ClientSimPickupHelper previousHelper = pickup.gameObject.GetComponent<ClientSimPickupHelper>();
             if (previousHelper != null)
             {
                 DestroyImmediate(previousHelper);
-                pickup.LogWarning($"Destroying old pickup helper on object: {Tools.GetGameObjectPath(pickup.gameObject)}");
+                if (_settings.displayLogs)
+                {
+                    pickup.LogWarning($"Destroying old pickup helper on object: {Tools.GetGameObjectPath(pickup.gameObject)}");
+                }
             }
 
             ClientSimPickupHelper helper = pickup.gameObject.AddComponent<ClientSimPickupHelper>();
