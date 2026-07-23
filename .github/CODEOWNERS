@@ -1,0 +1,12 @@
+# Default — catches everything not matched below
+* @momo-the-monster
+
+# CI and GitHub config
+/.github/ @momo-the-monster
+
+# Core runtime
+/Source/Runtime/ @momo-the-monster @Dexvoid @Arne-van-der-Lei
+/Source/Editor/ @momo-the-monster @Dexvoid @Arne-van-der-Lei
+
+# Samples
+/Source/Samples~/ @momo-the-monster @Dexvoid @Arne-van-der-Lei
